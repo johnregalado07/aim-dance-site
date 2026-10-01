@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: YOUR-GITHUB-USER/aim-dance-site   # change this
+  repo: johnregalado07/aim-dance-site   # change this
   branch: main
   base_url: https://YOUR-OAUTH-WORKER.workers.dev   # change this (see README)
 
