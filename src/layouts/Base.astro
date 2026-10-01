@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import banner from '../data/banner.json';
+const { title = 'Art In Motion Dance Center', description = 'Technique-focused competitive and recreational dance in Melville and Commack, NY.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#800020" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  {banner.show && <div class="banner" role="status">{banner.message}</div>}
+  <header class="site">
+    <div class="wrap">
+      <a class="logo" href="/">AIM Dance</a>
+      <nav aria-label="Main">
+        <a href="/#classes">Classes</a>
+        <a href="/events">Events</a>
+        <a href="/staff">Staff</a>
+        <a href="/#locations">Locations</a>
+      </nav>
+    </div>
+  </header>
+  <main><slot /></main>
+  <footer>
+    <div class="wrap">
+      <span>© 2020–{new Date().getFullYear()} AIM Dance</span>
+      <span><a href="https://www.facebook.com/artinmotiondance/">Facebook</a> · <a href="https://www.instagram.com/artinmotiondance/">Instagram</a></span>
+    </div>
+  </footer>
+</body>
+</html>

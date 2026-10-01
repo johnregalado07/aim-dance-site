@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const yesterday = new Date(Date.now() - 864e5);
+const events = (await getCollection('events'))
+  .filter((e) => e.data.date >= yesterday)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+---
+<Base title="Events | AIM Dance">
+  <section>
+    <div class="wrap">
+      <h2>Upcoming events</h2>
+      <div class="events">
+        {events.length === 0 && <p class="empty">No events are scheduled right now. Check back soon.</p>}
+        {events.map((e) => (
+          <article class="event">
+            <div class="date">{e.data.date.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })}<b>{e.data.date.getUTCDate()}</b></div>
+            <div>
+              <h3>{e.data.title}</h3>
+              <p class="meta">{e.data.time} · AIM {e.data.location}{e.data.ages && ` · Ages ${e.data.ages}`}{e.data.price && ` · ${e.data.price}`}</p>
+            </div>
+            {e.data.link && <a class="btn" href={e.data.link}>Get tickets</a>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: YOUR-GITHUB-USER/aim-dance-site   # change this
+  branch: main
+  base_url: https://YOUR-OAUTH-WORKER.workers.dev   # change this (see README)
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: src/content/events
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    summary: '{{title}} ({{date}})'
+    sort: date:asc
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false, date_format: 'YYYY-MM-DD', format: 'YYYY-MM-DD' }
+      - { name: time, label: Time, widget: string, hint: 'Example: 3:00–5:00 PM' }
+      - { name: location, label: Location, widget: select, options: [Melville, Commack] }
+      - { name: ages, label: Ages, widget: string, required: false, hint: 'Example: 11+' }
+      - { name: price, label: Price, widget: string, required: false, hint: 'Example: $35' }
+      - { name: link, label: Ticket or sign-up link, widget: string, required: false }
+      - { name: image, label: Flyer, widget: image, required: false }
+      - { name: body, label: Description, widget: markdown }
+
+  - name: staff
+    label: Staff
+    label_singular: Staff member
+    folder: src/content/staff
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    summary: '{{name}}: {{role}}'
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: role, label: Title, widget: string }
+      - { name: photo, label: Photo, widget: image, required: false }
+      - { name: order, label: Display order, widget: number, default: 100, hint: 'Lower numbers appear first' }
+      - { name: body, label: Bio, widget: markdown }
+
+  - name: settings
+    label: Site settings
+    files:
+      - name: banner
+        label: Announcement banner
+        file: src/data/banner.json
+        fields:
+          - { name: show, label: Show banner, widget: boolean }
+          - { name: message, label: Message, widget: string }
