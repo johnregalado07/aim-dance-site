@@ -1,16 +1,38 @@
-# AIM Dance site (Astro + Cloudflare + Sveltia CMS)
+# AIM Dance — Modern Astro Rebuild
 
-Edit content in the admin at /admin, or edit the files in `src/content` and `src/data` directly.
+Modern rebuild of Art In Motion Dance Center using the live WordPress site as the content and brand reference.
 
-- Events, Staff, Pages and programs, Testimonials, Blog: `src/content/*`
-- Banner and studio contact info: `src/data/*.json`
-- Photos: `public/uploads` (`hero.jpg`, and `genres/ballet.jpg`, `tap.jpg`, `contemporary.jpg`, `lyrical.jpg`, `jazz.jpg`, `hiphop.jpg`)
+## Included
+- Modern responsive homepage using original AIM photography
+- AIM burgundy / blush / black brand system
+- Melville + Commack contact details and parent portal links
+- Programs: Recreational Dance, Competition Team, Genres, Summer Programs, Birthday Parties, Kickline Technique
+- 2026–2027 schedule graphics from the live media library
+- 2026–2027 calendar graphic
+- Full current 20-person staff roster, with recovered staff portraits where available
+- Current events content from the existing Claude project
+- Legacy/live URL coverage for `/team/`, `/calendars/`, `/testimonial/`, `/upcoming-events/`, and `/programs/genres/`
+- Netlify/Decap admin files retained from the original Claude project
 
-## Admin login
-1. Deploy the `sveltia-cms-auth` Worker (github.com/sveltia/sveltia-cms-auth) to Cloudflare.
-2. Create a GitHub OAuth App with callback `https://<your-worker>/callback`; add its Client ID and Secret to the Worker.
-3. Set `base_url` in `public/admin/config.yml` to the Worker URL.
-4. Add each editor as a Collaborator on the GitHub repo.
+## Local development
+```bash
+npm install
+npm run dev
+```
 
-## Past events
-Events hide at the next build. Create a Deploy Hook in Cloudflare and call it daily to refresh.
+## Production build
+```bash
+npm run build
+```
+Output is generated in `dist/`.
+
+## Cloudflare Pages
+Use:
+- Framework preset: Astro
+- Build command: `npm run build`
+- Build output directory: `dist`
+
+Push the project to the GitHub repository connected to Cloudflare Pages/Workers and allow the deployment to rebuild.
+
+## Media
+The original WordPress upload archive contained thousands of generated thumbnail variants. The rebuild carries the original AIM assets actually used by the new pages rather than copying every duplicate WordPress thumbnail into Git.
