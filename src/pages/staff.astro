@@ -1,20 +1,102 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection, render } from 'astro:content';
-const staff = (await getCollection('staff')).sort((a, b) => a.data.order - b.data.order);
-const items = await Promise.all(staff.map(async (s) => ({ s, Content: (await render(s)).Content, hasBio: !!s.body?.trim() })));
-const initials = (n: string) => n.split(' ').map((p) => p[0]).slice(0, 2).join('');
+import { getCollection } from 'astro:content';
+
+const staff = (await getCollection('staff')).sort((a,b) => a.data.order - b.data.order);
+const leaders = staff.filter((s) => /Owner|Coordinator|Manager/.test(s.data.role));
+const faculty = staff.filter((s) => !/Owner|Coordinator|Manager/.test(s.data.role));
+const initials = (n) => n.split(' ').map(p => p[0]).slice(0,2).join('');
 ---
-<Base title="Staff | AIM Dance">
-  <div class="subhero"><div class="wrap"><h1>Our staff</h1><p>Teachers and choreographers who train and mentor AIM dancers.</p></div></div>
-  <section><div class="wrap"><div class="staff">
-    {items.map(({ s, Content, hasBio }) => (
-      <div class="person">
-        {s.data.photo ? <img src={s.data.photo} alt={s.data.name} loading="lazy" /> : <div class="ph" aria-hidden="true">{initials(s.data.name)}</div>}
-        <h3>{s.data.name}</h3>
-        <p class="meta">{s.data.role}</p>
-        {hasBio && <details><summary>Read bio</summary><div class="prose"><Content /></div></details>}
+<Base title="Our Staff | AIM Dance">
+  <section class="staff-hero">
+    <div class="wrap staff-hero-grid">
+      <div>
+        <div class="eyebrow light">The people behind AIM</div>
+        <h1>Meet the team that moves AIM forward.</h1>
+        <p>Experienced educators, choreographers and mentors who help every dancer build technique, confidence and a lifelong love of movement.</p>
       </div>
-    ))}
-  </div></div></section>
+      <div class="staff-hero-stat" aria-label={`${staff.length} team members`}>
+        <strong>{staff.length}</strong>
+        <span>faculty &amp; team members</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="staff-intro">
+    <div class="wrap staff-intro-grid">
+      <div>
+        <div class="eyebrow">Leadership &amp; studio team</div>
+        <h2>Professional guidance. Personal attention.</h2>
+      </div>
+      <p>Art In Motion brings together working professionals, experienced teachers and dedicated studio leaders across both Melville and Commack. Explore the team below and open any profile to learn more.</p>
+    </div>
+  </section>
+
+  {leaders.length > 0 && (
+    <section class="staff-group staff-group-featured">
+      <div class="wrap">
+        <div class="staff-section-head">
+          <div>
+            <span>Studio leadership</span>
+            <h2>Leading the AIM community</h2>
+          </div>
+        </div>
+        <div class="staff-grid staff-grid-featured">
+          {leaders.map((s) => (
+            <a class="staff-card" href={`/team/${s.id}`}>
+              <div class="staff-photo-wrap">
+                {s.data.photo ? <img src={s.data.photo} alt={s.data.name} loading="lazy" /> : <div class="staff-ph" aria-hidden="true">{initials(s.data.name)}</div>}
+                <span class="staff-card-arrow" aria-hidden="true">↗</span>
+              </div>
+              <div class="staff-card-copy">
+                <p>{s.data.role}</p>
+                <h3>{s.data.name}</h3>
+                <span>View profile</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="staff-group">
+    <div class="wrap">
+      <div class="staff-section-head">
+        <div>
+          <span>Faculty</span>
+          <h2>Meet our dance educators</h2>
+        </div>
+        <p>{faculty.length} teachers and choreographers currently listed on the AIM team.</p>
+      </div>
+      <div class="staff-grid">
+        {faculty.map((s) => (
+          <a class="staff-card" href={`/team/${s.id}`}>
+            <div class="staff-photo-wrap">
+              {s.data.photo ? <img src={s.data.photo} alt={s.data.name} loading="lazy" /> : <div class="staff-ph" aria-hidden="true">{initials(s.data.name)}</div>}
+              <span class="staff-card-arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="staff-card-copy">
+              <p>{s.data.role}</p>
+              <h3>{s.data.name}</h3>
+              <span>View profile</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="staff-cta">
+    <div class="wrap staff-cta-inner">
+      <div>
+        <div class="eyebrow light">Dance with AIM</div>
+        <h2>Find the right class for your dancer.</h2>
+      </div>
+      <div class="actions">
+        <a class="btn btn-light" href="/schedules">View schedules</a>
+        <a class="btn outline staff-cta-outline" href="/contact">Contact the studio</a>
+      </div>
+    </div>
+  </section>
 </Base>

@@ -1,7 +1,7 @@
 {
   "locations": [
-    { "name": "Melville", "address": "165 Walt Whitman Rd, Melville, NY 11747", "phone": "(631) 424-2243", "portal": "https://dancestudio-pro.com/online/artinmotiondance" },
-    { "name": "Commack", "address": "6090 Jericho Turnpike, Commack, NY 11725", "phone": "(631) 651-8656", "portal": "https://dancestudio-pro.com/online/aimdanceny" }
+    { "name": "Melville", "address": "165 Walt Whitman Rd, Melville, NY 11747", "phone": "(631) 424-2243", "email": "siobhan@aimdanceny.com", "portal": "https://dancestudio-pro.com/online/artinmotiondance" },
+    { "name": "Commack", "address": "6090 Jericho Turnpike, Commack, NY 11725", "phone": "(631) 651-8656", "email": "info@aimdanceny.com", "portal": "https://dancestudio-pro.com/online/aimdanceny" }
   ],
   "email": "siobhan@aimdanceny.com",
   "facebook": "https://www.facebook.com/artinmotiondance/",

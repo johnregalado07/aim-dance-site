@@ -7,8 +7,37 @@ export async function getStaticPaths() {
 }
 const { page } = Astro.props;
 const { Content } = await render(page);
+const visuals = {
+  'about-us': ['/uploads/client/general/general-4.jpg','/uploads/client/general/general-8.jpg','/uploads/client/general/general-11.jpg'],
+  'recreational-dance': ['/uploads/client/recreational/rec-1.jpg','/uploads/client/recreational/rec-4.jpg','/uploads/client/recreational/rec-7.jpg'],
+  'competition-team': ['/uploads/client/general/general-3.jpg','/uploads/client/general/general-6.jpg','/uploads/client/general/general-10.jpg'],
+  'genres': ['/uploads/client/genres/ballet.jpg','/uploads/client/genres/jazz.jpg','/uploads/client/genres/hiphop.jpg'],
+  'summer-programs': ['/uploads/programs/summer.jpg','/uploads/client/general/general-2.jpg','/uploads/client/general/general-5.jpg'],
+  'birthday-parties': ['/uploads/programs/birthday.png','/uploads/client/general/general-7.jpg','/uploads/client/general/general-9.jpg'],
+  'kickline-technique': ['/uploads/client/general/general-1.jpg','/uploads/client/general/general-5.jpg','/uploads/client/general/general-8.jpg']
+};
+const gallery = visuals[page.id] || ['/uploads/client/general/general-1.jpg','/uploads/client/general/general-2.jpg','/uploads/client/general/general-3.jpg'];
+const isProgram = page.data.section === 'programs';
 ---
 <Base title={`${page.data.title} | AIM Dance`} description={page.data.description}>
-  <div class="subhero"><div class="wrap"><h1>{page.data.title}</h1>{page.data.description && <p>{page.data.description}</p>}</div></div>
-  <section><div class="wrap"><div class="prose"><Content /></div></div></section>
+  <section class="editorial-hero">
+    <img src={gallery[0]} alt={page.data.title} class="editorial-hero-img" />
+    <div class="editorial-hero-overlay"></div>
+    <div class="wrap editorial-hero-copy"><div class="eyebrow light">{isProgram ? 'AIM Programs' : 'Art In Motion Dance Center'}</div><h1>{page.data.title}</h1>{page.data.description && <p>{page.data.description}</p>}</div>
+  </section>
+  <section class="editorial-page">
+    <div class="wrap editorial-grid">
+      <aside class="editorial-aside">
+        <div class="editorial-kicker">{isProgram ? 'Train with AIM' : 'The AIM difference'}</div>
+        <h2>{isProgram ? 'Technique, confidence and community.' : 'Built for dancers who want to grow.'}</h2>
+        <img src={gallery[1]} alt="AIM Dance" loading="lazy" />
+        <a class="btn" href={isProgram ? '/schedules' : '/staff'}>{isProgram ? 'View schedules' : 'Meet our staff'}</a>
+      </aside>
+      <div class="prose editorial-prose"><Content /></div>
+    </div>
+    <div class="wrap editorial-gallery">
+      {gallery.map((src,i)=><figure class={`editorial-gallery-${i+1}`}><img src={src} alt={`${page.data.title} at AIM`} loading="lazy"/></figure>)}
+    </div>
+  </section>
+  {isProgram && <section class="page-cta-band"><div class="wrap"><div><div class="eyebrow light">Ready to begin?</div><h2>Find the right class at AIM.</h2></div><div class="actions"><a class="btn btn-light" href="/schedules">View schedules</a><a class="btn outline staff-cta-outline" href="/contact">Contact us</a></div></div></section>}
 </Base>

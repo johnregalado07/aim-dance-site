@@ -3,18 +3,8 @@ import Base from '../layouts/Base.astro';
 import site from '../data/locations.json';
 ---
 <Base title="Contact | AIM Dance">
-  <div class="subhero"><div class="wrap"><h1>Contact us</h1><p>Questions about classes, events or parties? Call the studio or send an email.</p></div></div>
-  <section><div class="wrap">
-    <div class="locs">
-      {site.locations.map((l) => (
-        <div class="loc">
-          <h3>{l.name}</h3>
-          <p>{l.address}</p>
-          <p><a href={`tel:${l.phone.replace(/\D/g, '')}`}>{l.phone}</a></p>
-          <a class="btn outline" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address)}`}>Get directions</a>
-        </div>
-      ))}
-    </div>
-    <p style="margin-top:32px">Email: <a href={`mailto:${site.email}`}><b>{site.email}</b></a></p>
-  </div></section>
+  <div class="subhero"><div class="wrap"><div class="eyebrow light">We’d love to hear from you</div><h1>Contact Us</h1><p>Questions about classes, registration, company training, events or parties? Connect with the AIM studio nearest you.</p></div></div>
+  <section class="content-section"><div class="wrap"><div class="locs">
+    {site.locations.map(l=><article class="loc"><div class="eyebrow">{l.name} Center</div><h3>{l.name}</h3><p>{l.address}</p><p><a href={`tel:${l.phone.replace(/\D/g,'')}`}>{l.phone}</a></p><p><a href={`mailto:${l.email}`}>{l.email}</a></p><div class="actions"><a class="btn" href={l.portal}>Parent Portal ↗</a><a class="btn outline" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address)}`}>Directions ↗</a></div></article>)}
+  </div></div></section>
 </Base>

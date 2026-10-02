@@ -1,16 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import site from '../data/locations.json';
+const schedules = [
+  ['Melville Recreational Schedule 2026–2027','/uploads/schedules/melville-rec.png',site.locations[0].portal],
+  ['Commack Recreational Schedule 2026–2027','/uploads/schedules/commack-rec.png',site.locations[1].portal],
+  ['Melville Company Schedule 2026–2027','/uploads/schedules/melville-company.png',site.locations[0].portal],
+  ['Commack Company Schedule 2026–2027','/uploads/schedules/commack-company.png',site.locations[1].portal]
+];
 ---
-<Base title="Schedules | AIM Dance">
-  <div class="subhero"><div class="wrap"><h1>Schedules</h1><p>Class schedules and registration are managed in each studio's portal.</p></div></div>
-  <section><div class="wrap"><div class="locs">
-    {site.locations.map((l) => (
-      <div class="loc">
-        <h3>{l.name}</h3>
-        <p>{l.address}</p>
-        <a class="btn" href={l.portal}>Open {l.name} schedule</a>
-      </div>
-    ))}
+<Base title="2026–2027 Schedules | AIM Dance">
+  <div class="subhero"><div class="wrap"><div class="eyebrow light">Current season</div><h1>Schedules</h1><p>2026–2027 recreational and company schedules for our Melville and Commack studios.</p></div></div>
+  <section class="content-section"><div class="wrap"><div class="schedule-grid">
+    {schedules.map(([title,img,portal])=><article class="schedule-card"><a href={img} target="_blank"><img src={img} alt={title} loading="lazy"/></a><div><h3>{title}</h3><p>Open the schedule image for a larger view or visit the parent portal for registration and account details.</p><a class="btn" href={portal}>Open parent portal ↗</a></div></article>)}
   </div></div></section>
 </Base>

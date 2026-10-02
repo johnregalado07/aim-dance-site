@@ -1,7 +1,14 @@
 ---
-title: Summer programs
-description: Keep training and having fun when school is out.
+title: Summer Programs
+description: Keep dancing, learning and building confidence all summer long.
 section: programs
 order: 4
+image: /uploads/programs/summer.jpg
 ---
-AIM offers summer training so dancers can keep building skills between seasons. Details are announced each spring on this page and on our Instagram. To ask about dates, [contact the studio](/contact).
+AIM offers summer programs, intensives, camps and special training opportunities for dancers who want to keep moving between regular studio seasons.
+
+Programs vary by age, level and location. Current summer announcements are shared through the studio and AIM social channels.
+
+For dates, availability and registration, [contact AIM](/contact) or use your studio's parent portal.
+
+![AIM Summer Program](/uploads/programs/summer.jpg)

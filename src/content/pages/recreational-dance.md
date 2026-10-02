@@ -1,9 +1,18 @@
 ---
-title: Recreational dance
-description: Weekly classes for every age and level, in a supportive and technique-focused setting.
+title: Recreational Dance
+description: Technique, creativity and confidence for dancers ages 7–17.
 section: programs
 order: 1
 ---
-Our recreational classes are for dancers who want to learn, move and have fun with friends, without the commitment of a competition team.
+Our recreational dance classes are designed for dancers ages **7–17** and include Ballet, Jazz, Lyrical, Tap, Acro and Hip Hop.
 
-Classes are offered at both studios in Ballet, Tap, Contemporary, Lyrical, Jazz and Hip Hop. Find class days and times on the [schedules page](/schedules), or call the studio to find the right level.
+Recreational dance gives students the opportunity to learn the discipline, technique and creativity of the styles they choose while enjoying their time with friends and instructors. Classes are approximately **55 minutes** and are offered at both AIM locations.
+
+## What dancers build
+
+- Strong technical foundations
+- Musicality, coordination and performance quality
+- Confidence and creativity
+- Friendships and a positive connection to movement
+
+See current class times on the [2026–2027 schedules page](/schedules), or [contact AIM](/contact) for help selecting the right class.

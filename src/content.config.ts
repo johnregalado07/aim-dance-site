@@ -43,9 +43,4 @@ const testimonials = defineCollection({
   schema: z.object({ name: z.string(), detail: z.string().optional(), order: z.number().default(100) }),
 });
 
-const blog = defineCollection({
-  loader: md('./src/content/blog'),
-  schema: z.object({ title: z.string(), date: z.coerce.date(), summary: z.string().optional(), image: z.string().optional() }),
-});
-
-export const collections = { events, staff, pages, testimonials, blog };
+export const collections = { events, staff, pages, testimonials };

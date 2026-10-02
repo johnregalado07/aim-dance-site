@@ -1,6 +1,6 @@
 ---
 name: Chazz McBride
-role: Faculty
+role: Dance Teacher
 photo: /uploads/staff/chazz-mcbride.jpg
-order: 3
+order: 8
 ---

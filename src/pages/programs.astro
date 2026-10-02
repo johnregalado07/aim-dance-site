@@ -1,11 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-const programs = (await getCollection('pages')).filter((p) => p.data.section === 'programs').sort((a, b) => a.data.order - b.data.order);
+const programs = (await getCollection('pages')).filter((p)=>p.data.section==='programs').sort((a,b)=>a.data.order-b.data.order);
+const imageMap = {
+  'recreational-dance':'/uploads/client/recreational/rec-1.jpg',
+  'competition-team':'/uploads/client/general/general-3.jpg',
+  'genres':'/uploads/client/genres/ballet.jpg',
+  'summer-programs':'/uploads/programs/summer.jpg',
+  'birthday-parties':'/uploads/programs/birthday.png',
+  'kickline-technique':'/uploads/client/general/general-7.jpg'
+};
 ---
 <Base title="Programs | AIM Dance">
-  <div class="subhero"><div class="wrap"><h1>Programs</h1><p>From first classes to competition, there is a place for every dancer.</p></div></div>
-  <section><div class="wrap"><div class="cards">
-    {programs.map((p) => <a class="card" href={`/${p.id}`}><h3>{p.data.title}</h3><p>{p.data.description}</p></a>)}
+  <section class="programs-hero">
+    <div class="programs-hero-media"><img src="/uploads/client/general/general-1.jpg" alt="AIM Dance students" /></div>
+    <div class="programs-hero-overlay"></div>
+    <div class="wrap programs-hero-copy"><div class="eyebrow light">Learn. Train. Perform.</div><h1>Find the program that fits your dancer.</h1><p>From first classes to advanced performance training, AIM offers a clear path for dancers to grow with confidence.</p></div>
+  </section>
+  <section class="content-section program-index-section"><div class="wrap"><div class="program-cards modern-program-cards">
+    {programs.map((p,i)=><a class="program-card modern-program-card" href={`/${p.id}`}><div class="program-image-wrap"><img src={imageMap[p.id] || '/uploads/client/general/general-2.jpg'} alt={p.data.title} loading="lazy"/><span>0{i+1}</span></div><div><span>Explore program</span><h2>{p.data.title}</h2><p>{p.data.description}</p><b>Learn more →</b></div></a>)}
   </div></div></section>
 </Base>

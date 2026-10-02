@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+export async function getStaticPaths(){const staff=await getCollection('staff');return staff.map(s=>({params:{slug:s.id},props:{s}}));}
+const {s}=Astro.props; const {Content}=await render(s);
+---
+<Base title={`${s.data.name} | AIM Dance`}>
+  <div class="subhero"><div class="wrap"><div class="eyebrow light">AIM Faculty</div><h1>{s.data.name}</h1><p>{s.data.role}</p></div></div>
+  <section class="content-section"><div class="wrap faculty-profile">
+    <div>{s.data.photo?<img class="faculty-photo" src={s.data.photo} alt={s.data.name}/>:<div class="faculty-photo ph">{s.data.name.split(' ').map(p=>p[0]).slice(0,2).join('')}</div>}</div>
+    <div class="prose"><Content/>{!s.body?.trim()&&<p>{s.data.name} is part of the Art In Motion Dance Center faculty. Visit our staff page or contact the studio for current teaching information.</p>}<p><a href="/staff">← Back to all staff</a></p></div>
+  </div></section>
+</Base>
