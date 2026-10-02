@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+const list = (await getCollection('testimonials')).sort((a, b) => a.data.order - b.data.order);
+const items = await Promise.all(list.map(async (t) => ({ t, Content: (await render(t)).Content })));
+---
+<Base title="Testimonials | AIM Dance">
+  <div class="subhero"><div class="wrap"><h1>Testimonials</h1><p>What dancers and families say about AIM.</p></div></div>
+  <section><div class="wrap"><div class="posts">
+    {items.length === 0 && <p class="empty">Testimonials are coming soon.</p>}
+    {items.map(({ t, Content }) => (
+      <blockquote class="quote"><Content /><footer>{t.data.name}{t.data.detail && `, ${t.data.detail}`}</footer></blockquote>
+    ))}
+  </div></div></section>
+</Base>

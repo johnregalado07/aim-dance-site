@@ -1,26 +1,16 @@
-# AIM Dance site (Astro + Cloudflare Pages + Sveltia CMS)
+# AIM Dance site (Astro + Cloudflare + Sveltia CMS)
 
-## Run locally
-    npm install
-    npm run dev
+Edit content in the admin at /admin, or edit the files in `src/content` and `src/data` directly.
 
-## Deploy
-1. Create a GitHub repo and push this folder to `main`.
-2. Cloudflare dashboard > Workers & Pages > Create > Pages > connect the repo.
-   Build command `npm run build`, output directory `dist`.
-3. Add the custom domain aimdanceny.com in the Pages project.
+- Events, Staff, Pages and programs, Testimonials, Blog: `src/content/*`
+- Banner and studio contact info: `src/data/*.json`
+- Photos: `public/uploads` (`hero.jpg`, and `genres/ballet.jpg`, `tap.jpg`, `contemporary.jpg`, `lyrical.jpg`, `jazz.jpg`, `hiphop.jpg`)
 
-## Turn on the admin (/admin)
+## Admin login
 1. Deploy the `sveltia-cms-auth` Worker (github.com/sveltia/sveltia-cms-auth) to Cloudflare.
-2. Create a GitHub OAuth App; callback URL is `https://<your-worker>/callback`.
-   Put its Client ID and Secret in the Worker's environment variables.
-3. In `public/admin/config.yml`, set `repo` and `base_url`.
-4. Give each staff editor access to the GitHub repo (Collaborator).
+2. Create a GitHub OAuth App with callback `https://<your-worker>/callback`; add its Client ID and Secret to the Worker.
+3. Set `base_url` in `public/admin/config.yml` to the Worker URL.
+4. Add each editor as a Collaborator on the GitHub repo.
 
-## Expire past events automatically
-Events hide on the next build. In Pages > Settings > Builds, create a Deploy Hook and
-call it daily with a free cron service or a Cloudflare Cron Worker.
-
-## Photos
-Drop files in `public/uploads`: `hero.jpg`, and `genres/ballet.jpg`, `tap.jpg`,
-`contemporary.jpg`, `lyrical.jpg`, `jazz.jpg`, `hiphop.jpg`.
+## Past events
+Events hide at the next build. Create a Deploy Hook in Cloudflare and call it daily to refresh.

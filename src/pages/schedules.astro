@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/locations.json';
+---
+<Base title="Schedules | AIM Dance">
+  <div class="subhero"><div class="wrap"><h1>Schedules</h1><p>Class schedules and registration are managed in each studio's portal.</p></div></div>
+  <section><div class="wrap"><div class="locs">
+    {site.locations.map((l) => (
+      <div class="loc">
+        <h3>{l.name}</h3>
+        <p>{l.address}</p>
+        <a class="btn" href={l.portal}>Open {l.name} schedule</a>
+      </div>
+    ))}
+  </div></div></section>
+</Base>

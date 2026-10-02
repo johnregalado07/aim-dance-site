@@ -1,8 +1,10 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const md = (base: string) => glob({ pattern: '**/*.md', base });
+
 const events = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/events' }),
+  loader: md('./src/content/events'),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
@@ -16,7 +18,7 @@ const events = defineCollection({
 });
 
 const staff = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/staff' }),
+  loader: md('./src/content/staff'),
   schema: z.object({
     name: z.string(),
     role: z.string(),
@@ -25,4 +27,25 @@ const staff = defineCollection({
   }),
 });
 
-export const collections = { events, staff };
+const pages = defineCollection({
+  loader: md('./src/content/pages'),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    section: z.enum(['none', 'programs']).default('none'),
+    order: z.number().default(100),
+    image: z.string().optional(),
+  }),
+});
+
+const testimonials = defineCollection({
+  loader: md('./src/content/testimonials'),
+  schema: z.object({ name: z.string(), detail: z.string().optional(), order: z.number().default(100) }),
+});
+
+const blog = defineCollection({
+  loader: md('./src/content/blog'),
+  schema: z.object({ title: z.string(), date: z.coerce.date(), summary: z.string().optional(), image: z.string().optional() }),
+});
+
+export const collections = { events, staff, pages, testimonials, blog };

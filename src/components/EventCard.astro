@@ -1,0 +1,12 @@
+---
+const { e } = Astro.props;
+const d = e.data;
+---
+<article class="event">
+  <div class="date">{d.date.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })}<b>{d.date.getUTCDate()}</b></div>
+  <div>
+    <h3>{d.title}</h3>
+    <p class="meta">{d.time} · AIM {d.location}{d.ages && ` · Ages ${d.ages}`}{d.price && ` · ${d.price}`}</p>
+  </div>
+  {d.link && <a class="btn" href={d.link}>Get tickets</a>}
+</article>

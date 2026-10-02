@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Base title="Blog | AIM Dance">
+  <div class="subhero"><div class="wrap"><h1>Blog</h1><p>News and stories from the studio.</p></div></div>
+  <section><div class="wrap"><div class="posts">
+    {posts.length === 0 && <p class="empty">No posts yet. Check back soon.</p>}
+    {posts.map((p) => (
+      <a class="card" href={`/blog/${p.id}`}>
+        <p class="meta">{p.data.date.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}</p>
+        <h3>{p.data.title}</h3>
+        {p.data.summary && <p>{p.data.summary}</p>}
+      </a>
+    ))}
+  </div></div></section>
+</Base>

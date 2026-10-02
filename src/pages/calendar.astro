@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import EventCard from '../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+const yesterday = new Date(Date.now() - 864e5);
+const events = (await getCollection('events')).filter((e) => e.data.date >= yesterday).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const groups = new Map<string, typeof events>();
+for (const e of events) {
+  const k = e.data.date.toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+  groups.set(k, [...(groups.get(k) ?? []), e]);
+}
+---
+<Base title="Calendar | AIM Dance">
+  <div class="subhero"><div class="wrap"><h1>Calendar</h1><p>Everything coming up, by month.</p></div></div>
+  <section><div class="wrap">
+    {groups.size === 0 && <p class="empty">Nothing on the calendar yet. Check back soon.</p>}
+    {[...groups].map(([month, list]) => (
+      <>
+        <h2 class="month">{month}</h2>
+        <div class="events">{list.map((e) => <EventCard e={e} />)}</div>
+      </>
+    ))}
+  </div></section>
+</Base>

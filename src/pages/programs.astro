@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const programs = (await getCollection('pages')).filter((p) => p.data.section === 'programs').sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Programs | AIM Dance">
+  <div class="subhero"><div class="wrap"><h1>Programs</h1><p>From first classes to competition, there is a place for every dancer.</p></div></div>
+  <section><div class="wrap"><div class="cards">
+    {programs.map((p) => <a class="card" href={`/${p.id}`}><h3>{p.data.title}</h3><p>{p.data.description}</p></a>)}
+  </div></div></section>
+</Base>

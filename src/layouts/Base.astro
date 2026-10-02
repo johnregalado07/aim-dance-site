@@ -1,7 +1,11 @@
 ---
 import '../styles/global.css';
 import banner from '../data/banner.json';
+import site from '../data/locations.json';
+import { getCollection } from 'astro:content';
 const { title = 'Art In Motion Dance Center', description = 'Technique-focused competitive and recreational dance in Melville and Commack, NY.' } = Astro.props;
+const programs = (await getCollection('pages')).filter((p) => p.data.section === 'programs').sort((a, b) => a.data.order - b.data.order);
+const path = Astro.url.pathname;
 ---
 <!doctype html>
 <html lang="en">
@@ -17,23 +21,51 @@ const { title = 'Art In Motion Dance Center', description = 'Technique-focused c
 </head>
 <body>
   {banner.show && <div class="banner" role="status">{banner.message}</div>}
+  <div class="topbar">
+    <div class="wrap">
+      {site.locations.map((l) => <a href={`tel:${l.phone.replace(/\D/g, '')}`}>{l.name} {l.phone}</a>)}
+      <span class="spacer"></span>
+      {site.locations.map((l) => <a class="pill" href={l.portal}>{l.name} portal</a>)}
+    </div>
+  </div>
   <header class="site">
     <div class="wrap">
       <a class="logo" href="/">AIM Dance</a>
-      <nav aria-label="Main">
-        <a href="/#classes">Classes</a>
-        <a href="/events">Events</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Main">
+        <a href="/about-us" aria-current={path.startsWith('/about') ? 'page' : undefined}>About</a>
         <a href="/staff">Staff</a>
-        <a href="/#locations">Locations</a>
+        <div class="dd">
+          <a href="/programs">Programs</a>
+          <div class="dd-menu">
+            {programs.map((p) => <a href={`/${p.id}`}>{p.data.title}</a>)}
+          </div>
+        </div>
+        <a href="/testimonials">Testimonials</a>
+        <a href="/blog">Blog</a>
+        <a href="/events">Events</a>
+        <a href="/calendar">Calendar</a>
+        <a href="/schedules">Schedules</a>
+        <a class="btn small" href="/contact">Contact</a>
       </nav>
     </div>
   </header>
   <main><slot /></main>
   <footer>
     <div class="wrap">
-      <span>© 2020–{new Date().getFullYear()} AIM Dance</span>
-      <span><a href="https://www.facebook.com/artinmotiondance/">Facebook</a> · <a href="https://www.instagram.com/artinmotiondance/">Instagram</a></span>
+      <div>
+        <strong>Art In Motion Dance Center</strong>
+        {site.locations.map((l) => <p>{l.name}: {l.address}</p>)}
+      </div>
+      <div>
+        <p>© 2020–{new Date().getFullYear()} AIM Dance</p>
+        <p><a href={site.facebook}>Facebook</a> · <a href={site.instagram}>Instagram</a></p>
+      </div>
     </div>
   </footer>
+  <script is:inline>
+    var b = document.querySelector('.menu-btn'), n = document.getElementById('nav');
+    b.addEventListener('click', function () { var o = n.classList.toggle('open'); b.setAttribute('aria-expanded', o); });
+  </script>
 </body>
 </html>

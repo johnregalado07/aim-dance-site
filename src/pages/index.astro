@@ -1,17 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import EventCard from '../components/EventCard.astro';
+import site from '../data/locations.json';
 import { getCollection } from 'astro:content';
 const yesterday = new Date(Date.now() - 864e5);
-const events = (await getCollection('events'))
-  .filter((e) => e.data.date >= yesterday)
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
-  .slice(0, 3);
+const events = (await getCollection('events')).filter((e) => e.data.date >= yesterday).sort((a, b) => a.data.date.getTime() - b.data.date.getTime()).slice(0, 3);
 const genres = ['Ballet', 'Tap', 'Contemporary', 'Lyrical', 'Jazz', 'Hip Hop'];
 const slug = (g: string) => g.toLowerCase().replace(/\s/g, '');
-const locations = [
-  { name: 'Melville', address: '165 Walt Whitman Rd, Melville, NY 11747', phone: '(631) 424-2243', portal: 'https://dancestudio-pro.com/online/artinmotiondance' },
-  { name: 'Commack', address: '6090 Jericho Turnpike, Commack, NY 11725', phone: '(631) 651-8656', portal: 'https://dancestudio-pro.com/online/aimdanceny' },
-];
 ---
 <Base>
   <section class="hero">
@@ -19,52 +14,46 @@ const locations = [
       <h1>Train with AIM.</h1>
       <p>Technique-focused competitive and recreational dance in Melville and Commack.</p>
       <div class="actions">
-        {locations.map((l) => <a class="btn" href={l.portal}>Register in {l.name}</a>)}
-        <a class="btn ghost" href="#classes">See classes</a>
+        {site.locations.map((l) => <a class="btn" href={l.portal}>Register in {l.name}</a>)}
+        <a class="btn ghost" href="/schedules">View schedules</a>
       </div>
     </div>
   </section>
 
-  <section id="classes" style="padding-bottom:0">
-    <div class="wrap"><h2>Classes</h2></div>
-    <div class="genres">
-      {genres.map((g) => <a class="genre" href="#locations" style={`background-image:linear-gradient(180deg,transparent 40%,rgba(67,0,21,.85)),url('/uploads/genres/${slug(g)}.jpg')`}>{g}</a>)}
-    </div>
-  </section>
+  <div class="genres">
+    {genres.map((g) => <a class="genre" href="/genres" style={`background-image:linear-gradient(180deg,transparent 40%,rgba(67,0,21,.85)),url('/uploads/genres/${slug(g)}.jpg')`}>{g}</a>)}
+  </div>
+
+  <div class="split">
+    <a href="/recreational-dance"><h3>Recreational classes</h3><p>Weekly classes for every age and level.</p></a>
+    <a href="/competition-team"><h3>Competition team</h3><p>Advanced training for dancers who want to compete.</p></a>
+  </div>
 
   <section class="band">
     <div class="wrap">
       <h2>Upcoming events</h2>
       <div class="events">
         {events.length === 0 && <p>No events are scheduled right now. Check back soon.</p>}
-        {events.map((e) => (
-          <article class="event">
-            <div class="date">{e.data.date.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })}<b>{e.data.date.getUTCDate()}</b></div>
-            <div>
-              <h3>{e.data.title}</h3>
-              <p class="meta">{e.data.time} · AIM {e.data.location}{e.data.ages && ` · Ages ${e.data.ages}`}{e.data.price && ` · ${e.data.price}`}</p>
-            </div>
-            {e.data.link && <a class="btn" href={e.data.link}>Get tickets</a>}
-          </article>
-        ))}
+        {events.map((e) => <EventCard e={e} />)}
       </div>
       <p style="margin-top:24px"><a class="btn ghost" href="/events">All events</a></p>
     </div>
   </section>
 
-  <section id="locations">
+  <section>
     <div class="wrap">
       <h2>Two studios</h2>
       <div class="locs">
-        {locations.map((l) => (
+        {site.locations.map((l) => (
           <div class="loc">
             <h3>{l.name}</h3>
             <p>{l.address}</p>
             <p><a href={`tel:${l.phone.replace(/\D/g, '')}`}>{l.phone}</a></p>
-            <a class="btn" href={l.portal}>{l.name} parent portal</a>
+            <a class="btn" href={l.portal}>{l.name} portal</a>
           </div>
         ))}
       </div>
+      <p style="margin-top:28px">Follow us on <a href={site.instagram}><b>Instagram @artinmotiondance</b></a> for studio news.</p>
     </div>
   </section>
 </Base>
