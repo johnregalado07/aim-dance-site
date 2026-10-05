@@ -7,7 +7,7 @@ const yesterday = new Date(Date.now() - 864e5);
 const events = (await getCollection('events')).filter((e) => e.data.date >= yesterday).sort((a,b)=>a.data.date.getTime()-b.data.date.getTime()).slice(0,2);
 const staff = (await getCollection('staff')).sort((a,b)=>a.data.order-b.data.order).slice(0,10);
 const genres = [
-  ['Ballet','ballet','jpg'],['Jazz','jazz','jpg'],['Tap','tap','jpg'],['Lyrical','lyrical','png'],['Contemporary','contemporary','jpg'],['Hip Hop','hiphop','jpg'],['Acro','acro','jpg']
+  ['Ballet','ballet-card','jpg'],['Jazz','jazz-card','jpg'],['Tap','tap-card','jpg'],['Lyrical','lyrical','png'],['Contemporary','contemporary','jpg'],['Hip Hop','hiphop','jpg'],['Acro','acro-card','jpg']
 ];
 ---
 <Base title="Art In Motion Dance Center | Melville & Commack, NY">
