@@ -32,6 +32,14 @@ const genres = [
     </div>
   </section>
 
+  <section class="home-image-story" aria-label="Life at AIM">
+    <div class="home-image-story-grid">
+      <figure class="story-wide"><img src="/uploads/home/studio-1.jpg" alt="Art In Motion dancers training in the studio" loading="lazy"/></figure>
+      <figure><img src="/uploads/client/recreational/rec-3.jpg" alt="AIM dancer in class" loading="lazy"/></figure>
+      <figure><img src="/uploads/home/studio-3.jpg" alt="AIM dance studio experience" loading="lazy"/></figure>
+    </div>
+  </section>
+
   <section class="genre-section">
     <div class="wrap section-head"><div><div class="eyebrow light">Find your movement</div><h2>Dance styles at AIM</h2></div><a class="text-link light-link" href="/genres">Explore all genres →</a></div>
     <div class="genre-grid client-genre-grid">
@@ -60,19 +68,27 @@ const genres = [
 
   <section class="mosaic-section">
     <div class="wrap"><div class="section-head dark"><div><div class="eyebrow">The AIM experience</div><h2>Strong technique.<br/>Real connection.</h2></div><p>Dancers grow through expert instruction, performance opportunities and a studio culture that feels like family.</p></div>
-      <div class="photo-mosaic"><img src="/uploads/client/general/general-2.jpg" alt="AIM dancers" loading="lazy"/><img src="/uploads/client/general/general-6.jpg" alt="AIM dancers" loading="lazy"/><img src="/uploads/client/general/general-9.jpg" alt="AIM dancers" loading="lazy"/></div>
+      <div class="photo-mosaic"><figure><img src="/uploads/client/general/general-2.jpg" alt="AIM dancers training together" loading="lazy"/></figure><figure><img src="/uploads/client/recreational/rec-5.jpg" alt="AIM recreational dancer" loading="lazy"/></figure><figure><img src="/uploads/client/general/general-9.jpg" alt="AIM dancers on stage" loading="lazy"/></figure></div>
     </div>
   </section>
 
   <section class="events-section">
-    <div class="wrap"><div class="section-head"><div><div class="eyebrow">What’s happening</div><h2>Upcoming at AIM</h2></div><a class="text-link" href="/events">See all events →</a></div>
-      <div class="events">{events.length ? events.map(e => <EventCard e={e}/>) : <p>No events are scheduled right now. Check back soon.</p>}</div>
+    <div class="wrap events-home-grid">
+      <div>
+        <div class="section-head"><div><div class="eyebrow">What’s happening</div><h2>Upcoming at AIM</h2></div><a class="text-link" href="/events">See all events →</a></div>
+        <div class="events">{events.length ? events.map(e => <EventCard e={e}/>) : <p>No events are scheduled right now. Check back soon.</p>}</div>
+      </div>
+      <div class="events-home-photo"><img src="/uploads/client/general/general-11.jpg" alt="AIM dancers performing" loading="lazy"/><span>Train. Perform. Grow.</span></div>
     </div>
   </section>
 
   <section class="locations-section">
     <div class="wrap"><div class="eyebrow light">Two studios, one AIM family</div><h2>Find your studio</h2><div class="location-grid">
-      {site.locations.map((l,i) => <article class="location-card"><span class="location-number">0{i+1}</span><h3>{l.name}</h3><p>{l.address}</p><p class="location-phone"><a href={`tel:${l.phone.replace(/\D/g,'')}`}>{l.phone}</a></p><div class="location-actions"><a class="btn btn-light" href={l.portal}>Register / Portal</a><a class="text-link light-link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address)}`}>Directions ↗</a></div></article>)}
+      {site.locations.map((l,i) => <article class="location-card location-card-photo">
+        <img class="location-bg" src={i===0 ? '/uploads/home/studio-1.jpg' : '/uploads/home/studio-2.jpg'} alt={`${l.name} AIM Dance studio`} loading="lazy"/>
+        <div class="location-overlay"></div>
+        <div class="location-content"><span class="location-number">0{i+1}</span><h3>{l.name}</h3><p>{l.address}</p><p class="location-phone"><a href={`tel:${l.phone.replace(/\D/g,'')}`}>{l.phone}</a></p><div class="location-actions"><a class="btn btn-light" href={l.portal}>Register / Portal</a><a class="text-link light-link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address)}`}>Directions ↗</a></div></div>
+      </article>)}
     </div></div>
   </section>
 
