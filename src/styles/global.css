@@ -65,3 +65,12 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 .location-card-photo .location-number{top:-8px;right:0;color:#fff}
 @media(max-width:900px){.home-image-story-grid{grid-template-columns:1fr 1fr}.home-image-story .story-wide{grid-column:1/3}.home-image-story figure{min-height:320px}.events-home-grid{grid-template-columns:1fr}.events-home-photo{min-height:380px}}
 @media(max-width:560px){.home-image-story-grid{display:block}.home-image-story figure{min-height:280px;height:280px;margin-top:8px}.home-image-story .story-wide{height:360px}.events-home-photo{min-height:330px}.location-card-photo{min-height:390px}}
+
+/* Reliable homepage genre imagery: use real img elements instead of CSS backgrounds */
+.client-genre-grid .genre-card{overflow:hidden;background:var(--burgundy-deep);isolation:isolate}
+.client-genre-grid .genre-card-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;transition:transform .45s ease}
+.client-genre-grid .genre-card-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,10,12,.03) 15%,rgba(24,7,13,.82) 100%);z-index:1;pointer-events:none}
+.client-genre-grid .genre-card-copy{position:relative;z-index:2;width:100%}
+.client-genre-grid .genre-card:hover .genre-card-image{transform:scale(1.045)}
+.client-genre-grid .genre-card-copy>span{font-size:.72rem;opacity:.72;letter-spacing:.16em}
+.client-genre-grid .genre-card-copy h3{font-size:2rem;margin-top:6px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35)}

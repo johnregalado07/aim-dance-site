@@ -43,7 +43,11 @@ const genres = [
   <section class="genre-section">
     <div class="wrap section-head"><div><div class="eyebrow light">Find your movement</div><h2>Dance styles at AIM</h2></div><a class="text-link light-link" href="/genres">Explore all genres →</a></div>
     <div class="genre-grid client-genre-grid">
-      {genres.map(([name,slug,ext],i) => <a class="genre-card" href="/genres" style={`background-image:linear-gradient(180deg,rgba(15,10,12,.02),rgba(24,7,13,.78)),url('/uploads/client/genres/${slug}.${ext}')`}><span>{String(i+1).padStart(2,'0')}</span><h3>{name}</h3></a>)}
+      {genres.map(([name,slug,ext],i) => <a class="genre-card" href="/genres">
+        <img class="genre-card-image" src={`/uploads/client/genres/${slug}.${ext}`} alt={`${name} dance classes at AIM`} loading="lazy" />
+        <span class="genre-card-shade" aria-hidden="true"></span>
+        <div class="genre-card-copy"><span>{String(i+1).padStart(2,'0')}</span><h3>{name}</h3></div>
+      </a>)}
     </div>
   </section>
 
