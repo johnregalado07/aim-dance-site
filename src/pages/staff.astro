@@ -3,8 +3,9 @@ import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
 const staff = (await getCollection('staff')).sort((a,b) => a.data.order - b.data.order);
-const leaders = staff.filter((s) => /Owner|Coordinator|Manager/.test(s.data.role));
-const faculty = staff.filter((s) => !/Owner|Coordinator|Manager/.test(s.data.role));
+const leadershipIds = new Set(['siobhan-santapaola','ali-ribellino','victoria-rosa','athena-castiglione','lisa-santapaola','morgan-holden']);
+const leaders = staff.filter((s) => leadershipIds.has(s.id));
+const faculty = staff.filter((s) => !leadershipIds.has(s.id));
 const initials = (n) => n.split(' ').map(p => p[0]).slice(0,2).join('');
 ---
 <Base title="Our Staff | AIM Dance">
