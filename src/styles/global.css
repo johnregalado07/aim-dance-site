@@ -89,3 +89,15 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 .instagram-cta>div{display:grid;gap:3px}.instagram-cta strong{font:700 1.7rem var(--display);color:var(--burgundy)}.instagram-cta span{color:var(--muted);font-size:.92rem}
 @media(max-width:820px){.instagram-grid{grid-template-columns:repeat(2,1fr)}.instagram-cta{align-items:flex-start;flex-direction:column}}
 @media(max-width:560px){.instagram-section{padding:72px 0}.instagram-grid{gap:6px}.instagram-overlay{display:none}.instagram-cta .btn{width:100%}}
+
+
+/* Client genre update: all approved Google Drive genre images */
+.editorial-gallery figure:nth-child(n+4){align-self:stretch}
+.editorial-gallery figure:nth-child(n+4) img{height:380px}
+@media(max-width:820px){
+  .editorial-gallery figure:nth-child(n+4){grid-column:auto}
+  .editorial-gallery figure:nth-child(n+4) img{height:320px}
+}
+@media(max-width:560px){
+  .editorial-gallery figure:nth-child(n+4) img{height:300px}
+}
