@@ -101,3 +101,144 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 @media(max-width:560px){
   .editorial-gallery figure:nth-child(n+4) img{height:300px}
 }
+
+/* =========================================================
+   PAST MASTERCLASS RECAPS
+   ========================================================= */
+
+.masterclass-recaps {
+  background: #f7f1f2;
+  padding: 100px 0;
+}
+
+.masterclass-recap-head {
+  align-items: end;
+}
+
+.masterclass-recap-head > p {
+  max-width: 440px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.masterclass-recap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.masterclass-recap-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(53, 17, 28, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.masterclass-recap-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(53, 17, 28, 0.13);
+}
+
+.masterclass-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #17070c;
+}
+
+.masterclass-video-wrap video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #17070c;
+  object-fit: cover;
+}
+
+.masterclass-recap-copy {
+  padding: 24px 24px 28px;
+}
+
+.masterclass-recap-copy > span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--rose);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.masterclass-recap-copy h3 {
+  margin: 0;
+  color: var(--burgundy);
+  font-size: 2rem;
+}
+
+.masterclass-recap-copy p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+  .masterclass-recap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .masterclass-recap-card:last-child {
+    grid-column: 1 / 3;
+  }
+
+  .masterclass-recap-card:last-child .masterclass-video-wrap {
+    aspect-ratio: 16 / 10;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 560px) {
+
+  .masterclass-recaps {
+    padding: 72px 0;
+  }
+
+  .masterclass-recap-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .masterclass-recap-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .masterclass-recap-card:last-child {
+    grid-column: auto;
+  }
+
+  .masterclass-recap-card:last-child .masterclass-video-wrap {
+    aspect-ratio: 9 / 16;
+  }
+
+  .masterclass-recap-copy {
+    padding: 20px 20px 24px;
+  }
+
+  .masterclass-recap-copy h3 {
+    font-size: 1.8rem;
+  }
+
+}
