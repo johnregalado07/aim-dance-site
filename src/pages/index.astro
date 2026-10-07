@@ -3,9 +3,18 @@ import Base from '../layouts/Base.astro';
 import EventCard from '../components/EventCard.astro';
 import site from '../data/locations.json';
 import { getCollection } from 'astro:content';
+
 const yesterday = new Date(Date.now() - 864e5);
-const events = (await getCollection('events')).filter((e) => e.data.date >= yesterday).sort((a,b)=>a.data.date.getTime()-b.data.date.getTime()).slice(0,2);
-const staff = (await getCollection('staff')).sort((a,b)=>a.data.order-b.data.order).slice(0,10);
+
+const events = (await getCollection('events'))
+  .filter((e) => e.data.date >= yesterday)
+  .sort((a,b) => a.data.date.getTime() - b.data.date.getTime())
+  .slice(0,2);
+
+const staff = (await getCollection('staff'))
+  .sort((a,b) => a.data.order - b.data.order)
+  .slice(0,10);
+
 const genres = [
   ['Ballet','/uploads/drive/genres/ballet.jpg'],
   ['Jazz','/uploads/drive/genres/jazz.jpg'],
@@ -16,112 +25,767 @@ const genres = [
   ['Acro','/uploads/drive/genres/acro.jpg']
 ];
 ---
+
 <Base title="Art In Motion Dance Center | Melville & Commack, NY">
+
   <section class="home-hero video-hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/uploads/home/hero.jpg" aria-hidden="true">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/uploads/home/hero.jpg"
+      aria-hidden="true"
+    >
       <source src="/uploads/client/videos/hero-1.mp4" type="video/mp4" />
     </video>
+
     <div class="hero-shade"></div>
+
     <div class="wrap hero-content">
       <div class="eyebrow light">Melville + Commack, New York</div>
-      <h1>Technique first.<br/><em>Confidence always.</em></h1>
-      <p>Competitive and recreational dance training in a professional, positive environment where dancers are challenged, supported and inspired.</p>
-      <div class="actions"><a class="btn" href="/programs">Explore programs</a><a class="btn btn-light" href="/schedules">View 2026–27 schedules</a></div>
+
+      <h1>
+        Technique first.<br/>
+        <em>Confidence always.</em>
+      </h1>
+
+      <p>
+        Competitive and recreational dance training in a professional,
+        positive environment where dancers are challenged, supported and inspired.
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="/programs">Explore programs</a>
+        <a class="btn btn-light" href="/schedules">View 2026–27 schedules</a>
+      </div>
     </div>
-    <div class="hero-stat"><b>Since 2010</b><span>Training the next generation of dancers</span></div>
+
+    <div class="hero-stat">
+      <b>Since 2010</b>
+      <span>Training the next generation of dancers</span>
+    </div>
   </section>
+
 
   <section class="intro-section">
     <div class="wrap intro-grid">
-      <div><div class="eyebrow">Art In Motion Dance Center</div><h2>Train with purpose.<br/>Dance with passion.</h2></div>
-      <div class="intro-copy"><p>AIM provides quality dance education for competitive and non-competitive students, with a strong focus on proper technique across every style.</p><p>Our goal is simple: create passionate, dedicated dancers in a positive studio environment and give them the tools to succeed both inside and outside the dance world.</p><a class="text-link" href="/about-us">Discover the AIM story →</a></div>
+
+      <div>
+        <div class="eyebrow">Art In Motion Dance Center</div>
+
+        <h2>
+          Train with purpose.<br/>
+          Dance with passion.
+        </h2>
+      </div>
+
+      <div class="intro-copy">
+        <p>
+          AIM provides quality dance education for competitive and
+          non-competitive students, with a strong focus on proper technique
+          across every style.
+        </p>
+
+        <p>
+          Our goal is simple: create passionate, dedicated dancers in a
+          positive studio environment and give them the tools to succeed both
+          inside and outside the dance world.
+        </p>
+
+        <a class="text-link" href="/about-us">
+          Discover the AIM story →
+        </a>
+      </div>
+
     </div>
   </section>
+
 
   <section class="home-image-story" aria-label="Life at AIM">
     <div class="home-image-story-grid">
-      <figure class="story-wide"><img src="/uploads/drive/home/train-1.jpg" alt="AIM dancers performing together" loading="lazy"/></figure>
-      <figure><img src="/uploads/drive/home/train-2.jpg" alt="AIM dancer performing on stage" loading="lazy"/></figure>
-      <figure><img src="/uploads/drive/home/train-3.jpg" alt="AIM dancers performing on stage" loading="lazy"/></figure>
+
+      <figure class="story-wide">
+        <img
+          src="/uploads/drive/home/train-1.jpg"
+          alt="AIM dancers performing together"
+          loading="lazy"
+        />
+      </figure>
+
+      <figure>
+        <img
+          src="/uploads/drive/home/train-2.jpg"
+          alt="AIM dancer performing on stage"
+          loading="lazy"
+        />
+      </figure>
+
+      <figure>
+        <img
+          src="/uploads/drive/home/train-3.jpg"
+          alt="AIM dancers performing on stage"
+          loading="lazy"
+        />
+      </figure>
+
     </div>
   </section>
+
 
   <section class="genre-section">
-    <div class="wrap section-head"><div><div class="eyebrow light">Find your movement</div><h2>Dance styles at AIM</h2></div><a class="text-link light-link" href="/genres">Explore all genres →</a></div>
+
+    <div class="wrap section-head">
+      <div>
+        <div class="eyebrow light">Find your movement</div>
+        <h2>Dance styles at AIM</h2>
+      </div>
+
+      <a class="text-link light-link" href="/genres">
+        Explore all genres →
+      </a>
+    </div>
+
     <div class="genre-grid client-genre-grid">
-      {genres.map(([name,image],i) => <a class="genre-card" href="/genres">
-        <img class="genre-card-image" src={image} alt={`${name} dance classes at AIM`} loading="lazy" />
-        <span class="genre-card-shade" aria-hidden="true"></span>
-        <div class="genre-card-copy"><span>{String(i+1).padStart(2,'0')}</span><h3>{name}</h3></div>
-      </a>)}
+
+      {genres.map(([name,image],i) => (
+        <a class="genre-card" href="/genres">
+
+          <img
+            class="genre-card-image"
+            src={image}
+            alt={`${name} dance classes at AIM`}
+            loading="lazy"
+          />
+
+          <span
+            class="genre-card-shade"
+            aria-hidden="true"
+          ></span>
+
+          <div class="genre-card-copy">
+            <span>{String(i+1).padStart(2,'0')}</span>
+            <h3>{name}</h3>
+          </div>
+
+        </a>
+      ))}
+
     </div>
   </section>
+
 
   <section class="program-feature">
+
     <div class="wrap feature-grid">
-      <div class="feature-photo"><img src="/uploads/client/recreational/rec-2.jpg" alt="AIM recreational dancers" loading="lazy"/></div>
-      <div class="feature-copy"><div class="eyebrow">Programs for every goal</div><h2>From first class to competition stage.</h2><p>Recreational dancers build discipline, creativity and technique in a fun weekly class environment. Company dancers take that training further through focused classes, rehearsals and regional competition opportunities.</p><div class="feature-links"><a class="program-link" href="/recreational-dance"><b>Recreational Dance</b><span>Ages 7–17 · weekly classes</span><i>→</i></a><a class="program-link" href="/competition-team"><b>Competition Team</b><span>Advanced training + performance</span><i>→</i></a><a class="program-link" href="/summer-programs"><b>Summer Programs</b><span>Keep moving all summer</span><i>→</i></a></div></div>
+
+      <div class="feature-photo">
+        <img
+          src="/uploads/client/recreational/rec-2.jpg"
+          alt="AIM recreational dancers"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="feature-copy">
+
+        <div class="eyebrow">
+          Programs for every goal
+        </div>
+
+        <h2>
+          From first class to competition stage.
+        </h2>
+
+        <p>
+          Recreational dancers build discipline, creativity and technique in a
+          fun weekly class environment. Company dancers take that training
+          further through focused classes, rehearsals and regional competition
+          opportunities.
+        </p>
+
+        <div class="feature-links">
+
+          <a class="program-link" href="/recreational-dance">
+            <b>Recreational Dance</b>
+            <span>Ages 7–17 · weekly classes</span>
+            <i>→</i>
+          </a>
+
+          <a class="program-link" href="/competition-team">
+            <b>Competition Team</b>
+            <span>Advanced training + performance</span>
+            <i>→</i>
+          </a>
+
+          <a class="program-link" href="/summer-programs">
+            <b>Summer Programs</b>
+            <span>Keep moving all summer</span>
+            <i>→</i>
+          </a>
+
+        </div>
+      </div>
+
     </div>
   </section>
+
 
   <section class="home-staff-section">
-    <div class="wrap section-head dark"><div><div class="eyebrow">Meet the faculty</div><h2>Teachers who know how to bring out your best.</h2></div><a class="text-link" href="/staff">Meet the full team →</a></div>
-    <div class="staff-carousel-shell">
-      <div class="staff-carousel" aria-label="AIM staff carousel">
-        {staff.map((s) => <a class="home-staff-card" href={`/team/${s.id}`}>
-          <div class="home-staff-photo">{s.data.photo ? <img src={s.data.photo} alt={s.data.name} loading="lazy"/> : <span>{s.data.name.split(' ').map((p)=>p[0]).slice(0,2).join('')}</span>}</div>
-          <div><p>{s.data.role}</p><h3>{s.data.name}</h3></div>
-        </a>)}
-      </div>
-    </div>
-  </section>
 
-  <section class="mosaic-section">
-    <div class="wrap"><div class="section-head dark"><div><div class="eyebrow">The AIM experience</div><h2>Strong technique.<br/>Real connection.</h2></div><p>Dancers grow through expert instruction, performance opportunities and a studio culture that feels like family.</p></div>
-      <div class="photo-mosaic"><figure><img src="/uploads/drive/home/connection-1.jpg" alt="AIM dancer performing with confidence" loading="lazy"/></figure><figure><img src="/uploads/drive/home/connection-2.jpg" alt="AIM dancer on stage" loading="lazy"/></figure><figure><img src="/uploads/drive/home/connection-3.jpg" alt="AIM dancer demonstrating technique" loading="lazy"/></figure></div>
-    </div>
-  </section>
+    <div class="wrap section-head dark">
 
-  <section class="events-section">
-    <div class="wrap events-home-grid">
       <div>
-        <div class="section-head"><div><div class="eyebrow">What’s happening</div><h2>Upcoming at AIM</h2></div><a class="text-link" href="/events">See all events →</a></div>
-        <div class="events">{events.length ? events.map(e => <EventCard e={e}/>) : <p>No events are scheduled right now. Check back soon.</p>}</div>
-      </div>
-      <div class="events-home-photo"><img src="/uploads/client/general/general-11.jpg" alt="AIM dancers performing" loading="lazy"/><span>Train. Perform. Grow.</span></div>
-    </div>
-  </section>
+        <div class="eyebrow">
+          Meet the faculty
+        </div>
 
-  <section class="instagram-section">
-    <div class="wrap">
-      <div class="section-head dark instagram-head">
-        <div><div class="eyebrow">Follow along</div><h2>Life at AIM, on Instagram.</h2></div>
-        <a class="text-link" href="https://www.instagram.com/artinmotiondance/" target="_blank" rel="noopener noreferrer">@artinmotiondance ↗</a>
+        <h2>
+          Teachers who know how to bring out your best.
+        </h2>
       </div>
-      <div class="instagram-grid" aria-label="Art In Motion Dance Instagram preview">
-        {['general-2.jpg','general-4.jpg','general-7.jpg','general-9.jpg','general-10.jpg','general-11.jpg'].map((img,i) => (
-          <a class="instagram-tile" href="https://www.instagram.com/artinmotiondance/" target="_blank" rel="noopener noreferrer" aria-label={`View Art In Motion Dance on Instagram, photo ${i+1}`}>
-            <img src={`/uploads/client/general/${img}`} alt={`Art In Motion Dance studio moment ${i+1}`} loading="lazy"/>
-            <span class="instagram-overlay" aria-hidden="true">Instagram ↗</span>
+
+      <a class="text-link" href="/staff">
+        Meet the full team →
+      </a>
+
+    </div>
+
+    <div class="staff-carousel-shell">
+
+      <div
+        class="staff-carousel"
+        aria-label="AIM staff carousel"
+      >
+
+        {staff.map((s) => (
+          <a
+            class="home-staff-card"
+            href={`/team/${s.id}`}
+          >
+
+            <div class="home-staff-photo">
+
+              {s.data.photo
+                ? (
+                  <img
+                    src={s.data.photo}
+                    alt={s.data.name}
+                    loading="lazy"
+                  />
+                )
+                : (
+                  <span>
+                    {s.data.name
+                      .split(' ')
+                      .map((p)=>p[0])
+                      .slice(0,2)
+                      .join('')}
+                  </span>
+                )
+              }
+
+            </div>
+
+            <div>
+              <p>{s.data.role}</p>
+              <h3>{s.data.name}</h3>
+            </div>
+
           </a>
         ))}
+
       </div>
-      <div class="instagram-cta">
-        <div><strong>See what’s happening at AIM.</strong><span>Classes, competitions, performances and studio moments.</span></div>
-        <a class="btn" href="https://www.instagram.com/artinmotiondance/" target="_blank" rel="noopener noreferrer">Follow us on Instagram</a>
-      </div>
+
     </div>
   </section>
 
-  <section class="locations-section">
-    <div class="wrap"><div class="eyebrow light">Two studios, one AIM family</div><h2>Find your studio</h2><div class="location-grid">
-      {site.locations.map((l,i) => <article class="location-card location-card-photo">
-        <img class="location-bg" src={i===0 ? '/uploads/home/studio-1.jpg' : '/uploads/home/studio-2.jpg'} alt={`${l.name} AIM Dance studio`} loading="lazy"/>
-        <div class="location-overlay"></div>
-        <div class="location-content"><span class="location-number">0{i+1}</span><h3>{l.name}</h3><p>{l.address}</p><p class="location-phone"><a href={`tel:${l.phone.replace(/\D/g,'')}`}>{l.phone}</a></p><div class="location-actions"><a class="btn btn-light" href={l.portal}>Register / Portal</a><a class="text-link light-link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address)}`}>Directions ↗</a></div></div>
-      </article>)}
-    </div></div>
+
+  <section class="mosaic-section">
+
+    <div class="wrap">
+
+      <div class="section-head dark">
+
+        <div>
+          <div class="eyebrow">
+            The AIM experience
+          </div>
+
+          <h2>
+            Strong technique.<br/>
+            Real connection.
+          </h2>
+        </div>
+
+        <p>
+          Dancers grow through expert instruction, performance opportunities
+          and a studio culture that feels like family.
+        </p>
+
+      </div>
+
+
+      <div class="photo-mosaic">
+
+        <figure>
+          <img
+            src="/uploads/drive/home/connection-1.jpg"
+            alt="AIM dancer performing with confidence"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure>
+          <img
+            src="/uploads/drive/home/connection-2.jpg"
+            alt="AIM dancer on stage"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure>
+          <img
+            src="/uploads/drive/home/connection-3.jpg"
+            alt="AIM dancer demonstrating technique"
+            loading="lazy"
+          />
+        </figure>
+
+      </div>
+
+    </div>
   </section>
 
-  <section class="final-cta"><div class="wrap"><div><div class="eyebrow">Ready to move?</div><h2>Your next chapter starts at AIM.</h2></div><div class="actions">{site.locations.map(l => <a class="btn" href={l.portal}>Register in {l.name}</a>)}</div></div></section>
+
+  <section class="events-section">
+
+    <div class="wrap events-home-grid">
+
+      <div>
+
+        <div class="section-head">
+
+          <div>
+            <div class="eyebrow">
+              What’s happening
+            </div>
+
+            <h2>
+              Upcoming at AIM
+            </h2>
+          </div>
+
+          <a class="text-link" href="/events">
+            See all events →
+          </a>
+
+        </div>
+
+
+        <div class="events">
+
+          {events.length
+            ? events.map(e => <EventCard e={e}/>)
+            : <p>No events are scheduled right now. Check back soon.</p>
+          }
+
+        </div>
+
+      </div>
+
+
+      <div class="events-home-photo">
+
+        <img
+          src="/uploads/client/general/general-11.jpg"
+          alt="AIM dancers performing"
+          loading="lazy"
+        />
+
+        <span>
+          Train. Perform. Grow.
+        </span>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================= -->
+  <!-- PAST MASTERCLASS RECAPS -->
+  <!-- ============================= -->
+
+  <section class="masterclass-recaps">
+
+    <div class="wrap">
+
+      <div class="section-head dark masterclass-recap-head">
+
+        <div>
+          <div class="eyebrow">
+            Past masterclass recaps
+          </div>
+
+          <h2>
+            Experience AIM in motion.
+          </h2>
+        </div>
+
+        <p>
+          Take a look back at special workshops and masterclasses hosted at
+          Art In Motion Dance Center.
+        </p>
+
+      </div>
+
+
+      <div class="masterclass-recap-grid">
+
+
+        <!-- Alexandra Lund -->
+
+        <article class="masterclass-recap-card">
+
+          <div class="masterclass-video-wrap">
+
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              aria-label="Alexandra Lund Tribe 99 Workshop recap"
+            >
+              <source
+                src="/uploads/client/masterclasses/alexandra-lund.mp4"
+                type="video/mp4"
+              />
+            </video>
+
+          </div>
+
+          <div class="masterclass-recap-copy">
+
+            <span>
+              Masterclass Recap
+            </span>
+
+            <h3>
+              Alexandra Lund
+            </h3>
+
+            <p>
+              Tribe 99 Workshop
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- Jona Biddle -->
+
+        <article class="masterclass-recap-card">
+
+          <div class="masterclass-video-wrap">
+
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              aria-label="Jona Biddle Hip Hop and Knicks City Kids Workshop recap"
+            >
+              <source
+                src="/uploads/client/masterclasses/jona-biddle.mp4"
+                type="video/mp4"
+              />
+            </video>
+
+          </div>
+
+          <div class="masterclass-recap-copy">
+
+            <span>
+              Masterclass Recap
+            </span>
+
+            <h3>
+              Jona Biddle
+            </h3>
+
+            <p>
+              Hip Hop &amp; Knicks City Kids Workshop
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- AIM All Around -->
+
+        <article class="masterclass-recap-card">
+
+          <div class="masterclass-video-wrap">
+
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              aria-label="AIM All Around Technique Workshop recap"
+            >
+              <source
+                src="/uploads/client/masterclasses/aim-all-around.mp4"
+                type="video/mp4"
+              />
+            </video>
+
+          </div>
+
+          <div class="masterclass-recap-copy">
+
+            <span>
+              Masterclass Recap
+            </span>
+
+            <h3>
+              AIM All Around
+            </h3>
+
+            <p>
+              Technique Workshop
+            </p>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="instagram-section">
+
+    <div class="wrap">
+
+      <div class="section-head dark instagram-head">
+
+        <div>
+          <div class="eyebrow">
+            Follow along
+          </div>
+
+          <h2>
+            Life at AIM, on Instagram.
+          </h2>
+        </div>
+
+        <a
+          class="text-link"
+          href="https://www.instagram.com/artinmotiondance/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @artinmotiondance ↗
+        </a>
+
+      </div>
+
+
+      <div
+        class="instagram-grid"
+        aria-label="Art In Motion Dance Instagram preview"
+      >
+
+        {[
+          'general-2.jpg',
+          'general-4.jpg',
+          'general-7.jpg',
+          'general-9.jpg',
+          'general-10.jpg',
+          'general-11.jpg'
+        ].map((img,i) => (
+
+          <a
+            class="instagram-tile"
+            href="https://www.instagram.com/artinmotiondance/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View Art In Motion Dance on Instagram, photo ${i+1}`}
+          >
+
+            <img
+              src={`/uploads/client/general/${img}`}
+              alt={`Art In Motion Dance studio moment ${i+1}`}
+              loading="lazy"
+            />
+
+            <span
+              class="instagram-overlay"
+              aria-hidden="true"
+            >
+              Instagram ↗
+            </span>
+
+          </a>
+
+        ))}
+
+      </div>
+
+
+      <div class="instagram-cta">
+
+        <div>
+          <strong>
+            See what’s happening at AIM.
+          </strong>
+
+          <span>
+            Classes, competitions, performances and studio moments.
+          </span>
+        </div>
+
+        <a
+          class="btn"
+          href="https://www.instagram.com/artinmotiondance/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Follow us on Instagram
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="locations-section">
+
+    <div class="wrap">
+
+      <div class="eyebrow light">
+        Two studios, one AIM family
+      </div>
+
+      <h2>
+        Find your studio
+      </h2>
+
+
+      <div class="location-grid">
+
+        {site.locations.map((l,i) => (
+
+          <article class="location-card location-card-photo">
+
+            <img
+              class="location-bg"
+              src={i===0
+                ? '/uploads/home/studio-1.jpg'
+                : '/uploads/home/studio-2.jpg'
+              }
+              alt={`${l.name} AIM Dance studio`}
+              loading="lazy"
+            />
+
+            <div class="location-overlay"></div>
+
+
+            <div class="location-content">
+
+              <span class="location-number">
+                0{i+1}
+              </span>
+
+              <h3>
+                {l.name}
+              </h3>
+
+              <p>
+                {l.address}
+              </p>
+
+              <p class="location-phone">
+                <a href={`tel:${l.phone.replace(/\D/g,'')}`}>
+                  {l.phone}
+                </a>
+              </p>
+
+
+              <div class="location-actions">
+
+                <a
+                  class="btn btn-light"
+                  href={l.portal}
+                >
+                  Register / Portal
+                </a>
+
+                <a
+                  class="text-link light-link"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address)}`}
+                >
+                  Directions ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="final-cta">
+
+    <div class="wrap">
+
+      <div>
+
+        <div class="eyebrow">
+          Ready to move?
+        </div>
+
+        <h2>
+          Your next chapter starts at AIM.
+        </h2>
+
+      </div>
+
+
+      <div class="actions">
+
+        {site.locations.map(l => (
+
+          <a
+            class="btn"
+            href={l.portal}
+          >
+            Register in {l.name}
+          </a>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </section>
+
 </Base>
