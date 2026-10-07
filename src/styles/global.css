@@ -242,3 +242,8 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+/* Temporarily hide Masterclass Recaps */
+.masterclass-recaps {
+  display: none !important;
+}
