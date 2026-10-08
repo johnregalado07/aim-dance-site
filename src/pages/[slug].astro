@@ -56,5 +56,51 @@ const isProgram = page.data.section === 'programs';
       {gallery.map((src,i)=><figure class={`editorial-gallery-${i+1}`}><img src={src} alt={`${page.data.title} at AIM`} loading="lazy"/></figure>)}
     </div>
   </section>
+{page.id === 'about-us' && (
+  <section class="about-video-feature">
+    <div class="wrap about-video-grid">
+
+      <div class="about-video-copy">
+        <div class="eyebrow">
+          Life at AIM
+        </div>
+
+        <h2>
+          Cultivating artistry in motion.
+        </h2>
+
+        <p>
+          Art In Motion is more than a place to take class. Our dancers
+          train, perform and grow in an environment built around strong
+          technique, confidence and a genuine love of movement.
+        </p>
+
+        <a class="text-link" href="/staff">
+          Meet the AIM team →
+        </a>
+      </div>
+
+
+      <div class="about-video-media">
+
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          aria-label="Art In Motion Dance Center"
+        >
+          <source
+            src="/uploads/drive/videos/about-aim-story.mp4"
+            type="video/mp4"
+          />
+
+          Your browser does not support video playback.
+        </video>
+
+      </div>
+
+    </div>
+  </section>
+)}
   {isProgram && <section class="page-cta-band"><div class="wrap"><div><div class="eyebrow light">Ready to begin?</div><h2>Find the right class at AIM.</h2></div><div class="actions"><a class="btn btn-light" href="/schedules">View schedules</a><a class="btn outline staff-cta-outline" href="/contact">Contact us</a></div></div></section>}
 </Base>
