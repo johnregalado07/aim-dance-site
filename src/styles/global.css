@@ -615,3 +615,81 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+/* =========================================================
+   COMPETITION VIDEO FEATURE
+   ========================================================= */
+
+.competition-video-feature {
+  padding: 110px 0;
+  background: var(--burgundy-deep);
+  color: #fff;
+}
+
+.competition-video-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: 75px;
+  align-items: center;
+}
+
+.competition-video-media {
+  overflow: hidden;
+  border-radius: 22px;
+  background: #120509;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.competition-video-media video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #120509;
+}
+
+.competition-video-copy .eyebrow {
+  color: #efbeca;
+}
+
+.competition-video-copy h2 {
+  margin: 10px 0 24px;
+  color: #fff;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.95;
+}
+
+.competition-video-copy p {
+  max-width: 520px;
+  margin-bottom: 28px;
+  color: #ead9de;
+  font-size: 1.03rem;
+  line-height: 1.8;
+}
+
+.competition-video-copy .text-link {
+  color: #fff;
+}
+
+
+@media (max-width: 900px) {
+
+  .competition-video-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .competition-video-feature {
+    padding: 75px 0;
+  }
+
+  .competition-video-media {
+    border-radius: 16px;
+  }
+
+}
