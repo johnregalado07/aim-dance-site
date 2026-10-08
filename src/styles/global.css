@@ -425,14 +425,6 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   line-height: 1.6;
 }
 
-.genre-learn-more {
-  display: block;
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 
 
 /* Hover */
