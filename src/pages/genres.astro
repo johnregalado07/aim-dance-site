@@ -1,0 +1,182 @@
+---
+import Base from '../layouts/Base.astro';
+
+const genreCards = [
+  {
+    name: 'Ballet',
+    image: '/uploads/drive/genres/ballet.jpg',
+    description:
+      'Build strength, alignment, flexibility and classical technique through structured ballet training.'
+  },
+  {
+    name: 'Jazz',
+    image: '/uploads/drive/genres/jazz.jpg',
+    description:
+      'High-energy movement focused on musicality, turns, jumps, flexibility and performance quality.'
+  },
+  {
+    name: 'Tap',
+    image: '/uploads/drive/genres/tap.jpg',
+    description:
+      'Develop rhythm, musicality and precise footwork while learning to create movement through sound.'
+  },
+  {
+    name: 'Lyrical',
+    image: '/uploads/drive/genres/lyrical.png',
+    description:
+      'A blend of ballet and jazz that combines technique, fluid movement and emotional storytelling.'
+  },
+  {
+    name: 'Contemporary',
+    image: '/uploads/drive/genres/contemporary.jpg',
+    description:
+      'Explore expressive movement, musicality, floor work and dynamic technique in a creative environment.'
+  },
+  {
+    name: 'Hip Hop',
+    image: '/uploads/drive/genres/hip-hop.jpg',
+    description:
+      'Energetic movement incorporating rhythm, grooves, musicality and current street-dance influences.'
+  },
+  {
+    name: 'Acro',
+    image: '/uploads/drive/genres/acro.jpg',
+    description:
+      'Combine dance technique with flexibility, strength, balance and controlled acrobatic skills.'
+  }
+];
+---
+
+<Base
+  title="Dance Genres | AIM Dance"
+  description="Explore the dance styles offered at Art In Motion Dance Center."
+>
+
+  <section class="genres-showcase-hero">
+    <div class="wrap">
+      <div class="eyebrow light">Find your movement</div>
+
+      <h1>Dance Genres</h1>
+
+      <p>
+        Explore the styles offered at Art In Motion Dance Center and discover
+        the training that inspires your dancer.
+      </p>
+    </div>
+  </section>
+
+
+  <section class="genres-showcase">
+
+    <div class="wrap">
+
+      <div class="genres-showcase-intro">
+
+        <div>
+          <div class="eyebrow">Train with AIM</div>
+
+          <h2>
+            Find the style that moves you.
+          </h2>
+        </div>
+
+        <p>
+          From foundational technique to high-energy performance,
+          AIM offers a variety of dance styles designed to help dancers
+          grow in confidence, artistry and ability.
+        </p>
+
+      </div>
+
+
+      <div class="genres-showcase-grid">
+
+        {genreCards.map((genre, index) => (
+
+          <article class="genre-showcase-card">
+
+            <img
+              src={genre.image}
+              alt={`${genre.name} classes at Art In Motion Dance Center`}
+              loading="lazy"
+            />
+
+            <div
+              class="genre-showcase-overlay"
+              aria-hidden="true"
+            ></div>
+
+
+            <div class="genre-showcase-content">
+
+              <span class="genre-showcase-number">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <h2>
+                {genre.name}
+              </h2>
+
+              <div class="genre-showcase-description">
+
+                <p>
+                  {genre.description}
+                </p>
+
+                <span class="genre-learn-more">
+                  Explore this style →
+                </span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="page-cta-band">
+
+    <div class="wrap">
+
+      <div>
+        <div class="eyebrow light">
+          Ready to dance?
+        </div>
+
+        <h2>
+          Find your class at AIM.
+        </h2>
+      </div>
+
+
+      <div class="actions">
+
+        <a
+          class="btn btn-light"
+          href="/schedules"
+        >
+          View schedules
+        </a>
+
+        <a
+          class="btn outline staff-cta-outline"
+          href="/contact"
+        >
+          Contact us
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</Base>
