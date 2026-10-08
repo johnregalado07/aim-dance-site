@@ -101,6 +101,52 @@ const isProgram = page.data.section === 'programs';
 
     </div>
   </section>
+
+{page.id === 'competition-team' && (
+  <section class="competition-video-feature">
+    <div class="wrap competition-video-grid">
+
+      <div class="competition-video-media">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          aria-label="AIM Competition Team training and performance"
+        >
+          <source
+            src="/uploads/drive/videos/competition-training.mov"
+            type="video/quicktime"
+          />
+
+          Your browser does not support video playback.
+        </video>
+      </div>
+
+
+      <div class="competition-video-copy">
+        <div class="eyebrow">
+          Competition at AIM
+        </div>
+
+        <h2>
+          Train hard.<br/>
+          Perform with confidence.
+        </h2>
+
+        <p>
+          AIM company dancers develop strong technique, performance quality
+          and confidence through focused training, rehearsals and performance
+          opportunities.
+        </p>
+
+        <a class="text-link" href="/schedules">
+          View class schedules →
+        </a>
+      </div>
+
+    </div>
+  </section>
+)}
 )}
   {isProgram && <section class="page-cta-band"><div class="wrap"><div><div class="eyebrow light">Ready to begin?</div><h2>Find the right class at AIM.</h2></div><div class="actions"><a class="btn btn-light" href="/schedules">View schedules</a><a class="btn outline staff-cta-outline" href="/contact">Contact us</a></div></div></section>}
 </Base>
