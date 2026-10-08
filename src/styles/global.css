@@ -247,3 +247,300 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 .masterclass-recaps {
   display: none !important;
 }
+
+
+
+
+
+
+
+/* =========================================================
+   GENRE SHOWCASE PAGE
+   ========================================================= */
+
+.genres-showcase-hero {
+  position: relative;
+  padding: 130px 0 105px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      120deg,
+      var(--burgundy-deep),
+      var(--burgundy)
+    );
+  color: #fff;
+}
+
+.genres-showcase-hero::after {
+  content: "AIM";
+  position: absolute;
+  right: -30px;
+  top: -100px;
+  font-family: var(--display);
+  font-size: 20rem;
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0.045;
+  pointer-events: none;
+}
+
+.genres-showcase-hero .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.genres-showcase-hero h1 {
+  margin-top: 8px;
+  color: #fff;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.genres-showcase-hero p {
+  max-width: 620px;
+  margin-top: 22px;
+  color: #f1dfe4;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+
+/* Main section */
+
+.genres-showcase {
+  padding: 100px 0 120px;
+  background: #f8f3f4;
+}
+
+.genres-showcase-intro {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+.genres-showcase-intro h2 {
+  max-width: 700px;
+  color: var(--burgundy);
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.95;
+}
+
+.genres-showcase-intro > p {
+  max-width: 500px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+
+/* Cards */
+
+.genres-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.genre-showcase-card {
+  position: relative;
+  min-height: 500px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--burgundy-deep);
+  isolation: isolate;
+}
+
+.genre-showcase-card img {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.genre-showcase-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22, 4, 10, 0.05) 10%,
+      rgba(28, 4, 12, 0.22) 42%,
+      rgba(30, 3, 12, 0.94) 100%
+    );
+  transition: background 0.35s ease;
+}
+
+.genre-showcase-content {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  left: 28px;
+  z-index: 2;
+  color: #fff;
+}
+
+.genre-showcase-number {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  opacity: 0.7;
+}
+
+.genre-showcase-content h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  line-height: 1;
+}
+
+.genre-showcase-description {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(15px);
+
+  transition:
+    max-height 0.4s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.genre-showcase-description p {
+  margin: 16px 0 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.genre-learn-more {
+  display: block;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* Hover */
+
+.genre-showcase-card:hover img {
+  transform: scale(1.065);
+}
+
+.genre-showcase-card:hover .genre-showcase-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22, 4, 10, 0.16) 5%,
+      rgba(30, 3, 12, 0.42) 45%,
+      rgba(30, 3, 12, 0.97) 100%
+    );
+}
+
+.genre-showcase-card:hover .genre-showcase-description {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Make the final 3 cards wider on desktop */
+
+.genre-showcase-card:nth-child(5),
+.genre-showcase-card:nth-child(6),
+.genre-showcase-card:nth-child(7) {
+  min-height: 550px;
+}
+
+.genre-showcase-card:nth-child(5) {
+  grid-column: 1 / span 1;
+}
+
+.genre-showcase-card:nth-child(7) {
+  grid-column: 3 / span 1;
+}
+
+
+/* Tablet */
+
+@media (max-width: 1050px) {
+
+  .genres-showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .genre-showcase-card:nth-child(5),
+  .genre-showcase-card:nth-child(6),
+  .genre-showcase-card:nth-child(7) {
+    grid-column: auto;
+    min-height: 480px;
+  }
+
+  .genres-showcase-intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .genres-showcase-hero {
+    padding: 95px 0 75px;
+  }
+
+  .genres-showcase {
+    padding: 70px 0 85px;
+  }
+
+  .genres-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .genre-showcase-card,
+  .genre-showcase-card:nth-child(5),
+  .genre-showcase-card:nth-child(6),
+  .genre-showcase-card:nth-child(7) {
+    min-height: 470px;
+  }
+
+  .genre-showcase-content {
+    right: 22px;
+    bottom: 24px;
+    left: 22px;
+  }
+
+  /*
+   * Phones don't have a true hover state,
+   * so keep descriptions visible.
+   */
+
+  .genre-showcase-description {
+    max-height: 220px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .genre-showcase-description p {
+    margin-top: 12px;
+  }
+
+}
