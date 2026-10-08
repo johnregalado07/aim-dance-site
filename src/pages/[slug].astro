@@ -80,9 +80,7 @@ const isProgram = page.data.section === 'programs';
         </a>
       </div>
 
-
       <div class="about-video-media">
-
         <video
           controls
           playsinline
@@ -96,11 +94,12 @@ const isProgram = page.data.section === 'programs';
 
           Your browser does not support video playback.
         </video>
-
       </div>
 
     </div>
   </section>
+)}
+
 
 {page.id === 'competition-team' && (
   <section class="competition-video-feature">
@@ -114,14 +113,13 @@ const isProgram = page.data.section === 'programs';
           aria-label="AIM Competition Team training and performance"
         >
           <source
-            src="/uploads/drive/videos/competition-training.mov"
-            type="video/quicktime"
+            src="/uploads/drive/videos/competition-training.mp4"
+            type="video/mp4"
           />
 
           Your browser does not support video playback.
         </video>
       </div>
-
 
       <div class="competition-video-copy">
         <div class="eyebrow">
@@ -146,7 +144,6 @@ const isProgram = page.data.section === 'programs';
 
     </div>
   </section>
-)}
 )}
   {isProgram && <section class="page-cta-band"><div class="wrap"><div><div class="eyebrow light">Ready to begin?</div><h2>Find the right class at AIM.</h2></div><div class="actions"><a class="btn btn-light" href="/schedules">View schedules</a><a class="btn outline staff-cta-outline" href="/contact">Contact us</a></div></div></section>}
 </Base>
