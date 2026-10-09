@@ -103,33 +103,20 @@ const isProgram = page.data.section === 'programs';
 
 {page.id === 'competition-team' && (
   <section class="competition-video-feature">
-    <div class="wrap competition-video-grid">
+    <div class="wrap">
 
-      <div class="competition-video-media">
-        <video
-          controls
-          playsinline
-          preload="metadata"
-          aria-label="AIM Competition Team training and performance"
-        >
-          <source
-            src="/uploads/drive/videos/competition-training.mp4"
-            type="video/mp4"
-          />
+      <div class="competition-video-heading">
 
-          Your browser does not support video playback.
-        </video>
-      </div>
+        <div>
+          <div class="eyebrow light">
+            Competition at AIM
+          </div>
 
-      <div class="competition-video-copy">
-        <div class="eyebrow">
-          Competition at AIM
+          <h2>
+            Train hard.<br/>
+            Perform with confidence.
+          </h2>
         </div>
-
-        <h2>
-          Train hard.<br/>
-          Perform with confidence.
-        </h2>
 
         <p>
           AIM company dancers develop strong technique, performance quality
@@ -137,9 +124,66 @@ const isProgram = page.data.section === 'programs';
           opportunities.
         </p>
 
-        <a class="text-link" href="/schedules">
-          View class schedules →
-        </a>
+      </div>
+
+
+      <div class="competition-video-grid">
+
+        <article class="competition-video-card">
+
+          <div class="competition-video-media">
+
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              aria-label="AIM Competition Team video 1"
+            >
+              <source
+                src="/uploads/drive/videos/competition-1.mp4"
+                type="video/mp4"
+              />
+
+              Your browser does not support video playback.
+            </video>
+
+          </div>
+
+          <div class="competition-video-label">
+            <span>Competition Team</span>
+            <h3>Competition 1</h3>
+          </div>
+
+        </article>
+
+
+        <article class="competition-video-card">
+
+          <div class="competition-video-media">
+
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              aria-label="AIM Competition Team video 2"
+            >
+              <source
+                src="/uploads/drive/videos/competition-2.mp4"
+                type="video/mp4"
+              />
+
+              Your browser does not support video playback.
+            </video>
+
+          </div>
+
+          <div class="competition-video-label">
+            <span>Competition Team</span>
+            <h3>Competition 2</h3>
+          </div>
+
+        </article>
+
       </div>
 
     </div>
