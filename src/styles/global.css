@@ -809,3 +809,167 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+
+/* =========================================================
+   KICKLINE TECHNIQUE PAGE
+   ========================================================= */
+
+.kickline-page-content {
+  padding: 100px 0 115px;
+  background: #fff;
+}
+
+.kickline-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: 90px;
+  align-items: start;
+  margin-bottom: 65px;
+}
+
+.kickline-intro-heading h2 {
+  margin: 10px 0 0;
+  color: var(--burgundy);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: .92;
+}
+
+.kickline-prose {
+  max-width: 680px;
+  padding-top: 28px;
+}
+
+.kickline-prose p {
+  font-size: 1.06rem;
+  line-height: 1.85;
+}
+
+.kickline-prose p + p {
+  margin-top: 20px;
+}
+
+
+/* Three supplied Kickline photos */
+
+.kickline-photo-grid {
+  display: grid;
+  grid-template-columns: 1.25fr .85fr .85fr;
+  gap: 14px;
+  height: 590px;
+}
+
+.kickline-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--burgundy-deep);
+}
+
+.kickline-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.kickline-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      0deg,
+      rgba(35, 3, 13, .65),
+      transparent 55%
+    );
+}
+
+.kickline-photo span {
+  position: absolute;
+  left: 24px;
+  bottom: 22px;
+  z-index: 2;
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.kickline-photo:hover img {
+  transform: scale(1.045);
+}
+
+
+/* Slight variation in photo heights */
+
+.kickline-photo-2,
+.kickline-photo-3 {
+  margin-top: 55px;
+  height: calc(100% - 55px);
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+  .kickline-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .kickline-prose {
+    padding-top: 0;
+  }
+
+  .kickline-photo-grid {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+
+  .kickline-photo {
+    height: 430px;
+  }
+
+  .kickline-photo-1 {
+    grid-column: 1 / 3;
+    height: 520px;
+  }
+
+  .kickline-photo-2,
+  .kickline-photo-3 {
+    margin-top: 0;
+    height: 430px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 560px) {
+
+  .kickline-page-content {
+    padding: 70px 0 80px;
+  }
+
+  .kickline-intro-grid {
+    margin-bottom: 40px;
+  }
+
+  .kickline-photo-grid {
+    display: block;
+  }
+
+  .kickline-photo,
+  .kickline-photo-1,
+  .kickline-photo-2,
+  .kickline-photo-3 {
+    height: 420px;
+    margin: 12px 0 0;
+  }
+
+}
