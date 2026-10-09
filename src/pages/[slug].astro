@@ -42,20 +42,119 @@ const isProgram = page.data.section === 'programs';
     <div class="editorial-hero-overlay"></div>
     <div class="wrap editorial-hero-copy"><div class="eyebrow light">{isProgram ? 'AIM Programs' : 'Art In Motion Dance Center'}</div><h1>{page.data.title}</h1>{page.data.description && <p>{page.data.description}</p>}</div>
   </section>
-  <section class="editorial-page">
-    <div class="wrap editorial-grid">
-      <aside class="editorial-aside">
-        <div class="editorial-kicker">{isProgram ? 'Train with AIM' : 'The AIM difference'}</div>
-        <h2>{isProgram ? 'Technique, confidence and community.' : 'Built for dancers who want to grow.'}</h2>
-        <img src={gallery[1]} alt="AIM Dance" loading="lazy" />
-        <a class="btn" href={isProgram ? '/schedules' : '/staff'}>{isProgram ? 'View schedules' : 'Meet our staff'}</a>
-      </aside>
-      <div class="prose editorial-prose"><Content /></div>
-    </div>
-    <div class="wrap editorial-gallery">
-      {gallery.map((src,i)=><figure class={`editorial-gallery-${i+1}`}><img src={src} alt={`${page.data.title} at AIM`} loading="lazy"/></figure>)}
+
+{page.id === 'kickline-technique' ? (
+
+  <section class="kickline-page-content">
+    <div class="wrap">
+
+      <div class="kickline-intro-grid">
+
+        <div class="kickline-intro-heading">
+          <div class="eyebrow">
+            Train with AIM
+          </div>
+
+          <h2>
+            Technique.<br/>
+            Precision.<br/>
+            Performance.
+          </h2>
+        </div>
+
+
+        <div class="prose kickline-prose">
+          <Content />
+        </div>
+
+      </div>
+
+
+      <div class="kickline-photo-grid">
+
+        {gallery.slice(1).map((src, i) => (
+
+          <figure class={`kickline-photo kickline-photo-${i + 1}`}>
+            <img
+              src={src}
+              alt={`Kickline Technique at AIM ${i + 1}`}
+              loading="lazy"
+            />
+
+            <div class="kickline-photo-overlay"></div>
+
+            <span>
+              Kickline Technique
+            </span>
+          </figure>
+
+        ))}
+
+      </div>
+
     </div>
   </section>
+
+) : (
+
+  <section class="editorial-page">
+
+    <div class="wrap editorial-grid">
+
+      <aside class="editorial-aside">
+
+        <div class="editorial-kicker">
+          {isProgram ? 'Train with AIM' : 'The AIM difference'}
+        </div>
+
+        <h2>
+          {isProgram
+            ? 'Technique, confidence and community.'
+            : 'Built for dancers who want to grow.'
+          }
+        </h2>
+
+        <img
+          src={gallery[1]}
+          alt="AIM Dance"
+          loading="lazy"
+        />
+
+        <a
+          class="btn"
+          href={isProgram ? '/schedules' : '/staff'}
+        >
+          {isProgram ? 'View schedules' : 'Meet our staff'}
+        </a>
+
+      </aside>
+
+
+      <div class="prose editorial-prose">
+        <Content />
+      </div>
+
+    </div>
+
+
+    <div class="wrap editorial-gallery">
+
+      {gallery.map((src, i) => (
+        <figure class={`editorial-gallery-${i + 1}`}>
+          <img
+            src={src}
+            alt={`${page.data.title} at AIM`}
+            loading="lazy"
+          />
+        </figure>
+      ))}
+
+    </div>
+
+  </section>
+
+)}
+
 {page.id === 'about-us' && (
   <section class="about-video-feature">
     <div class="wrap about-video-grid">
