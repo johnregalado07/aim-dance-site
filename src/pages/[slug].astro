@@ -12,6 +12,23 @@ export async function getStaticPaths() {
 }
 const { page } = Astro.props;
 const { Content } = await render(page);
+const allStaff = await getCollection('staff');
+
+const kicklineStaffEntries = allStaff.filter((person) =>
+  ['siobhan-santapaola', 'ali-ribellino'].includes(person.id)
+);
+
+const kicklineStaff = await Promise.all(
+  kicklineStaffEntries.map(async (person) => {
+    const { Content: BioContent } = await render(person);
+
+    return {
+      person,
+      BioContent
+    };
+  })
+);
+
 const visuals = {
   'about-us': ['/uploads/client/general/general-4.jpg','/uploads/client/general/general-8.jpg','/uploads/client/general/general-11.jpg'],
   'recreational-dance': ['/uploads/client/recreational/rec-1.jpg','/uploads/client/recreational/rec-4.jpg','/uploads/client/recreational/rec-7.jpg'],
