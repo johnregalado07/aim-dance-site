@@ -1357,3 +1357,7 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+.genre-instructor-bio-fallback {
+  margin-top: 18px;
+}
