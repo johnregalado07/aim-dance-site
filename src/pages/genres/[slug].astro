@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
 
 export function getStaticPaths() {
 
@@ -73,13 +74,41 @@ export function getStaticPaths() {
     },
 
     props: {
-      genre
+      genre,
+      slug
     }
   }));
-
 }
 
-const { genre } = Astro.props;
+const { genre, slug } = Astro.props;
+
+
+/* =========================================
+   STAFF
+   ========================================= */
+
+const allStaff = await getCollection('staff');
+
+/*
+ * We locate Gayle using the staff member's displayed name
+ * instead of hard-coding a filename/slug.
+ */
+const gayleEntry = allStaff.find((person) =>
+  person.data.name.toLowerCase().includes('gayle')
+);
+
+let gayle = null;
+
+if (gayleEntry) {
+
+  const { Content: GayleBio } = await render(gayleEntry);
+
+  gayle = {
+    person: gayleEntry,
+    BioContent: GayleBio
+  };
+
+}
 ---
 
 <Base
@@ -122,13 +151,12 @@ const { genre } = Astro.props;
 
 
   <!-- =========================================
-       GENRE INTRODUCTION
+       GENRE INTRO
        ========================================= -->
 
   <section class="genre-detail-intro">
 
     <div class="wrap genre-detail-intro-grid">
-
 
       <div class="genre-detail-heading">
 
@@ -168,7 +196,6 @@ const { genre } = Astro.props;
 
       </div>
 
-
     </div>
 
   </section>
@@ -176,27 +203,216 @@ const { genre } = Astro.props;
 
 
   <!-- =========================================
-       GENRE VIDEO / INSTRUCTOR CONTENT
-
-       We will add the specific content here next:
-
-       ACRO
-       - ACRO 1
-       - ACRO 2
-       - Gayle
-
-       TAP
-       - TAP video
-       - Maggie
-       - Jenn
-       - Natalie
-
-       JUMPS & TURNS
-       - JUMPS&TURNS video
-
-       BALLET & POINTE
-       - BALLET/POINTE video
+       ACRO VIDEO SECTION
        ========================================= -->
+
+  {slug === 'acro' && (
+
+    <section class="genre-video-section">
+
+      <div class="wrap">
+
+        <div class="genre-video-heading">
+
+          <div>
+
+            <div class="eyebrow light">
+              Acro at AIM
+            </div>
+
+            <h2>
+              Strength. Control.<br/>
+              Confidence.
+            </h2>
+
+          </div>
+
+
+          <p>
+            See AIM dancers develop the flexibility, strength,
+            balance and controlled technique used throughout
+            Acro training.
+          </p>
+
+        </div>
+
+
+
+        <div class="genre-video-grid">
+
+
+          <!-- ACRO 1 -->
+
+          <article class="genre-video-card">
+
+            <div class="genre-video-media">
+
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                aria-label="Acro training video 1"
+              >
+
+                <source
+                  src="/uploads/drive/videos/acro-1.mp4"
+                  type="video/mp4"
+                />
+
+                Your browser does not support video playback.
+
+              </video>
+
+            </div>
+
+
+            <div class="genre-video-card-copy">
+
+              <span>
+                Acro at AIM
+              </span>
+
+              <h3>
+                Acro 1
+              </h3>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- ACRO 2 -->
+
+          <article class="genre-video-card">
+
+            <div class="genre-video-media">
+
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                aria-label="Acro training video 2"
+              >
+
+                <source
+                  src="/uploads/drive/videos/acro-2.mp4"
+                  type="video/mp4"
+                />
+
+                Your browser does not support video playback.
+
+              </video>
+
+            </div>
+
+
+            <div class="genre-video-card-copy">
+
+              <span>
+                Acro at AIM
+              </span>
+
+              <h3>
+                Acro 2
+              </h3>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+  )}
+
+
+
+  <!-- =========================================
+       ACRO INSTRUCTOR
+       ========================================= -->
+
+  {slug === 'acro' && gayle && (
+
+    <section class="genre-instructor-section">
+
+      <div class="wrap">
+
+        <div class="genre-instructor-heading">
+
+          <div class="eyebrow">
+            Meet your instructor
+          </div>
+
+          <h2>
+            Learn Acro with AIM.
+          </h2>
+
+        </div>
+
+
+
+        <article class="genre-instructor-card">
+
+          <div class="genre-instructor-photo">
+
+            {gayle.person.data.photo ? (
+
+              <img
+                src={gayle.person.data.photo}
+                alt={gayle.person.data.name}
+                loading="lazy"
+              />
+
+            ) : (
+
+              <div class="genre-instructor-placeholder">
+                {gayle.person.data.name}
+              </div>
+
+            )}
+
+          </div>
+
+
+
+          <div class="genre-instructor-copy">
+
+            <span class="genre-instructor-label">
+              Resident Acro Instructor
+            </span>
+
+
+            <h3>
+              {gayle.person.data.name}
+            </h3>
+
+
+            <p class="genre-instructor-role">
+              {gayle.person.data.role}
+            </p>
+
+
+            <div class="genre-instructor-bio">
+
+              <gayle.BioContent />
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+  )}
 
 
 
