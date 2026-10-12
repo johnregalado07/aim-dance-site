@@ -2,6 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
 
+
+/* =========================================================
+   GENRE ROUTES
+   ========================================================= */
+
 export function getStaticPaths() {
 
   const genres = {
@@ -68,7 +73,9 @@ export function getStaticPaths() {
 
   };
 
+
   return Object.entries(genres).map(([slug, genre]) => ({
+
     params: {
       slug
     },
@@ -77,38 +84,70 @@ export function getStaticPaths() {
       genre,
       slug
     }
+
   }));
+
 }
+
 
 const { genre, slug } = Astro.props;
 
 
-/* =========================================
-   STAFF
-   ========================================= */
+
+/* =========================================================
+   STAFF DATA
+   ========================================================= */
 
 const allStaff = await getCollection('staff');
 
-/*
- * We locate Gayle using the staff member's displayed name
- * instead of hard-coding a filename/slug.
- */
-const gayleEntry = allStaff.find(
-  (person) => person.id === 'gayle-biegel'
-);
 
-let gayle = null;
+async function createStaffProfile(name) {
 
-if (gayleEntry) {
+  const person = allStaff.find(
+    (entry) =>
+      entry.data.name.trim().toLowerCase() ===
+      name.trim().toLowerCase()
+  );
 
-  const { Content: GayleBio } = await render(gayleEntry);
+  if (!person) {
+    return null;
+  }
 
-  gayle = {
-    person: gayleEntry,
-    BioContent: GayleBio
+  const { Content } = await render(person);
+
+  return {
+    person,
+    BioContent: Content,
+    hasBio: Boolean(person.body?.trim())
   };
 
 }
+
+
+
+/* =========================================================
+   ACRO STAFF
+   ========================================================= */
+
+const gayleProfile = await createStaffProfile('Gayle Biegel');
+
+
+
+/* =========================================================
+   TAP STAFF
+   ========================================================= */
+
+const tapInstructorNames = [
+  'Maggie Venti',
+  'Jennifer Palilla',
+  'Natalie Schiff'
+];
+
+const tapStaff = (
+  await Promise.all(
+    tapInstructorNames.map((name) => createStaffProfile(name))
+  )
+).filter(Boolean);
 ---
 
 <Base
@@ -116,9 +155,10 @@ if (gayleEntry) {
   description={genre.description}
 >
 
-  <!-- =========================================
+
+  <!-- =====================================================
        GENRE HERO
-       ========================================= -->
+       ===================================================== -->
 
   <section class="genre-detail-hero">
 
@@ -150,13 +190,14 @@ if (gayleEntry) {
 
 
 
-  <!-- =========================================
-       GENRE INTRO
-       ========================================= -->
+  <!-- =====================================================
+       GENRE INTRODUCTION
+       ===================================================== -->
 
   <section class="genre-detail-intro">
 
     <div class="wrap genre-detail-intro-grid">
+
 
       <div class="genre-detail-heading">
 
@@ -196,21 +237,23 @@ if (gayleEntry) {
 
       </div>
 
+
     </div>
 
   </section>
 
 
 
-  <!-- =========================================
-       ACRO VIDEO SECTION
-       ========================================= -->
+  <!-- =====================================================
+       ACRO VIDEOS
+       ===================================================== -->
 
   {slug === 'acro' && (
 
     <section class="genre-video-section">
 
       <div class="wrap">
+
 
         <div class="genre-video-heading">
 
@@ -240,8 +283,6 @@ if (gayleEntry) {
 
         <div class="genre-video-grid">
 
-
-          <!-- ACRO 1 -->
 
           <article class="genre-video-card">
 
@@ -281,8 +322,6 @@ if (gayleEntry) {
           </article>
 
 
-
-          <!-- ACRO 2 -->
 
           <article class="genre-video-card">
 
@@ -332,15 +371,16 @@ if (gayleEntry) {
 
 
 
-  <!-- =========================================
+  <!-- =====================================================
        ACRO INSTRUCTOR
-       ========================================= -->
+       ===================================================== -->
 
-  {slug === 'acro' && gayle && (
+  {slug === 'acro' && gayleProfile && (
 
     <section class="genre-instructor-section">
 
       <div class="wrap">
+
 
         <div class="genre-instructor-heading">
 
@@ -358,20 +398,21 @@ if (gayleEntry) {
 
         <article class="genre-instructor-card">
 
+
           <div class="genre-instructor-photo">
 
-            {gayle.person.data.photo ? (
+            {gayleProfile.person.data.photo ? (
 
               <img
-                src={gayle.person.data.photo}
-                alt={gayle.person.data.name}
+                src={gayleProfile.person.data.photo}
+                alt={gayleProfile.person.data.name}
                 loading="lazy"
               />
 
             ) : (
 
               <div class="genre-instructor-placeholder">
-                {gayle.person.data.name}
+                {gayleProfile.person.data.name}
               </div>
 
             )}
@@ -388,25 +429,35 @@ if (gayleEntry) {
 
 
             <h3>
-              {gayle.person.data.name}
+              {gayleProfile.person.data.name}
             </h3>
 
 
             <p class="genre-instructor-role">
-              {gayle.person.data.role}
+              {gayleProfile.person.data.role}
             </p>
 
 
             <div class="genre-instructor-bio">
-  <gayle.BioContent />
 
-  <p class="genre-instructor-bio-fallback">
-    Gayle Biegel is AIM’s resident Acro instructor. Additional instructor
-    biography information will be added soon.
-  </p>
-</div>
+              {gayleProfile.hasBio ? (
+
+                <gayleProfile.BioContent />
+
+              ) : (
+
+                <p>
+                  Gayle Biegel is AIM’s resident Acro instructor.
+                  Additional instructor biography information will be
+                  added soon.
+                </p>
+
+              )}
+
+            </div>
 
           </div>
+
 
         </article>
 
@@ -419,9 +470,204 @@ if (gayleEntry) {
 
 
 
-  <!-- =========================================
+  <!-- =====================================================
+       TAP VIDEO
+       ===================================================== -->
+
+  {slug === 'tap' && (
+
+    <section class="genre-video-section">
+
+      <div class="wrap">
+
+
+        <div class="genre-video-heading">
+
+          <div>
+
+            <div class="eyebrow light">
+              Tap at AIM
+            </div>
+
+            <h2>
+              Rhythm.<br/>
+              Musicality.<br/>
+              Precision.
+            </h2>
+
+          </div>
+
+
+          <p>
+            Tap training at AIM develops musicality, timing,
+            coordination and precise footwork while encouraging
+            dancers to create rhythm through movement.
+          </p>
+
+        </div>
+
+
+
+        <div class="genre-video-grid genre-video-grid-single">
+
+          <article class="genre-video-card">
+
+            <div class="genre-video-media">
+
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                aria-label="Tap dance training at AIM"
+              >
+
+                <source
+                  src="/uploads/drive/videos/tap.mp4"
+                  type="video/mp4"
+                />
+
+                Your browser does not support video playback.
+
+              </video>
+
+            </div>
+
+
+            <div class="genre-video-card-copy">
+
+              <span>
+                Tap at AIM
+              </span>
+
+              <h3>
+                Tap
+              </h3>
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  )}
+
+
+
+  <!-- =====================================================
+       TAP INSTRUCTORS
+       ===================================================== -->
+
+  {slug === 'tap' && tapStaff.length > 0 && (
+
+    <section class="genre-instructor-section tap-instructors-section">
+
+      <div class="wrap">
+
+
+        <div class="genre-instructor-heading">
+
+          <div class="eyebrow">
+            Meet your instructors
+          </div>
+
+          <h2>
+            Learn Tap with AIM.
+          </h2>
+
+        </div>
+
+
+
+        <div class="tap-instructor-grid">
+
+          {tapStaff.map(({ person, BioContent, hasBio }) => (
+
+            <article class="tap-instructor-card">
+
+
+              <div class="tap-instructor-photo">
+
+                {person.data.photo ? (
+
+                  <img
+                    src={person.data.photo}
+                    alt={person.data.name}
+                    loading="lazy"
+                  />
+
+                ) : (
+
+                  <div class="genre-instructor-placeholder">
+                    {person.data.name}
+                  </div>
+
+                )}
+
+              </div>
+
+
+
+              <div class="tap-instructor-copy">
+
+                <span class="genre-instructor-label">
+                  Tap Instructor
+                </span>
+
+
+                <h3>
+                  {person.data.name}
+                </h3>
+
+
+                <p class="genre-instructor-role">
+                  {person.data.role}
+                </p>
+
+
+                <div class="genre-instructor-bio">
+
+                  {hasBio ? (
+
+                    <BioContent />
+
+                  ) : (
+
+                    <p>
+                      {person.data.name} is part of the Art In Motion
+                      Dance Center faculty. Additional biography
+                      information will be added soon.
+                    </p>
+
+                  )}
+
+                </div>
+
+              </div>
+
+
+            </article>
+
+          ))}
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  )}
+
+
+
+  <!-- =====================================================
        FINAL CTA
-       ========================================= -->
+       ===================================================== -->
 
   <section class="page-cta-band">
 
@@ -462,5 +708,6 @@ if (gayleEntry) {
     </div>
 
   </section>
+
 
 </Base>
