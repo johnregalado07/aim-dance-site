@@ -176,9 +176,19 @@ const tapStaff = (
 
     <div class="wrap genre-detail-hero-content">
 
-      <div class="eyebrow light">
-        Dance at AIM
-      </div>
+      {slug === 'jumps-turns' ? (
+
+        <div class="eyebrow light">
+          New Genre · Dance at AIM
+        </div>
+
+      ) : (
+
+        <div class="eyebrow light">
+          Dance at AIM
+        </div>
+
+      )}
 
       <h1>
         {genre.name}
@@ -254,7 +264,6 @@ const tapStaff = (
 
       <div class="wrap">
 
-
         <div class="genre-video-heading">
 
           <div>
@@ -282,7 +291,6 @@ const tapStaff = (
 
 
         <div class="genre-video-grid">
-
 
           <article class="genre-video-card">
 
@@ -360,7 +368,6 @@ const tapStaff = (
 
           </article>
 
-
         </div>
 
       </div>
@@ -381,7 +388,6 @@ const tapStaff = (
 
       <div class="wrap">
 
-
         <div class="genre-instructor-heading">
 
           <div class="eyebrow">
@@ -397,7 +403,6 @@ const tapStaff = (
 
 
         <article class="genre-instructor-card">
-
 
           <div class="genre-instructor-photo">
 
@@ -458,9 +463,7 @@ const tapStaff = (
 
           </div>
 
-
         </article>
-
 
       </div>
 
@@ -479,7 +482,6 @@ const tapStaff = (
     <section class="genre-video-section">
 
       <div class="wrap">
-
 
         <div class="genre-video-heading">
 
@@ -549,7 +551,6 @@ const tapStaff = (
 
         </div>
 
-
       </div>
 
     </section>
@@ -567,7 +568,6 @@ const tapStaff = (
     <section class="genre-instructor-section tap-instructors-section">
 
       <div class="wrap">
-
 
         <div class="genre-instructor-heading">
 
@@ -588,7 +588,6 @@ const tapStaff = (
           {tapStaff.map(({ person, BioContent, hasBio }) => (
 
             <article class="tap-instructor-card">
-
 
               <div class="tap-instructor-photo">
 
@@ -649,13 +648,96 @@ const tapStaff = (
 
               </div>
 
-
             </article>
 
           ))}
 
         </div>
 
+      </div>
+
+    </section>
+
+  )}
+
+
+
+  <!-- =====================================================
+       JUMPS & TURNS VIDEO
+       ===================================================== -->
+
+  {slug === 'jumps-turns' && (
+
+    <section class="genre-video-section">
+
+      <div class="wrap">
+
+        <div class="genre-video-heading">
+
+          <div>
+
+            <div class="eyebrow light">
+              New Genre at AIM
+            </div>
+
+            <h2>
+              Elevate your<br/>
+              technique.
+            </h2>
+
+          </div>
+
+
+          <p>
+            Jumps &amp; Turns focuses on strength, control,
+            alignment, elevation and consistency to help dancers
+            develop cleaner and more confident technical skills.
+          </p>
+
+        </div>
+
+
+
+        <div class="genre-video-grid genre-video-grid-single">
+
+          <article class="genre-video-card">
+
+            <div class="genre-video-media">
+
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                aria-label="Jumps and Turns training at AIM"
+              >
+
+                <source
+                  src="/uploads/drive/videos/jumps-turns.mp4"
+                  type="video/mp4"
+                />
+
+                Your browser does not support video playback.
+
+              </video>
+
+            </div>
+
+
+            <div class="genre-video-card-copy">
+
+              <span>
+                New Genre
+              </span>
+
+              <h3>
+                Jumps &amp; Turns
+              </h3>
+
+            </div>
+
+          </article>
+
+        </div>
 
       </div>
 
