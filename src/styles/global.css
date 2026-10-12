@@ -1361,3 +1361,96 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 .genre-instructor-bio-fallback {
   margin-top: 18px;
 }
+
+
+/* =========================================================
+   TAP GENRE PAGE
+   ========================================================= */
+
+.genre-video-grid-single {
+  grid-template-columns: minmax(300px, 420px);
+  justify-content: center;
+}
+
+
+/* Tap instructors */
+
+.tap-instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.tap-instructor-card {
+  overflow: hidden;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 16px 45px rgba(53, 17, 28, .09);
+}
+
+.tap-instructor-photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--blush);
+}
+
+.tap-instructor-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.tap-instructor-copy {
+  padding: 28px 25px 32px;
+}
+
+.tap-instructor-copy h3 {
+  margin: 0;
+  color: var(--burgundy);
+  font-size: 2rem;
+}
+
+.tap-instructor-copy .genre-instructor-role {
+  margin-bottom: 20px;
+}
+
+.tap-instructor-copy .genre-instructor-bio {
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+
+/* Tablet */
+
+@media (max-width: 950px) {
+
+  .tap-instructor-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tap-instructor-card:last-child {
+    grid-column: 1 / 3;
+    max-width: 500px;
+    width: 100%;
+    justify-self: center;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 620px) {
+
+  .tap-instructor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tap-instructor-card:last-child {
+    grid-column: auto;
+    max-width: none;
+  }
+
+}
