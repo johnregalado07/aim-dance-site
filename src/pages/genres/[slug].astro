@@ -93,8 +93,8 @@ const allStaff = await getCollection('staff');
  * We locate Gayle using the staff member's displayed name
  * instead of hard-coding a filename/slug.
  */
-const gayleEntry = allStaff.find((person) =>
-  person.data.name.toLowerCase().includes('gayle')
+const gayleEntry = allStaff.find(
+  (person) => person.id === 'gayle-biegel'
 );
 
 let gayle = null;
