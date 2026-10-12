@@ -986,3 +986,125 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 .home-image-story-grid figure:nth-child(3):hover img {
   transform: scale(1.28);
 }
+
+
+/* =========================================================
+   INDIVIDUAL GENRE PAGES
+   ========================================================= */
+
+.genre-detail-hero {
+  position: relative;
+  min-height: 650px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--burgundy-deep);
+}
+
+.genre-detail-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.genre-detail-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 2, 8, .08) 10%,
+      rgba(25, 2, 10, .35) 50%,
+      rgba(25, 2, 10, .92) 100%
+    );
+}
+
+.genre-detail-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 70px;
+  color: #fff;
+}
+
+.genre-detail-hero-content h1 {
+  margin: 8px 0 0;
+  color: #fff;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: .9;
+  text-transform: uppercase;
+}
+
+
+.genre-detail-intro {
+  padding: 100px 0 110px;
+  background: #f7f1f2;
+}
+
+.genre-detail-intro-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.genre-detail-intro h2 {
+  max-width: 650px;
+  margin: 10px 0 0;
+  color: var(--burgundy);
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: .95;
+}
+
+.genre-detail-copy {
+  max-width: 620px;
+}
+
+.genre-detail-copy > p {
+  margin: 0 0 25px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.genre-detail-note {
+  margin: 0 0 30px;
+  padding: 22px 24px;
+  border-left: 4px solid var(--burgundy);
+  background: #fff;
+  color: var(--burgundy);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+
+@media (max-width: 800px) {
+
+  .genre-detail-hero {
+    min-height: 520px;
+  }
+
+  .genre-detail-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .genre-detail-hero {
+    min-height: 470px;
+  }
+
+  .genre-detail-hero-content {
+    padding-bottom: 45px;
+  }
+
+  .genre-detail-intro {
+    padding: 70px 0 80px;
+  }
+
+}
