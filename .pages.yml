@@ -1,0 +1,160 @@
+media:
+  input: public/uploads
+  output: /uploads
+  rename: safe
+  categories: [image]
+
+content:
+
+  # ==============================
+  # EVENTS
+  # ==============================
+  - name: events
+    label: Events
+    type: collection
+    path: src/content/events
+    format: yaml-frontmatter
+
+    filename:
+      template: "{title}.md"
+      field: create
+
+    view:
+      primary: title
+      fields:
+        - title
+        - date
+        - location
+        - time
+      sort:
+        - date
+        - title
+      search:
+        - title
+        - location
+      default:
+        sort: date
+        order: desc
+
+    operations:
+      create: true
+      rename: true
+      delete: true
+
+    fields:
+      - name: title
+        label: Event Title
+        type: string
+        required: true
+
+      - name: date
+        label: Event Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+
+      - name: time
+        label: Time
+        type: string
+        required: true
+        description: "Example: 12:00–1:30 PM"
+
+      - name: location
+        label: Location
+        type: select
+        required: true
+        options:
+          values:
+            - Melville
+            - Commack
+
+      - name: ages
+        label: Ages
+        type: string
+        description: "Optional. Example: 12+"
+
+      - name: price
+        label: Price
+        type: string
+        description: "Optional. Example: $35"
+
+      - name: link
+        label: Event / Registration Link
+        type: string
+        description: "Optional Eventbrite or registration URL"
+
+      - name: image
+        label: Event Image
+        type: image
+
+      - name: body
+        label: Event Description
+        type: rich-text
+        options:
+          format: markdown
+          media: false
+
+
+  # ==============================
+  # STAFF / FACULTY
+  # ==============================
+  - name: staff
+    label: Faculty & Staff
+    type: collection
+    path: src/content/staff
+    format: yaml-frontmatter
+
+    filename:
+      template: "{name}.md"
+      field: create
+
+    view:
+      primary: name
+      fields:
+        - name
+        - role
+        - order
+      sort:
+        - order
+        - name
+      search:
+        - name
+        - role
+      default:
+        sort: order
+        order: asc
+
+    operations:
+      create: true
+      rename: false
+      delete: false
+
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+
+      - name: role
+        label: Position / Title
+        type: string
+        required: true
+
+      - name: photo
+        label: Headshot
+        type: image
+        description: "Use a consistent portrait-style staff image."
+
+      - name: order
+        label: Display Order
+        type: number
+        required: true
+        description: "Lower numbers appear first."
+
+      - name: body
+        label: Biography
+        type: rich-text
+        options:
+          format: markdown
+          media: false
