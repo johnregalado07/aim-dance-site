@@ -973,3 +973,16 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+/* =========================================================
+   HOMEPAGE - FAR RIGHT TRAIN WITH PURPOSE IMAGE
+   ========================================================= */
+
+.home-image-story-grid figure:nth-child(3) img {
+  transform: scale(1.12);
+  object-position: center center;
+}
+
+.home-image-story-grid figure:nth-child(3):hover img {
+  transform: scale(1.15);
+}
