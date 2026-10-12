@@ -1,73 +1,82 @@
 ---
 import Base from '../../layouts/Base.astro';
 
-const genres = {
-  'ballet-pointe': {
-    name: 'Ballet & Pointe',
-    image: '/uploads/drive/genres/ballet.jpg',
-    description:
-      'Build strength, alignment, flexibility and classical technique through structured ballet training.',
-    note:
-      'Pointe registration is only available to our more advanced dancers with studio approval necessary in order to keep our dancers safe.'
-  },
-
-  'jazz': {
-    name: 'Jazz',
-    image: '/uploads/drive/genres/jazz.jpg',
-    description:
-      'High-energy movement focused on musicality, turns, jumps, flexibility and performance quality.'
-  },
-
-  'tap': {
-    name: 'Tap',
-    image: '/uploads/drive/genres/tap.jpg',
-    description:
-      'Develop rhythm, musicality and precise footwork while learning to create movement through sound.'
-  },
-
-  'lyrical': {
-    name: 'Lyrical',
-    image: '/uploads/drive/genres/lyrical.png',
-    description:
-      'A blend of ballet and jazz that combines technique, fluid movement and emotional storytelling.'
-  },
-
-  'contemporary': {
-    name: 'Contemporary',
-    image: '/uploads/drive/genres/contemporary.jpg',
-    description:
-      'Explore expressive movement, musicality, floor work and dynamic technique in a creative environment.'
-  },
-
-  'hip-hop': {
-    name: 'Hip Hop',
-    image: '/uploads/drive/genres/hip-hop.jpg',
-    description:
-      'Energetic movement incorporating rhythm, grooves, musicality and current street-dance influences.'
-  },
-
-  'acro': {
-    name: 'Acro',
-    image: '/uploads/drive/genres/acro.jpg',
-    description:
-      'Combine dance technique with flexibility, strength, balance and controlled acrobatic skills.'
-  },
-
-  'jumps-turns': {
-    name: 'Jumps & Turns',
-    image: '/uploads/drive/genres/jumps-turns.jpg',
-    description:
-      'Focused technique training designed to strengthen jumps, turns, control, alignment and performance consistency.',
-    note:
-      'Mandatory for company dancers. Also available to recreational students upon request.'
-  }
-};
-
 export function getStaticPaths() {
+
+  const genres = {
+
+    'ballet-pointe': {
+      name: 'Ballet & Pointe',
+      image: '/uploads/drive/genres/ballet.jpg',
+      description:
+        'Build strength, alignment, flexibility and classical technique through structured ballet training.',
+      note:
+        'Pointe registration is only available to our more advanced dancers with studio approval necessary in order to keep our dancers safe.'
+    },
+
+    'jazz': {
+      name: 'Jazz',
+      image: '/uploads/drive/genres/jazz.jpg',
+      description:
+        'High-energy movement focused on musicality, turns, jumps, flexibility and performance quality.'
+    },
+
+    'tap': {
+      name: 'Tap',
+      image: '/uploads/drive/genres/tap.jpg',
+      description:
+        'Develop rhythm, musicality and precise footwork while learning to create movement through sound.'
+    },
+
+    'lyrical': {
+      name: 'Lyrical',
+      image: '/uploads/drive/genres/lyrical.png',
+      description:
+        'A blend of ballet and jazz that combines technique, fluid movement and emotional storytelling.'
+    },
+
+    'contemporary': {
+      name: 'Contemporary',
+      image: '/uploads/drive/genres/contemporary.jpg',
+      description:
+        'Explore expressive movement, musicality, floor work and dynamic technique in a creative environment.'
+    },
+
+    'hip-hop': {
+      name: 'Hip Hop',
+      image: '/uploads/drive/genres/hip-hop.jpg',
+      description:
+        'Energetic movement incorporating rhythm, grooves, musicality and current street-dance influences.'
+    },
+
+    'acro': {
+      name: 'Acro',
+      image: '/uploads/drive/genres/acro.jpg',
+      description:
+        'Combine dance technique with flexibility, strength, balance and controlled acrobatic skills.'
+    },
+
+    'jumps-turns': {
+      name: 'Jumps & Turns',
+      image: '/uploads/drive/genres/jumps-turns.jpg',
+      description:
+        'Focused technique training designed to strengthen jumps, turns, control, alignment and performance consistency.',
+      note:
+        'Mandatory for company dancers. Also available to recreational students upon request.'
+    }
+
+  };
+
   return Object.entries(genres).map(([slug, genre]) => ({
-    params: { slug },
-    props: { genre }
+    params: {
+      slug
+    },
+
+    props: {
+      genre
+    }
   }));
+
 }
 
 const { genre } = Astro.props;
@@ -78,6 +87,10 @@ const { genre } = Astro.props;
   description={genre.description}
 >
 
+  <!-- =========================================
+       GENRE HERO
+       ========================================= -->
+
   <section class="genre-detail-hero">
 
     <img
@@ -86,7 +99,11 @@ const { genre } = Astro.props;
       class="genre-detail-hero-image"
     />
 
-    <div class="genre-detail-overlay"></div>
+    <div
+      class="genre-detail-overlay"
+      aria-hidden="true"
+    ></div>
+
 
     <div class="wrap genre-detail-hero-content">
 
@@ -103,11 +120,18 @@ const { genre } = Astro.props;
   </section>
 
 
+
+  <!-- =========================================
+       GENRE INTRODUCTION
+       ========================================= -->
+
   <section class="genre-detail-intro">
 
     <div class="wrap genre-detail-intro-grid">
 
-      <div>
+
+      <div class="genre-detail-heading">
+
         <div class="eyebrow">
           Explore the style
         </div>
@@ -115,6 +139,7 @@ const { genre } = Astro.props;
         <h2>
           Discover {genre.name}.
         </h2>
+
       </div>
 
 
@@ -124,11 +149,15 @@ const { genre } = Astro.props;
           {genre.description}
         </p>
 
+
         {genre.note && (
+
           <div class="genre-detail-note">
             {genre.note}
           </div>
+
         )}
+
 
         <a
           href="/schedules"
@@ -139,19 +168,48 @@ const { genre } = Astro.props;
 
       </div>
 
+
     </div>
 
   </section>
 
 
-  <!-- Genre-specific videos/instructors will be added here -->
 
+  <!-- =========================================
+       GENRE VIDEO / INSTRUCTOR CONTENT
+
+       We will add the specific content here next:
+
+       ACRO
+       - ACRO 1
+       - ACRO 2
+       - Gayle
+
+       TAP
+       - TAP video
+       - Maggie
+       - Jenn
+       - Natalie
+
+       JUMPS & TURNS
+       - JUMPS&TURNS video
+
+       BALLET & POINTE
+       - BALLET/POINTE video
+       ========================================= -->
+
+
+
+  <!-- =========================================
+       FINAL CTA
+       ========================================= -->
 
   <section class="page-cta-band">
 
     <div class="wrap">
 
       <div>
+
         <div class="eyebrow light">
           Ready to dance?
         </div>
@@ -159,7 +217,9 @@ const { genre } = Astro.props;
         <h2>
           Find your class at AIM.
         </h2>
+
       </div>
+
 
       <div class="actions">
 
@@ -169,6 +229,7 @@ const { genre } = Astro.props;
         >
           View schedules
         </a>
+
 
         <a
           class="btn outline staff-cta-outline"
