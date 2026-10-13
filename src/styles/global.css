@@ -1857,7 +1857,6 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
        HOMEPAGE ADDITIONAL STYLES
        ===================================================== -->
 
-  <style is:global>
 
 
     /* =====================================================
@@ -2156,6 +2155,4 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 
     }
 
-
-  </style>
 
