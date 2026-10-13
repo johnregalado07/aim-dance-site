@@ -4,7 +4,8 @@ media:
   rename: safe
   categories: [image]
 
-content: 
+
+content:
 
   # ==============================
   # EVENTS
@@ -158,3 +159,90 @@ content:
         options:
           format: markdown
           media: false
+
+
+  # ==============================
+  # SCHEDULES
+  # ==============================
+  - name: schedules
+    label: Schedules
+    type: file
+    path: src/content/pages/schedules.md
+    format: yaml-frontmatter
+
+    operations:
+      delete: false
+      rename: false
+
+    fields:
+      - name: title
+        label: Page Title
+        type: string
+        required: true
+
+      - name: description
+        label: Page Description
+        type: text
+        required: true
+        description: "Introductory text shown for the Schedules page."
+
+      - name: section
+        label: Page Section
+        type: string
+        readonly: true
+        description: "System value. Please do not change."
+
+      - name: body
+        label: Schedule Content
+        type: rich-text
+        options:
+          format: markdown
+          media: true
+        description: "Update the current class schedule information here."
+
+
+  # ==============================
+  # CALENDAR
+  # ==============================
+  - name: calendar
+    label: Calendar
+    type: file
+    path: src/data/calendar.json
+    format: json
+
+    operations:
+      delete: false
+      rename: false
+
+    fields:
+      - name: season
+        label: Season
+        type: string
+        required: true
+        description: "Example: 2026–2027"
+
+      - name: eyebrow
+        label: Small Heading
+        type: string
+        required: true
+
+      - name: title
+        label: Page Title
+        type: string
+        required: true
+
+      - name: description
+        label: Description
+        type: text
+        required: true
+
+      - name: image
+        label: Calendar Image
+        type: image
+        required: true
+        description: "Upload the current studio-year calendar image."
+
+      - name: image_alt
+        label: Calendar Image Alt Text
+        type: string
+        required: true
