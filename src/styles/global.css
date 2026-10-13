@@ -1851,3 +1851,311 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+
+  <!-- =====================================================
+       HOMEPAGE ADDITIONAL STYLES
+       ===================================================== -->
+
+  <style is:global>
+
+
+    /* =====================================================
+       8 GENRE HOMEPAGE GRID
+       ===================================================== */
+
+    .home-genre-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 2px !important;
+    }
+
+
+    .home-genre-grid .genre-card {
+      width: 100% !important;
+      min-width: 0 !important;
+      min-height: 420px;
+      height: 420px;
+    }
+
+
+    .home-genre-grid .genre-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .home-genre-grid .genre-card-copy h3 {
+      max-width: 90%;
+    }
+
+
+
+    /* =====================================================
+       PROGRAMS
+       ===================================================== */
+
+    .home-programs-section {
+      padding: 110px 0;
+      background: #faf7f7;
+    }
+
+
+    .home-programs-heading {
+      display: grid;
+      grid-template-columns: 1fr .85fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 55px;
+    }
+
+
+    .home-programs-heading h2 {
+      max-width: 760px;
+      margin: 10px 0 0;
+      color: var(--burgundy);
+      font-size: clamp(3.1rem, 5vw, 5.3rem);
+      line-height: .94;
+    }
+
+
+    .home-programs-intro {
+      max-width: 560px;
+    }
+
+
+    .home-programs-intro p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+
+
+    /* Program cards */
+
+    .home-program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+
+    .home-program-card {
+      position: relative;
+      display: flex;
+      min-height: 300px;
+      padding: 30px;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(128, 0, 32, .12);
+      border-radius: 20px;
+      background: #fff;
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 12px 36px rgba(56, 15, 27, .045);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+    }
+
+
+    .home-program-card::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -95px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(128, 0, 32, .035);
+      transition: transform .3s ease;
+      pointer-events: none;
+    }
+
+
+    .home-program-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(128, 0, 32, .28);
+      background: #fff;
+      box-shadow: 0 20px 45px rgba(56, 15, 27, .09);
+    }
+
+
+    .home-program-card:hover::after {
+      transform: scale(1.3);
+    }
+
+
+
+    /* Program card top */
+
+    .home-program-card-top {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    .home-program-number {
+      color: var(--burgundy);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+
+    .home-program-arrow {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(128, 0, 32, .18);
+      border-radius: 50%;
+      color: var(--burgundy);
+      font-size: 1rem;
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+    }
+
+
+    .home-program-card:hover .home-program-arrow {
+      transform: rotate(45deg);
+      background: var(--burgundy);
+      color: #fff;
+    }
+
+
+
+    /* Program copy */
+
+    .home-program-card-copy {
+      position: relative;
+      z-index: 2;
+      margin-top: 45px;
+    }
+
+
+    .home-program-card-copy h3 {
+      margin: 0 0 12px;
+      color: var(--burgundy);
+      font-size: clamp(1.65rem, 2vw, 2.25rem);
+      line-height: 1;
+    }
+
+
+    .home-program-card-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+
+    .home-program-learn {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      width: fit-content;
+      margin-top: 28px;
+      color: var(--burgundy);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+
+    /* =====================================================
+       TABLET
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+
+      .home-genre-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+
+      .home-genre-grid .genre-card {
+        min-height: 430px;
+        height: 430px;
+      }
+
+
+      .home-programs-heading {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+
+      .home-program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+
+    }
+
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 620px) {
+
+
+      .home-programs-section {
+        padding: 75px 0;
+      }
+
+
+      .home-genre-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+
+      .home-genre-grid .genre-card {
+        min-height: 310px;
+        height: 310px;
+      }
+
+
+      .home-genre-grid .genre-card-copy h3 {
+        font-size: 1.55rem;
+      }
+
+
+      .home-program-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .home-program-card {
+        min-height: 250px;
+        padding: 25px;
+      }
+
+
+      .home-program-card-copy {
+        margin-top: 35px;
+      }
+
+
+    }
+
+
+  </style>
+
