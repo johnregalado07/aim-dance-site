@@ -4,31 +4,146 @@ import EventCard from '../components/EventCard.astro';
 import site from '../data/locations.json';
 import { getCollection } from 'astro:content';
 
+
 const yesterday = new Date(Date.now() - 864e5);
+
 
 const events = (await getCollection('events'))
   .filter((e) => e.data.date >= yesterday)
   .sort((a,b) => a.data.date.getTime() - b.data.date.getTime())
   .slice(0,2);
 
+
 const staff = (await getCollection('staff'))
   .sort((a,b) => a.data.order - b.data.order)
   .slice(0,10);
 
+
+
+/* =========================================================
+   HOMEPAGE GENRES
+   ========================================================= */
+
 const genres = [
-  ['Ballet','/uploads/drive/genres/ballet.jpg'],
-  ['Jazz','/uploads/drive/genres/jazz.jpg'],
-  ['Tap','/uploads/drive/genres/tap.jpg'],
-  ['Lyrical','/uploads/drive/genres/lyrical.png'],
-  ['Contemporary','/uploads/drive/genres/contemporary.jpg'],
-  ['Hip Hop','/uploads/drive/genres/hip-hop.jpg'],
-  ['Acro','/uploads/drive/genres/acro.jpg']
+
+  {
+    name: 'Ballet & Pointe',
+    image: '/uploads/drive/genres/ballet.jpg',
+    href: '/genres/ballet-pointe/'
+  },
+
+  {
+    name: 'Jazz',
+    image: '/uploads/drive/genres/jazz.jpg',
+    href: '/genres/jazz/'
+  },
+
+  {
+    name: 'Tap',
+    image: '/uploads/drive/genres/tap.jpg',
+    href: '/genres/tap/'
+  },
+
+  {
+    name: 'Lyrical',
+    image: '/uploads/drive/genres/lyrical.png',
+    href: '/genres/lyrical/'
+  },
+
+  {
+    name: 'Contemporary',
+    image: '/uploads/drive/genres/contemporary.jpg',
+    href: '/genres/contemporary/'
+  },
+
+  {
+    name: 'Hip Hop',
+    image: '/uploads/drive/genres/hip-hop.jpg',
+    href: '/genres/hip-hop/'
+  },
+
+  {
+    name: 'Acro',
+    image: '/uploads/drive/genres/acro.jpg',
+    href: '/genres/acro/'
+  },
+
+  {
+    name: 'Jumps & Turns',
+    image: '/uploads/drive/genres/jumps-turns.jpg',
+    href: '/genres/jumps-turns/'
+  }
+
+];
+
+
+
+/* =========================================================
+   HOMEPAGE PROGRAMS
+   ========================================================= */
+
+const programs = [
+
+  {
+    number: '01',
+    name: 'Recreational Dance',
+    description:
+      'Weekly classes designed to build technique, confidence, creativity and a love of dance.',
+    href: '/recreational-dance/'
+  },
+
+  {
+    number: '02',
+    name: 'Competition Team',
+    description:
+      'Advanced training, rehearsals and performance opportunities for dedicated dancers.',
+    href: '/competition-team/'
+  },
+
+  {
+    number: '03',
+    name: 'Dance Genres',
+    description:
+      'Explore Ballet & Pointe, Jazz, Tap, Lyrical, Contemporary, Hip Hop, Acro and Jumps & Turns.',
+    href: '/genres/'
+  },
+
+  {
+    number: '04',
+    name: 'Summer Programs',
+    description:
+      'Keep dancers moving, training and growing through seasonal summer opportunities.',
+    href: '/summer-programs/'
+  },
+
+  {
+    number: '05',
+    name: 'Birthday Parties',
+    description:
+      'Celebrate your dancer with a fun and memorable birthday experience at AIM.',
+    href: '/birthday-parties/'
+  },
+
+  {
+    number: '06',
+    name: 'Kickline Technique',
+    description:
+      'Focused training designed to strengthen precision, performance quality and kickline technique.',
+    href: '/kickline-technique/'
+  }
+
 ];
 ---
 
 <Base title="Art In Motion Dance Center | Melville & Commack, NY">
 
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
   <section class="home-hero video-hero">
+
     <video
       class="hero-video"
       autoplay
@@ -39,55 +154,107 @@ const genres = [
       poster="/uploads/home/hero.jpg"
       aria-hidden="true"
     >
-      <source src="/uploads/client/videos/hero-1.mp4" type="video/mp4" />
+
+      <source
+        src="/uploads/client/videos/hero-1.mp4"
+        type="video/mp4"
+      />
+
     </video>
+
 
     <div class="hero-shade"></div>
 
+
     <div class="wrap hero-content">
-      <div class="eyebrow light">Melville + Commack, New York</div>
+
+      <div class="eyebrow light">
+        Melville + Commack, New York
+      </div>
+
 
       <h1>
         Technique first.<br/>
         <em>Confidence always.</em>
       </h1>
 
+
       <p>
         Competitive and recreational dance training in a professional,
         positive environment where dancers are challenged, supported and inspired.
       </p>
 
+
       <div class="actions">
-        <a class="btn" href="/programs">Explore programs</a>
-        <a class="btn btn-light" href="/schedules">View 2026–27 schedules</a>
+
+        <a
+          class="btn"
+          href="/programs"
+        >
+          Explore programs
+        </a>
+
+        <a
+          class="btn btn-light"
+          href="/schedules"
+        >
+          View 2026–27 schedules
+        </a>
+
       </div>
+
     </div>
 
+
     <div class="hero-stat">
-      <b>Since 2010</b>
-      <span>Training the next generation of dancers</span>
+
+      <b>
+        Since 2010
+      </b>
+
+      <span>
+        Training the next generation of dancers
+      </span>
+
     </div>
+
   </section>
 
 
+
+  <!-- =====================================================
+       INTRODUCTION
+       ===================================================== -->
+
   <section class="intro-section">
+
     <div class="wrap intro-grid">
 
+
       <div>
-        <div class="eyebrow">Art In Motion Dance Center</div>
+
+        <div class="eyebrow">
+          Art In Motion Dance Center
+        </div>
+
 
         <h2>
           Train with purpose.<br/>
           Dance with passion.
         </h2>
+
       </div>
 
+
+
       <div class="intro-copy">
+
         <p>
           AIM provides quality dance education for competitive and
           non-competitive students, with a strong focus on proper technique
           across every style.
         </p>
+
 
         <p>
           Our goal is simple: create passionate, dedicated dancers in a
@@ -95,309 +262,522 @@ const genres = [
           inside and outside the dance world.
         </p>
 
-        <a class="text-link" href="/about-us">
+
+        <a
+          class="text-link"
+          href="/about-us"
+        >
           Discover the AIM story →
         </a>
+
       </div>
 
+
     </div>
+
   </section>
 
 
-  <section class="home-image-story" aria-label="Life at AIM">
+
+  <!-- =====================================================
+       IMAGE STORY
+       ===================================================== -->
+
+  <section
+    class="home-image-story"
+    aria-label="Life at AIM"
+  >
+
     <div class="home-image-story-grid">
 
+
       <figure class="story-wide">
+
         <img
           src="/uploads/drive/home/train-1.jpg"
           alt="AIM dancers performing together"
           loading="lazy"
         />
+
       </figure>
 
+
+
       <figure>
+
         <img
           src="/uploads/drive/home/train-2.jpg"
           alt="AIM dancer performing on stage"
           loading="lazy"
         />
+
       </figure>
 
+
+
       <figure>
+
         <img
           src="/uploads/drive/home/train-3.jpg"
           alt="AIM dancers performing on stage"
           loading="lazy"
         />
+
       </figure>
 
+
     </div>
+
   </section>
 
 
+
+  <!-- =====================================================
+       DANCE GENRES
+       ===================================================== -->
+
   <section class="genre-section">
 
+
     <div class="wrap section-head">
+
       <div>
-        <div class="eyebrow light">Find your movement</div>
-        <h2>Dance styles at AIM</h2>
+
+        <div class="eyebrow light">
+          Find your movement
+        </div>
+
+        <h2>
+          Dance styles at AIM
+        </h2>
+
       </div>
 
-      <a class="text-link light-link" href="/genres">
+
+      <a
+        class="text-link light-link"
+        href="/genres"
+      >
         Explore all genres →
       </a>
+
     </div>
 
-    <div class="genre-grid client-genre-grid">
 
-      {genres.map(([name,image],i) => (
-        <a class="genre-card" href="/genres">
+
+    <div class="genre-grid client-genre-grid home-genre-grid">
+
+
+      {genres.map((genre, i) => (
+
+        <a
+          class="genre-card"
+          href={genre.href}
+          aria-label={`Explore ${genre.name} at AIM`}
+        >
 
           <img
             class="genre-card-image"
-            src={image}
-            alt={`${name} dance classes at AIM`}
+            src={genre.image}
+            alt={`${genre.name} dance classes at AIM`}
             loading="lazy"
           />
+
 
           <span
             class="genre-card-shade"
             aria-hidden="true"
           ></span>
 
+
           <div class="genre-card-copy">
-            <span>{String(i+1).padStart(2,'0')}</span>
-            <h3>{name}</h3>
+
+            <span>
+              {String(i + 1).padStart(2,'0')}
+            </span>
+
+            <h3>
+              {genre.name}
+            </h3>
+
           </div>
 
         </a>
+
       ))}
 
+
     </div>
+
   </section>
 
 
-  <section class="program-feature">
 
-    <div class="wrap feature-grid">
+  <!-- =====================================================
+       PROGRAMS
+       ===================================================== -->
 
-      <div class="feature-photo">
-        <img
-          src="/uploads/client/recreational/rec-2.jpg"
-          alt="AIM recreational dancers"
-          loading="lazy"
-        />
+  <section class="program-feature home-programs-section">
+
+    <div class="wrap">
+
+
+      <div class="home-programs-heading">
+
+
+        <div>
+
+          <div class="eyebrow">
+            Programs for every goal
+          </div>
+
+
+          <h2>
+            Find the right path<br/>
+            for your dancer.
+          </h2>
+
+        </div>
+
+
+
+        <div class="home-programs-intro">
+
+          <p>
+            From recreational classes and competition training to
+            summer programs, kickline, parties and a full range of
+            dance genres, AIM offers opportunities for dancers at
+            every stage.
+          </p>
+
+
+          <a
+            class="text-link"
+            href="/programs/"
+          >
+            Explore all programs →
+          </a>
+
+        </div>
+
+
       </div>
 
-      <div class="feature-copy">
 
-        <div class="eyebrow">
-          Programs for every goal
-        </div>
 
-        <h2>
-          From first class to competition stage.
-        </h2>
+      <div class="home-program-grid">
 
-        <p>
-          Recreational dancers build discipline, creativity and technique in a
-          fun weekly class environment. Company dancers take that training
-          further through focused classes, rehearsals and regional competition
-          opportunities.
-        </p>
 
-        <div class="feature-links">
+        {programs.map((program) => (
 
-          <a class="program-link" href="/recreational-dance">
-            <b>Recreational Dance</b>
-            <span>Ages 7–17 · weekly classes</span>
-            <i>→</i>
+          <a
+            class="home-program-card"
+            href={program.href}
+          >
+
+            <div class="home-program-card-top">
+
+              <span class="home-program-number">
+                {program.number}
+              </span>
+
+              <span
+                class="home-program-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+
+            <div class="home-program-card-copy">
+
+              <h3>
+                {program.name}
+              </h3>
+
+              <p>
+                {program.description}
+              </p>
+
+            </div>
+
+
+            <span class="home-program-learn">
+              Learn more
+            </span>
+
           </a>
 
-          <a class="program-link" href="/competition-team">
-            <b>Competition Team</b>
-            <span>Advanced training + performance</span>
-            <i>→</i>
-          </a>
+        ))}
 
-          <a class="program-link" href="/summer-programs">
-            <b>Summer Programs</b>
-            <span>Keep moving all summer</span>
-            <i>→</i>
-          </a>
 
-        </div>
       </div>
 
     </div>
+
   </section>
 
+
+
+  <!-- =====================================================
+       STAFF
+       ===================================================== -->
 
   <section class="home-staff-section">
 
+
     <div class="wrap section-head dark">
 
+
       <div>
+
         <div class="eyebrow">
           Meet the faculty
         </div>
 
+
         <h2>
           Teachers who know how to bring out your best.
         </h2>
+
       </div>
 
-      <a class="text-link" href="/staff">
+
+      <a
+        class="text-link"
+        href="/staff"
+      >
         Meet the full team →
       </a>
 
+
     </div>
 
+
+
     <div class="staff-carousel-shell">
+
 
       <div
         class="staff-carousel"
         aria-label="AIM staff carousel"
       >
 
+
         {staff.map((s) => (
+
           <a
             class="home-staff-card"
             href={`/team/${s.id}`}
           >
 
+
             <div class="home-staff-photo">
+
 
               {s.data.photo
                 ? (
+
                   <img
                     src={s.data.photo}
                     alt={s.data.name}
                     loading="lazy"
                   />
+
                 )
                 : (
+
                   <span>
+
                     {s.data.name
                       .split(' ')
                       .map((p)=>p[0])
                       .slice(0,2)
                       .join('')}
+
                   </span>
+
                 )
               }
 
+
             </div>
+
 
             <div>
-              <p>{s.data.role}</p>
-              <h3>{s.data.name}</h3>
+
+              <p>
+                {s.data.role}
+              </p>
+
+              <h3>
+                {s.data.name}
+              </h3>
+
             </div>
 
+
           </a>
+
         ))}
+
 
       </div>
 
+
     </div>
+
   </section>
 
 
+
+  <!-- =====================================================
+       AIM EXPERIENCE
+       ===================================================== -->
+
   <section class="mosaic-section">
+
 
     <div class="wrap">
 
+
       <div class="section-head dark">
 
+
         <div>
+
           <div class="eyebrow">
             The AIM experience
           </div>
+
 
           <h2>
             Strong technique.<br/>
             Real connection.
           </h2>
+
         </div>
+
 
         <p>
           Dancers grow through expert instruction, performance opportunities
           and a studio culture that feels like family.
         </p>
 
+
       </div>
+
 
 
       <div class="photo-mosaic">
 
+
         <figure>
+
           <img
             src="/uploads/drive/home/connection-1.jpg"
             alt="AIM dancer performing with confidence"
             loading="lazy"
           />
+
         </figure>
 
+
+
         <figure>
+
           <img
             src="/uploads/drive/home/connection-2.jpg"
             alt="AIM dancer on stage"
             loading="lazy"
           />
+
         </figure>
 
+
+
         <figure>
+
           <img
             src="/uploads/drive/home/connection-3.jpg"
             alt="AIM dancer demonstrating technique"
             loading="lazy"
           />
+
         </figure>
+
 
       </div>
 
+
     </div>
+
   </section>
 
 
+
+  <!-- =====================================================
+       EVENTS
+       ===================================================== -->
+
   <section class="events-section">
+
 
     <div class="wrap events-home-grid">
 
+
       <div>
+
 
         <div class="section-head">
 
+
           <div>
+
             <div class="eyebrow">
               What’s happening
             </div>
 
+
             <h2>
               Upcoming at AIM
             </h2>
+
           </div>
 
-          <a class="text-link" href="/events">
+
+          <a
+            class="text-link"
+            href="/events"
+          >
             See all events →
           </a>
+
 
         </div>
 
 
+
         <div class="events">
+
 
           {events.length
             ? events.map(e => <EventCard e={e}/>)
             : <p>No events are scheduled right now. Check back soon.</p>
           }
 
+
         </div>
+
 
       </div>
 
 
+
       <div class="events-home-photo">
+
 
         <img
           src="/uploads/client/general/general-11.jpg"
@@ -405,42 +785,56 @@ const genres = [
           loading="lazy"
         />
 
+
         <span>
           Train. Perform. Grow.
         </span>
 
+
       </div>
 
+
     </div>
+
   </section>
 
 
-   <!-- ============================= -->
-  <!-- PAST WORKSHOP RECAPS -->
-  <!-- ============================= -->
+
+  <!-- =====================================================
+       PAST WORKSHOP RECAPS
+       ===================================================== -->
 
   <section class="masterclass-recaps">
 
+
     <div class="wrap">
+
 
       <div class="section-head dark masterclass-recap-head">
 
+
         <div>
+
           <div class="eyebrow">
             Past workshop recaps
           </div>
 
+
           <h2>
             Experience AIM in motion.
           </h2>
+
         </div>
+
 
         <p>
           Take a look back at special workshops and guest training
           experiences hosted at Art In Motion Dance Center.
         </p>
 
+
       </div>
+
 
 
       <div class="masterclass-recap-grid">
@@ -450,7 +844,9 @@ const genres = [
 
         <article class="masterclass-recap-card">
 
+
           <div class="masterclass-video-wrap">
+
 
             <video
               controls
@@ -458,41 +854,54 @@ const genres = [
               preload="metadata"
               aria-label="Alexandra Lund Tribe 99 Workshop"
             >
+
               <source
                 src="/uploads/drive/videos/tribe-99.mp4"
                 type="video/mp4"
               />
 
+
               Your browser does not support video playback.
+
             </video>
+
 
           </div>
 
 
+
           <div class="masterclass-recap-copy">
+
 
             <span>
               Workshop Recap
             </span>
 
+
             <h3>
               Alexandra Lund
             </h3>
+
 
             <p>
               Tribe 99 Workshop
             </p>
 
+
           </div>
 
+
         </article>
+
 
 
         <!-- JONA BIDDLE -->
 
         <article class="masterclass-recap-card">
 
+
           <div class="masterclass-video-wrap">
+
 
             <video
               controls
@@ -500,58 +909,81 @@ const genres = [
               preload="metadata"
               aria-label="Jona Biddle Hip Hop and Knicks City Kids Workshop"
             >
+
               <source
                 src="/uploads/drive/videos/jona-biddle.mp4"
                 type="video/mp4"
               />
 
+
               Your browser does not support video playback.
+
             </video>
+
 
           </div>
 
 
+
           <div class="masterclass-recap-copy">
+
 
             <span>
               Workshop Recap
             </span>
 
+
             <h3>
               Jona Biddle
             </h3>
+
 
             <p>
               Hip Hop &amp; Knicks City Kids Workshop
             </p>
 
+
           </div>
+
 
         </article>
 
 
       </div>
 
+
     </div>
 
   </section>
 
 
+
+  <!-- =====================================================
+       INSTAGRAM
+       ===================================================== -->
+
   <section class="instagram-section">
+
 
     <div class="wrap">
 
+
       <div class="section-head dark instagram-head">
 
+
         <div>
+
           <div class="eyebrow">
             Follow along
           </div>
 
+
           <h2>
             Life at AIM, on Instagram.
           </h2>
+
         </div>
+
 
         <a
           class="text-link"
@@ -562,13 +994,16 @@ const genres = [
           @artinmotiondance ↗
         </a>
 
+
       </div>
+
 
 
       <div
         class="instagram-grid"
         aria-label="Art In Motion Dance Instagram preview"
       >
+
 
         {[
           'general-2.jpg',
@@ -579,6 +1014,7 @@ const genres = [
           'general-11.jpg'
         ].map((img,i) => (
 
+
           <a
             class="instagram-tile"
             href="https://www.instagram.com/artinmotiondance/"
@@ -587,11 +1023,13 @@ const genres = [
             aria-label={`View Art In Motion Dance on Instagram, photo ${i+1}`}
           >
 
+
             <img
               src={`/uploads/client/general/${img}`}
               alt={`Art In Motion Dance studio moment ${i+1}`}
               loading="lazy"
             />
+
 
             <span
               class="instagram-overlay"
@@ -600,24 +1038,33 @@ const genres = [
               Instagram ↗
             </span>
 
+
           </a>
 
+
         ))}
+
 
       </div>
 
 
+
       <div class="instagram-cta">
 
+
         <div>
+
           <strong>
             See what’s happening at AIM.
           </strong>
 
+
           <span>
             Classes, competitions, performances and studio moments.
           </span>
+
         </div>
+
 
         <a
           class="btn"
@@ -628,31 +1075,45 @@ const genres = [
           Follow us on Instagram
         </a>
 
+
       </div>
+
 
     </div>
 
   </section>
 
 
+
+  <!-- =====================================================
+       LOCATIONS
+       ===================================================== -->
+
   <section class="locations-section">
 
+
     <div class="wrap">
+
 
       <div class="eyebrow light">
         Two studios, one AIM family
       </div>
+
 
       <h2>
         Find your studio
       </h2>
 
 
+
       <div class="location-grid">
+
 
         {site.locations.map((l,i) => (
 
+
           <article class="location-card location-card-photo">
+
 
             <img
               class="location-bg"
@@ -664,31 +1125,41 @@ const genres = [
               loading="lazy"
             />
 
+
             <div class="location-overlay"></div>
 
 
+
             <div class="location-content">
+
 
               <span class="location-number">
                 0{i+1}
               </span>
 
+
               <h3>
                 {l.name}
               </h3>
+
 
               <p>
                 {l.address}
               </p>
 
+
               <p class="location-phone">
+
                 <a href={`tel:${l.phone.replace(/\D/g,'')}`}>
                   {l.phone}
                 </a>
+
               </p>
 
 
+
               <div class="location-actions">
+
 
                 <a
                   class="btn btn-light"
@@ -697,6 +1168,7 @@ const genres = [
                   Register / Portal
                 </a>
 
+
                 <a
                   class="text-link light-link"
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address)}`}
@@ -704,41 +1176,60 @@ const genres = [
                   Directions ↗
                 </a>
 
+
               </div>
+
 
             </div>
 
+
           </article>
+
 
         ))}
 
+
       </div>
+
 
     </div>
 
   </section>
 
 
+
+  <!-- =====================================================
+       FINAL CTA
+       ===================================================== -->
+
   <section class="final-cta">
+
 
     <div class="wrap">
 
+
       <div>
+
 
         <div class="eyebrow">
           Ready to move?
         </div>
 
+
         <h2>
           Your next chapter starts at AIM.
         </h2>
 
+
       </div>
+
 
 
       <div class="actions">
 
+
         {site.locations.map(l => (
+
 
           <a
             class="btn"
@@ -747,12 +1238,324 @@ const genres = [
             Register in {l.name}
           </a>
 
+
         ))}
 
+
       </div>
+
 
     </div>
 
   </section>
+
+
+
+  <!-- =====================================================
+       HOMEPAGE ADDITIONAL STYLES
+       ===================================================== -->
+
+  <style is:global>
+
+
+    /* =====================================================
+       8 GENRE HOMEPAGE GRID
+       ===================================================== */
+
+    .home-genre-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 2px !important;
+    }
+
+
+    .home-genre-grid .genre-card {
+      width: 100% !important;
+      min-width: 0 !important;
+      min-height: 420px;
+      height: 420px;
+    }
+
+
+    .home-genre-grid .genre-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .home-genre-grid .genre-card-copy h3 {
+      max-width: 90%;
+    }
+
+
+
+    /* =====================================================
+       PROGRAMS
+       ===================================================== */
+
+    .home-programs-section {
+      padding: 110px 0;
+      background: #faf7f7;
+    }
+
+
+    .home-programs-heading {
+      display: grid;
+      grid-template-columns: 1fr .85fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 55px;
+    }
+
+
+    .home-programs-heading h2 {
+      max-width: 760px;
+      margin: 10px 0 0;
+      color: var(--burgundy);
+      font-size: clamp(3.1rem, 5vw, 5.3rem);
+      line-height: .94;
+    }
+
+
+    .home-programs-intro {
+      max-width: 560px;
+    }
+
+
+    .home-programs-intro p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+
+
+    /* Program cards */
+
+    .home-program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+
+    .home-program-card {
+      position: relative;
+      display: flex;
+      min-height: 300px;
+      padding: 30px;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(128, 0, 32, .12);
+      border-radius: 20px;
+      background: #fff;
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 12px 36px rgba(56, 15, 27, .045);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+    }
+
+
+    .home-program-card::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -95px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(128, 0, 32, .035);
+      transition: transform .3s ease;
+      pointer-events: none;
+    }
+
+
+    .home-program-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(128, 0, 32, .28);
+      background: #fff;
+      box-shadow: 0 20px 45px rgba(56, 15, 27, .09);
+    }
+
+
+    .home-program-card:hover::after {
+      transform: scale(1.3);
+    }
+
+
+
+    /* Program card top */
+
+    .home-program-card-top {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    .home-program-number {
+      color: var(--burgundy);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+
+    .home-program-arrow {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(128, 0, 32, .18);
+      border-radius: 50%;
+      color: var(--burgundy);
+      font-size: 1rem;
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+    }
+
+
+    .home-program-card:hover .home-program-arrow {
+      transform: rotate(45deg);
+      background: var(--burgundy);
+      color: #fff;
+    }
+
+
+
+    /* Program copy */
+
+    .home-program-card-copy {
+      position: relative;
+      z-index: 2;
+      margin-top: 45px;
+    }
+
+
+    .home-program-card-copy h3 {
+      margin: 0 0 12px;
+      color: var(--burgundy);
+      font-size: clamp(1.65rem, 2vw, 2.25rem);
+      line-height: 1;
+    }
+
+
+    .home-program-card-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+
+    .home-program-learn {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      width: fit-content;
+      margin-top: 28px;
+      color: var(--burgundy);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+
+    /* =====================================================
+       TABLET
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+
+      .home-genre-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+
+      .home-genre-grid .genre-card {
+        min-height: 430px;
+        height: 430px;
+      }
+
+
+      .home-programs-heading {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+
+      .home-program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+
+    }
+
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 620px) {
+
+
+      .home-programs-section {
+        padding: 75px 0;
+      }
+
+
+      .home-genre-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+
+      .home-genre-grid .genre-card {
+        min-height: 310px;
+        height: 310px;
+      }
+
+
+      .home-genre-grid .genre-card-copy h3 {
+        font-size: 1.55rem;
+      }
+
+
+      .home-program-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .home-program-card {
+        min-height: 250px;
+        padding: 25px;
+      }
+
+
+      .home-program-card-copy {
+        margin-top: 35px;
+      }
+
+
+    }
+
+
+  </style>
+
 
 </Base>
