@@ -1854,43 +1854,57 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 
 
 /* =========================================================
-   HOMEPAGE GENRES — 4 COLUMNS / 2 ROWS
+   HOMEPAGE ADDITIONAL STYLES
    ========================================================= */
 
-.genre-grid.client-genre-grid.home-genre-grid {
+
+/* =========================================================
+   8 GENRE HOMEPAGE GRID
+   DESKTOP: 4 COLUMNS / 2 ROWS
+   ========================================================= */
+
+.genre-section .genre-grid.client-genre-grid.home-genre-grid {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  grid-auto-columns: auto !important;
+
   width: 100% !important;
   max-width: 100% !important;
-  gap: 0 !important;
-  overflow: hidden;
+
+  gap: 2px !important;
 }
 
 
-/* Reset any old flex / width styling */
+/*
+ * Reset any older special positioning that may
+ * have been applied to cards 5, 6, 7, etc.
+ */
 
-.genre-grid.client-genre-grid.home-genre-grid .genre-card {
-  position: relative;
+.genre-section .genre-grid.client-genre-grid.home-genre-grid .genre-card {
+  position: relative !important;
+
   display: block !important;
+
+  grid-column: auto !important;
+  grid-row: auto !important;
 
   width: 100% !important;
   min-width: 0 !important;
   max-width: none !important;
 
-  height: 470px !important;
-  min-height: 470px !important;
+  min-height: 420px !important;
+  height: 420px !important;
 
   margin: 0 !important;
 
   overflow: hidden;
-  color: #fff;
-  text-decoration: none;
 }
 
 
-/* Images */
+/* Genre images */
 
-.genre-grid.client-genre-grid.home-genre-grid .genre-card-image {
+.genre-section .genre-grid.client-genre-grid.home-genre-grid .genre-card-image {
   position: absolute;
   inset: 0;
 
@@ -1902,13 +1916,13 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   object-fit: cover;
   object-position: center;
 
-  transition: transform .45s ease;
+  transition: transform .4s ease;
 }
 
 
-/* Dark overlay */
+/* Genre dark overlay */
 
-.genre-grid.client-genre-grid.home-genre-grid .genre-card-shade {
+.genre-section .genre-grid.client-genre-grid.home-genre-grid .genre-card-shade {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -1918,18 +1932,18 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   background:
     linear-gradient(
       to top,
-      rgba(35, 0, 12, .85) 0%,
-      rgba(35, 0, 12, .25) 45%,
-      rgba(35, 0, 12, .05) 75%
+      rgba(35, 0, 12, .86) 0%,
+      rgba(35, 0, 12, .26) 45%,
+      rgba(35, 0, 12, .04) 75%
     );
 
   pointer-events: none;
 }
 
 
-/* Genre text */
+/* Genre card text */
 
-.genre-grid.client-genre-grid.home-genre-grid .genre-card-copy {
+.genre-section .genre-grid.client-genre-grid.home-genre-grid .genre-card-copy {
   position: absolute;
   z-index: 2;
 
@@ -1937,16 +1951,17 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   bottom: 0;
   left: 0;
 
-  padding: 28px 26px;
+  padding: 26px;
 }
 
 
-.genre-grid.client-genre-grid.home-genre-grid .genre-card-copy > span {
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card-copy > span {
   display: block;
 
   margin-bottom: 8px;
 
-  color: rgba(255, 255, 255, .8);
+  color: rgba(255, 255, 255, .82);
 
   font-size: .68rem;
   font-weight: 800;
@@ -1954,107 +1969,362 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 }
 
 
-.genre-grid.client-genre-grid.home-genre-grid .genre-card-copy h3 {
-  max-width: 100%;
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card-copy h3 {
+  max-width: 90%;
 
   margin: 0;
 
   color: #fff;
 
-  font-size: clamp(1.8rem, 2.3vw, 2.8rem);
+  font-size: clamp(1.8rem, 2.2vw, 2.7rem);
   line-height: .95;
 }
 
 
-/* Hover */
+/* Genre hover */
 
-.genre-grid.client-genre-grid.home-genre-grid .genre-card:hover .genre-card-image {
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:hover .genre-card-image {
   transform: scale(1.055);
 }
 
 
-/* Slight alternating position adjustment */
+/*
+ * Explicitly reset old nth-child layout rules.
+ * This is important because the previous 7-card
+ * genre design had special styling for cards 5–7.
+ */
 
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(1) .genre-card-image {
-  object-position: center center;
-}
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(1),
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(2),
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(3),
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(4),
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(5),
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(6),
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(7),
+.genre-section .genre-grid.client-genre-grid.home-genre-grid
+.genre-card:nth-child(8) {
+  grid-column: auto !important;
+  grid-row: auto !important;
 
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(2) .genre-card-image {
-  object-position: center center;
-}
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
 
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(3) .genre-card-image {
-  object-position: center center;
-}
-
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(4) .genre-card-image {
-  object-position: center center;
-}
-
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(5) .genre-card-image {
-  object-position: center center;
-}
-
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(6) .genre-card-image {
-  object-position: center center;
-}
-
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(7) .genre-card-image {
-  object-position: center center;
-}
-
-.genre-grid.client-genre-grid.home-genre-grid
-.genre-card:nth-child(8) .genre-card-image {
-  object-position: center center;
+  min-height: 420px !important;
+  height: 420px !important;
 }
 
 
 /* =========================================================
-   TABLET — 2 COLUMNS
+   PROGRAMS
    ========================================================= */
 
-@media (max-width: 950px) {
+.home-programs-section {
+  padding: 110px 0;
+  background: #faf7f7;
+}
 
-  .genre-grid.client-genre-grid.home-genre-grid {
+
+.home-programs-heading {
+  display: grid;
+  grid-template-columns: 1fr .85fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+
+.home-programs-heading h2 {
+  max-width: 760px;
+  margin: 10px 0 0;
+  color: var(--burgundy);
+  font-size: clamp(3.1rem, 5vw, 5.3rem);
+  line-height: .94;
+}
+
+
+.home-programs-intro {
+  max-width: 560px;
+}
+
+
+.home-programs-intro p {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+
+
+/* Program cards */
+
+.home-program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+
+.home-program-card {
+  position: relative;
+  display: flex;
+  min-height: 300px;
+  padding: 30px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(128, 0, 32, .12);
+  border-radius: 20px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 12px 36px rgba(56, 15, 27, .045);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+
+.home-program-card::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  bottom: -95px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(128, 0, 32, .035);
+  transition: transform .3s ease;
+  pointer-events: none;
+}
+
+
+.home-program-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(128, 0, 32, .28);
+  background: #fff;
+  box-shadow: 0 20px 45px rgba(56, 15, 27, .09);
+}
+
+
+.home-program-card:hover::after {
+  transform: scale(1.3);
+}
+
+
+
+/* Program card top */
+
+.home-program-card-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.home-program-number {
+  color: var(--burgundy);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+
+.home-program-arrow {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(128, 0, 32, .18);
+  border-radius: 50%;
+  color: var(--burgundy);
+  font-size: 1rem;
+  transition:
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+
+.home-program-card:hover .home-program-arrow {
+  transform: rotate(45deg);
+  background: var(--burgundy);
+  color: #fff;
+}
+
+
+
+/* Program copy */
+
+.home-program-card-copy {
+  position: relative;
+  z-index: 2;
+  margin-top: 45px;
+}
+
+
+.home-program-card-copy h3 {
+  margin: 0 0 12px;
+  color: var(--burgundy);
+  font-size: clamp(1.65rem, 2vw, 2.25rem);
+  line-height: 1;
+}
+
+
+.home-program-card-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.65;
+}
+
+
+.home-program-learn {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  width: fit-content;
+  margin-top: 28px;
+  color: var(--burgundy);
+  font-size: .73rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  .genre-grid.client-genre-grid.home-genre-grid .genre-card {
-    height: 430px !important;
+
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card,
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(1),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(2),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(3),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(4),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(5),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(6),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(7),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(8) {
     min-height: 430px !important;
+    height: 430px !important;
   }
+
+
+  .home-programs-heading {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+
+  .home-program-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
 
 }
 
 
+
 /* =========================================================
-   MOBILE — 1 COLUMN
+   MOBILE
    ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 620px) {
 
-  .genre-grid.client-genre-grid.home-genre-grid {
-    grid-template-columns: 1fr !important;
+
+  .home-programs-section {
+    padding: 75px 0;
   }
 
-  .genre-grid.client-genre-grid.home-genre-grid .genre-card {
-    height: 400px !important;
-    min-height: 400px !important;
+
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  .genre-grid.client-genre-grid.home-genre-grid .genre-card-copy {
-    padding: 24px 22px;
+
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card,
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(1),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(2),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(3),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(4),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(5),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(6),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(7),
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card:nth-child(8) {
+    min-height: 310px !important;
+    height: 310px !important;
   }
 
-  .genre-grid.client-genre-grid.home-genre-grid .genre-card-copy h3 {
-    font-size: 2.2rem;
+
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card-copy {
+    padding: 20px 18px;
   }
+
+
+  .genre-section .genre-grid.client-genre-grid.home-genre-grid
+  .genre-card-copy h3 {
+    font-size: 1.55rem;
+  }
+
+
+  .home-program-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .home-program-card {
+    min-height: 250px;
+    padding: 25px;
+  }
+
+
+  .home-program-card-copy {
+    margin-top: 35px;
+  }
+
 
 }
