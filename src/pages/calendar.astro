@@ -2,13 +2,98 @@
 import Base from '../layouts/Base.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
-const yesterday = new Date(Date.now()-864e5);
-const events=(await getCollection('events')).filter(e=>e.data.date>=yesterday).sort((a,b)=>a.data.date.getTime()-b.data.date.getTime());
+import calendar from '../data/calendar.json';
+
+const yesterday = new Date(Date.now() - 864e5);
+
+const events = (await getCollection('events'))
+  .filter((e) => e.data.date >= yesterday)
+  .sort(
+    (a, b) =>
+      a.data.date.getTime() - b.data.date.getTime()
+  );
 ---
-<Base title="Calendar | AIM Dance">
-  <div class="subhero"><div class="wrap"><div class="eyebrow light">Studio year</div><h1>Calendar</h1><p>Important dates and current events for the 2026–2027 AIM season.</p></div></div>
-  <section class="content-section"><div class="wrap">
-    <a href="/uploads/calendar/2026-27.jpg" target="_blank" class="calendar-poster"><img src="/uploads/calendar/2026-27.jpg" alt="AIM Dance 2026–2027 calendar"/></a>
-    {events.length>0 && <><div class="section-head calendar-events-head"><div><div class="eyebrow">Coming up</div><h2>Upcoming events</h2></div></div><div class="events">{events.map(e=><EventCard e={e}/>)}</div></>}
-  </div></section>
+
+<Base
+  title={`${calendar.title} | AIM Dance`}
+  description={calendar.description}
+>
+
+  <div class="subhero">
+
+    <div class="wrap">
+
+      <div class="eyebrow light">
+        {calendar.eyebrow}
+      </div>
+
+      <h1>
+        {calendar.title}
+      </h1>
+
+      <p>
+        {calendar.description}
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <section class="content-section">
+
+    <div class="wrap">
+
+      <a
+        href={calendar.image}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="calendar-poster"
+      >
+
+        <img
+          src={calendar.image}
+          alt={calendar.image_alt}
+        />
+
+      </a>
+
+
+      {events.length > 0 && (
+
+        <>
+
+          <div class="section-head calendar-events-head">
+
+            <div>
+
+              <div class="eyebrow">
+                Coming up
+              </div>
+
+              <h2>
+                Upcoming events
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div class="events">
+
+            {events.map((e) => (
+              <EventCard e={e} />
+            ))}
+
+          </div>
+
+        </>
+
+      )}
+
+    </div>
+
+  </section>
+
 </Base>
