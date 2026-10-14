@@ -4,4 +4,6 @@ role: Dance Teacher
 photo: /uploads/staff/natalie-schiff.jpg
 order: 20
 ---
-Natalie began dancing at age two and joined Art In Motion in 2011, training with AIM for ten years through competitions and recitals. After studying art and media studies at the University of Virginia, she returned to the AIM family as a teacher.
+Natalie Schiff is from Long Island, New York. She began her dance journey at the age of 2 before coming to Art in Motion in 2011. She trained under the Art in Motion staff for 10 years participating in competitions and recitals. Natalie has won a plethora of awards for her dancing in a variety of styles.
+
+After graduating high school, she continued her education at the University of Virginia studying art and media studies. She is excited to return to her AIM family as a dance teacher.
