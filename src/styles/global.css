@@ -1133,6 +1133,7 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   color: #fff;
   font-size: clamp(3rem, 5vw, 5rem);
   line-height: .95;
+  margin-bottom: 40px;
 }
 
 .genre-video-heading > p {
