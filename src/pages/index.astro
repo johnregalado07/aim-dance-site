@@ -89,6 +89,8 @@ const programs = [
     name: 'Recreational Dance',
     description:
       'Weekly classes designed to build technique, confidence, creativity and a love of dance.',
+    image: '/uploads/client/recreational/rec-1.jpg',
+    imageAlt: 'AIM recreational dancers',
     href: '/recreational-dance/'
   },
 
@@ -97,6 +99,8 @@ const programs = [
     name: 'Competition Team',
     description:
       'Advanced training, rehearsals and performance opportunities for dedicated dancers.',
+    image: '/uploads/drive/general/competition.jpg',
+    imageAlt: 'AIM Competition Team dancers',
     href: '/competition-team/'
   },
 
@@ -105,6 +109,8 @@ const programs = [
     name: 'Dance Genres',
     description:
       'Explore Ballet & Pointe, Jazz, Tap, Lyrical, Contemporary, Hip Hop, Acro and Jumps & Turns.',
+    image: '/uploads/drive/genres/ballet.jpg',
+    imageAlt: 'Dance genres at AIM',
     href: '/genres/'
   },
 
@@ -113,6 +119,8 @@ const programs = [
     name: 'Summer Programs',
     description:
       'Keep dancers moving, training and growing through seasonal summer opportunities.',
+    image: '/uploads/drive/summer/summer-1.jpg',
+    imageAlt: 'AIM Summer Programs',
     href: '/summer-programs/'
   },
 
@@ -121,6 +129,8 @@ const programs = [
     name: 'Birthday Parties',
     description:
       'Celebrate your dancer with a fun and memorable birthday experience at AIM.',
+    image: '/uploads/drive/birthday/birthday.jpg',
+    imageAlt: 'Birthday Parties at AIM',
     href: '/birthday-parties/'
   },
 
@@ -129,6 +139,8 @@ const programs = [
     name: 'Kickline Technique',
     description:
       'Focused training designed to strengthen precision, performance quality and kickline technique.',
+    image: '/uploads/drive/kickline/kickline-2.jpg',
+    imageAlt: 'Kickline Technique at AIM',
     href: '/kickline-technique/'
   }
 
@@ -475,38 +487,58 @@ const programs = [
             href={program.href}
           >
 
-            <div class="home-program-card-top">
+            <div class="home-program-image">
 
-              <span class="home-program-number">
-                {program.number}
-              </span>
+              <img
+                src={program.image}
+                alt={program.imageAlt}
+                loading="lazy"
+              />
 
               <span
-                class="home-program-arrow"
+                class="home-program-image-shade"
                 aria-hidden="true"
-              >
-                ↗
+              ></span>
+
+            </div>
+
+
+            <div class="home-program-card-body">
+
+              <div class="home-program-card-top">
+
+                <span class="home-program-number">
+                  {program.number}
+                </span>
+
+                <span
+                  class="home-program-arrow"
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
+
+              </div>
+
+
+              <div class="home-program-card-copy">
+
+                <h3>
+                  {program.name}
+                </h3>
+
+                <p>
+                  {program.description}
+                </p>
+
+              </div>
+
+
+              <span class="home-program-learn">
+                Learn more
               </span>
 
             </div>
-
-
-            <div class="home-program-card-copy">
-
-              <h3>
-                {program.name}
-              </h3>
-
-              <p>
-                {program.description}
-              </p>
-
-            </div>
-
-
-            <span class="home-program-learn">
-              Learn more
-            </span>
 
           </a>
 
