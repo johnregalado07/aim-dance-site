@@ -2723,3 +2723,224 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+
+
+/* =========================================================
+   COMPETITION TEAM PAGE
+   COMPACT + FULL VISIBLE IMAGES
+   ========================================================= */
+
+.competition-team-section {
+  padding: 75px 0 82px;
+}
+
+
+.competition-team-section-melville {
+  background: #f8f3f4;
+}
+
+
+.competition-team-section-commack {
+  background: #fff;
+}
+
+
+.competition-team-section-head {
+  margin-bottom: 30px;
+}
+
+
+.competition-team-section-head .eyebrow {
+  margin-bottom: 8px;
+}
+
+
+.competition-team-section-head h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2.8rem, 4vw, 4.2rem);
+  line-height: .95;
+}
+
+
+
+/* =========================================================
+   GRIDS
+   ========================================================= */
+
+.competition-team-grid {
+  display: grid;
+  gap: 16px;
+  align-items: stretch;
+}
+
+
+/* Five Melville teams in one row */
+
+.competition-team-grid-melville {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+
+/* Four Commack teams in one clean centered row */
+
+.competition-team-grid-commack {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.competition-team-card {
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(53, 17, 28, .07);
+}
+
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+.competition-team-image {
+  display: grid;
+  width: 100%;
+  height: 260px;
+  place-items: center;
+  overflow: hidden;
+  padding: 8px;
+  background: #f1e9eb;
+  border-bottom: 1px solid var(--line);
+}
+
+
+.competition-team-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /*
+   * IMPORTANT:
+   * Keeps the entire supplied team image visible.
+   * No heads, feet or dancers should be cropped.
+   */
+  object-fit: contain;
+  object-position: center;
+}
+
+
+
+/* =========================================================
+   CARD TEXT
+   ========================================================= */
+
+.competition-team-card-copy {
+  padding: 18px 17px 20px;
+}
+
+
+.competition-team-card-copy > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--rose);
+  font-size: .64rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+
+.competition-team-card-copy h3 {
+  margin: 0;
+  color: var(--burgundy);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+
+.competition-team-card-copy p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1080px) {
+
+  .competition-team-grid-melville,
+  .competition-team-grid-commack {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+  }
+
+
+  .competition-team-image {
+    height: 300px;
+  }
+
+}
+
+
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .competition-team-section {
+    padding: 65px 0 72px;
+  }
+
+
+  .competition-team-grid-melville,
+  .competition-team-grid-commack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+
+  .competition-team-image {
+    height: 270px;
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .competition-team-grid-melville,
+  .competition-team-grid-commack {
+    grid-template-columns: 1fr;
+  }
+
+
+  .competition-team-image {
+    height: 340px;
+  }
+
+}
