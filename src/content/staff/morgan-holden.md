@@ -4,6 +4,7 @@ role: Dance Teacher / Administrative Assistant
 photo: /uploads/staff/morgan-holden.jpg
 order: 6
 ---
-Morgan is a Hofstra University graduate with a BFA in Dance. Her training includes Modern, Contemporary, Ballet, Jazz and Improvisation, and she focuses on helping dancers understand both the how and the why behind technique.
 
-She has been teaching and choreographing award-winning work for the past four years and hopes to continue for a lifetime. She values creating a studio space where everyone feels welcome; each dancer’s voice matters, and they deserve to feel supported. She prioritizes the idea of learning how dance fits into you, not how you fit into dance, and is passionate about helping dancers find their creative voice.
+Morgan is a 23-year-old graduate of Hofstra University, where she earned her BFA in Dance. Originally from Maryland, she is now based in New York and is passionate about creating movement that fosters honesty and a deep connection between dancers, audiences, and the world. Morgan is eager to cultivate welcoming, creative spaces through choreography, performance, and education—sharing a physical perspective on her human experience.
+
+Morgan is passionate about creating movement that feels honest and innate. In education, she strives to teach not just the how, but also the why and origin of different techniques. She has trained extensively in Modern, Contemporary, Ballet, Jazz, Improvisation, and has worked with a diverse range of choreographers, including Amanda Selwyn, Janice Rosario, Larry Keigwin, Adam Barruch, and Amy Marshall. Morgan is eager to cultivate welcoming, creative spaces through choreography, performance, and education—sharing a visceral perspective on her human experience.
