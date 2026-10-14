@@ -2,35 +2,52 @@
 import Base from '../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
 
+
 export async function getStaticPaths() {
+
   const pages = (await getCollection('pages'))
     .filter((page) => page.id !== 'genres');
 
   return pages.map((page) => ({
-    params: { slug: page.id },
-    props: { page }
+    params: {
+      slug: page.id
+    },
+    props: {
+      page
+    }
   }));
+
 }
 
+
 const { page } = Astro.props;
+
 const { Content } = await render(page);
 
+
 const allStaff = await getCollection('staff');
+
 
 const kicklineStaffEntries = allStaff.filter((person) =>
   ['siobhan-santapaola', 'ali-ribellino'].includes(person.id)
 );
 
+
 const kicklineStaff = await Promise.all(
+
   kicklineStaffEntries.map(async (person) => {
+
     const { Content: BioContent } = await render(person);
 
     return {
       person,
       BioContent
     };
+
   })
+
 );
+
 
 
 /* =========================================================
@@ -39,11 +56,13 @@ const kicklineStaff = await Promise.all(
 
 const visuals = {
 
+
   'about-us': [
     '/uploads/client/general/general-4.jpg',
     '/uploads/client/general/general-8.jpg',
     '/uploads/client/general/general-11.jpg'
   ],
+
 
   'recreational-dance': [
     '/uploads/client/recreational/rec-1.jpg',
@@ -51,11 +70,13 @@ const visuals = {
     '/uploads/client/recreational/rec-7.jpg'
   ],
 
+
   'competition-team': [
     '/uploads/drive/general/competition.jpg',
     '/uploads/client/general/general-6.jpg',
     '/uploads/client/general/general-10.jpg'
   ],
+
 
   'genres': [
     '/uploads/drive/genres/ballet.jpg',
@@ -67,17 +88,20 @@ const visuals = {
     '/uploads/drive/genres/acro.jpg'
   ],
 
+
   'summer-programs': [
     '/uploads/drive/summer/summer-1.jpg',
     '/uploads/drive/summer/summer-2.png',
     '/uploads/drive/summer/summer-3.jpg'
   ],
 
+
   'birthday-parties': [
     '/uploads/drive/birthday/birthday.jpg',
     '/uploads/client/general/general-7.jpg',
     '/uploads/client/general/general-9.jpg'
   ],
+
 
   'kickline-technique': [
     '/uploads/drive/kickline/kickline-2.jpg',
@@ -86,7 +110,9 @@ const visuals = {
     '/uploads/drive/kickline/kickline-3.jpg'
   ]
 
+
 };
+
 
 
 const gallery =
@@ -108,11 +134,13 @@ const isProgram = page.data.section === 'programs';
 
 const melvilleTeams = [
 
+
   {
     name: 'Minis',
     ages: 'Ages 5–8',
     image: '/uploads/drive/competition-teams/mel-minis.png'
   },
+
 
   {
     name: 'Petites',
@@ -120,11 +148,13 @@ const melvilleTeams = [
     image: '/uploads/drive/competition-teams/mel-petites.jpg'
   },
 
+
   {
     name: 'Juniors',
     ages: 'Ages 9–11',
     image: '/uploads/drive/competition-teams/mel-juniors.jpg'
   },
+
 
   {
     name: 'Teens',
@@ -132,16 +162,20 @@ const melvilleTeams = [
     image: '/uploads/drive/competition-teams/mel-teens.jpg'
   },
 
+
   {
     name: 'Seniors',
     ages: 'Ages 13–18',
     image: '/uploads/drive/competition-teams/mel-seniors.jpg'
   }
 
+
 ];
 
 
+
 const commackTeams = [
+
 
   {
     name: 'Petites',
@@ -149,11 +183,13 @@ const commackTeams = [
     image: '/uploads/drive/competition-teams/com-petites.png'
   },
 
+
   {
     name: 'Juniors',
     ages: 'Ages 8–11',
     image: '/uploads/drive/competition-teams/com-juniors.jpg'
   },
+
 
   {
     name: 'Teens',
@@ -161,11 +197,13 @@ const commackTeams = [
     image: '/uploads/drive/competition-teams/com-teens.png'
   },
 
+
   {
     name: 'Seniors',
     ages: 'Ages 13–18',
     image: '/uploads/drive/competition-teams/com-seniors.png'
   }
+
 
 ];
 
@@ -177,35 +215,42 @@ const commackTeams = [
 
 const dancerFeatures = [
 
+
   {
     title: 'Taylor M- ID Influencer',
     image: '/uploads/drive/dancer-feature/taylor-m-id-influencer.jpg'
   },
+
 
   {
     title: 'Tessa S- KAR Protege',
     image: '/uploads/drive/dancer-feature/tessa-s-kar-protege.jpg'
   },
 
+
   {
     title: 'Spencer V- WILD Icon',
     image: '/uploads/drive/dancer-feature/spencer-v-wild-icon.jpg'
   },
+
 
   {
     title: 'Kenley M-Essentials Designs Costume Model',
     image: '/uploads/drive/dancer-feature/kenley-m-essentials-designs-costume-model.jpg'
   },
 
+
   {
     title: 'Reese W- Glamour Costumes Model',
     image: '/uploads/drive/dancer-feature/reese-w-glamour-costumes-model.jpg'
   },
 
+
   {
     title: 'Lucia A- Purple Pixies Ambassador',
     image: '/uploads/drive/dancer-feature/lucia-a-purple-pixies-ambassador.jpg'
   }
+
 
 ];
 ---
@@ -214,6 +259,7 @@ const dancerFeatures = [
   title={`${page.data.title} | AIM Dance`}
   description={page.data.description}
 >
+
 
   <!-- =====================================================
        HERO
@@ -227,27 +273,36 @@ const dancerFeatures = [
       class="editorial-hero-img"
     />
 
+
     <div class="editorial-hero-overlay"></div>
 
 
     <div class="wrap editorial-hero-copy">
 
+
       <div class="eyebrow light">
+
         {isProgram
           ? 'AIM Programs'
           : 'Art In Motion Dance Center'
         }
+
       </div>
+
 
       <h1>
         {page.data.title}
       </h1>
 
+
       {page.data.description && (
+
         <p>
           {page.data.description}
         </p>
+
       )}
+
 
     </div>
 
@@ -284,8 +339,11 @@ const dancerFeatures = [
           </div>
 
 
+
           <div class="prose kickline-prose">
+
             <Content />
+
           </div>
 
 
@@ -308,7 +366,9 @@ const dancerFeatures = [
                 loading="lazy"
               />
 
+
               <div class="kickline-photo-overlay"></div>
+
 
               <span>
                 Kickline Technique
@@ -338,18 +398,22 @@ const dancerFeatures = [
 
 
           <div class="editorial-kicker">
+
             {isProgram
               ? 'Train with AIM'
               : 'The AIM difference'
             }
+
           </div>
 
 
           <h2>
+
             {isProgram
               ? 'Technique, confidence and community.'
               : 'Built for dancers who want to grow.'
             }
+
           </h2>
 
 
@@ -362,15 +426,18 @@ const dancerFeatures = [
 
           <a
             class="btn"
-            href={isProgram
-              ? '/schedules'
-              : '/staff'
+            href={
+              isProgram
+                ? '/schedules'
+                : '/staff'
             }
           >
+
             {isProgram
               ? 'View schedules'
               : 'Meet our staff'
             }
+
           </a>
 
 
@@ -379,7 +446,9 @@ const dancerFeatures = [
 
 
         <div class="prose editorial-prose">
+
           <Content />
+
         </div>
 
 
@@ -418,7 +487,6 @@ const dancerFeatures = [
 
   <!-- =====================================================
        ABOUT VIDEO
-       AUTOPLAY / MUTED / LOOP
        ===================================================== -->
 
   {page.id === 'about-us' && (
@@ -439,9 +507,10 @@ const dancerFeatures = [
           </h2>
 
           <p>
-            Art In Motion is more than a place to take class. Our dancers
-            train, perform and grow in an environment built around strong
-            technique, confidence and a genuine love of movement.
+            Art In Motion is more than a place to take class.
+            Our dancers train, perform and grow in an environment
+            built around strong technique, confidence and a
+            genuine love of movement.
           </p>
 
           <a
@@ -487,13 +556,17 @@ const dancerFeatures = [
 
 
   <!-- =====================================================
-       COMPETITION VIDEOS
-       AUTOPLAY / MUTED / LOOP
+       COMPETITION TEAM
        ===================================================== -->
 
   {page.id === 'competition-team' && (
 
     <>
+
+
+      <!-- =================================================
+           COMPETITION VIDEOS
+           ================================================= -->
 
       <section class="competition-video-feature">
 
@@ -515,6 +588,7 @@ const dancerFeatures = [
               </h2>
 
             </div>
+
 
 
             <p>
@@ -623,7 +697,7 @@ const dancerFeatures = [
             <p>
               Company dancers are required to take a minimum of
               2 Genre classes, 1 Jumps and Turns class, and
-              1–2 Ballet Classes weekly depending on age and
+              1-2 Ballet Classes weekly depending on age and
               team placement.
             </p>
 
@@ -640,57 +714,61 @@ const dancerFeatures = [
            MELVILLE COMPETITION TEAMS
            ================================================= -->
 
-      <section class="program-index-section content-section">
+      <section class="competition-team-section competition-team-section-melville">
 
         <div class="wrap">
 
 
-          <div class="section-head dark">
+          <div class="competition-team-section-head">
 
-            <div>
-
-              <div class="eyebrow">
-                Melville
-              </div>
-
-              <h2>
-                Competition Teams
-              </h2>
-
+            <div class="eyebrow">
+              Melville
             </div>
+
+            <h2>
+              Competition Teams
+            </h2>
 
           </div>
 
 
 
-          <div class="program-cards modern-program-cards">
+          <div class="competition-team-grid competition-team-grid-melville">
 
 
             {melvilleTeams.map((team) => (
 
-              <article class="program-card modern-program-card">
+              <article class="competition-team-card">
 
-                <img
-                  src={team.image}
-                  alt={`AIM Melville ${team.name} Competition Team`}
-                  loading="lazy"
-                />
 
-                <div>
+                <div class="competition-team-image">
+
+                  <img
+                    src={team.image}
+                    alt={`AIM Melville ${team.name} Competition Team`}
+                    loading="lazy"
+                  />
+
+                </div>
+
+
+
+                <div class="competition-team-card-copy">
 
                   <span>
-                    Melville Competition Team
+                    Melville
                   </span>
 
-                  <h2>
+                  <h3>
                     {team.name}
-                  </h2>
+                  </h3>
 
                   <p>
                     {team.ages}
                   </p>
 
                 </div>
+
 
               </article>
 
@@ -710,57 +788,61 @@ const dancerFeatures = [
            COMMACK COMPETITION TEAMS
            ================================================= -->
 
-      <section class="content-section">
+      <section class="competition-team-section competition-team-section-commack">
 
         <div class="wrap">
 
 
-          <div class="section-head dark">
+          <div class="competition-team-section-head">
 
-            <div>
-
-              <div class="eyebrow">
-                Commack
-              </div>
-
-              <h2>
-                Competition Teams
-              </h2>
-
+            <div class="eyebrow">
+              Commack
             </div>
+
+            <h2>
+              Competition Teams
+            </h2>
 
           </div>
 
 
 
-          <div class="program-cards modern-program-cards">
+          <div class="competition-team-grid competition-team-grid-commack">
 
 
             {commackTeams.map((team) => (
 
-              <article class="program-card modern-program-card">
+              <article class="competition-team-card">
 
-                <img
-                  src={team.image}
-                  alt={`AIM Commack ${team.name} Competition Team`}
-                  loading="lazy"
-                />
 
-                <div>
+                <div class="competition-team-image">
+
+                  <img
+                    src={team.image}
+                    alt={`AIM Commack ${team.name} Competition Team`}
+                    loading="lazy"
+                  />
+
+                </div>
+
+
+
+                <div class="competition-team-card-copy">
 
                   <span>
-                    Commack Competition Team
+                    Commack
                   </span>
 
-                  <h2>
+                  <h3>
                     {team.name}
-                  </h2>
+                  </h3>
 
                   <p>
                     {team.ages}
                   </p>
 
                 </div>
+
 
               </article>
 
@@ -796,6 +878,7 @@ const dancerFeatures = [
             </h2>
 
           </div>
+
 
 
           <p>
@@ -859,6 +942,7 @@ const dancerFeatures = [
 
       </section>
 
+
     </>
 
   )}
@@ -914,5 +998,6 @@ const dancerFeatures = [
     </section>
 
   )}
+
 
 </Base>
