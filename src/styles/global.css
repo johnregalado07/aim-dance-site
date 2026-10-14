@@ -708,7 +708,7 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   display: grid;
   grid-template-columns: 1fr 0.75fr;
   gap: 70px;
-  align-items: end;
+  align-items: center;
   margin-bottom: 50px;
 }
 
