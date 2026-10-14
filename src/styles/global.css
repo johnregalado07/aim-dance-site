@@ -2669,7 +2669,7 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 }
 
 .home-program-card:nth-child(4) .home-program-image img {
-  object-position: center center;
+  object-position: center -101px;
 }
 
 .home-program-card:nth-child(5) .home-program-image img {
