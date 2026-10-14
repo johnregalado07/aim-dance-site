@@ -2329,3 +2329,258 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 
 
 }
+
+
+/* =========================================================
+   STAFF PAGE — CLIENT UPDATE
+   Leadership 5-across + Teacher Training
+   ========================================================= */
+
+
+/* =========================================================
+   LEADERSHIP — 5 ACROSS
+   ========================================================= */
+
+.staff-grid.staff-grid-featured.staff-grid-leadership {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 30px 16px;
+}
+
+
+/*
+ * Slightly reduce leadership card typography so five
+ * profiles remain balanced on one desktop row.
+ */
+
+.staff-grid-leadership .staff-card-copy {
+  padding-top: 14px;
+}
+
+
+.staff-grid-leadership .staff-card-copy p {
+  min-height: 2.8em;
+  font-size: .62rem;
+  line-height: 1.4;
+}
+
+
+.staff-grid-leadership .staff-card-copy h3 {
+  font-size: clamp(1.4rem, 1.7vw, 1.7rem);
+  line-height: 1;
+}
+
+
+.staff-grid-leadership .staff-photo-wrap {
+  aspect-ratio: 4 / 5;
+}
+
+
+
+/* =========================================================
+   TEACHER TRAINING
+   ========================================================= */
+
+.teacher-training-section {
+  padding: 110px 0 120px;
+  overflow: hidden;
+  background: #f3e9eb;
+}
+
+
+.teacher-training-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .72fr);
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+
+.teacher-training-heading h2 {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: var(--burgundy);
+  font-size: clamp(3.2rem, 5.5vw, 5.6rem);
+  line-height: .94;
+}
+
+
+.teacher-training-heading > p {
+  max-width: 520px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   TRAINING IMAGE GRID
+   ========================================================= */
+
+.teacher-training-grid {
+  display: grid;
+  grid-template-columns: 1.35fr .8fr .8fr;
+  grid-template-rows: repeat(2, 300px);
+  gap: 14px;
+}
+
+
+.teacher-training-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--burgundy-deep);
+}
+
+
+.teacher-training-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+
+.teacher-training-photo:hover img {
+  transform: scale(1.035);
+}
+
+
+/* Large feature image */
+
+.teacher-training-photo-1 {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+
+/* Top middle */
+
+.teacher-training-photo-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+
+/* Bottom middle */
+
+.teacher-training-photo-3 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+
+/* Right tall image */
+
+.teacher-training-photo-4 {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+
+
+
+/* =========================================================
+   STAFF TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .staff-grid.staff-grid-featured.staff-grid-leadership {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .teacher-training-heading {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+
+  .teacher-training-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 430px 330px;
+  }
+
+
+  .teacher-training-photo-1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+
+  .teacher-training-photo-2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+
+  .teacher-training-photo-3 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+
+  .teacher-training-photo-4 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+}
+
+
+
+/* =========================================================
+   STAFF MOBILE
+   ========================================================= */
+
+@media (max-width: 620px) {
+
+  .staff-grid.staff-grid-featured.staff-grid-leadership {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 12px;
+  }
+
+
+  .staff-grid-leadership .staff-card-copy p {
+    min-height: 0;
+  }
+
+
+  .teacher-training-section {
+    padding: 75px 0 85px;
+  }
+
+
+  .teacher-training-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 12px;
+  }
+
+
+  .teacher-training-photo,
+  .teacher-training-photo-1,
+  .teacher-training-photo-2,
+  .teacher-training-photo-3,
+  .teacher-training-photo-4 {
+    grid-column: auto;
+    grid-row: auto;
+    height: 390px;
+  }
+
+
+  .teacher-training-heading h2 {
+    font-size: 3.3rem;
+  }
+
+}
