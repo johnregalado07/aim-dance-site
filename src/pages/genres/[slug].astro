@@ -118,10 +118,7 @@ async function createStaffProfile(name) {
   return {
     person,
     BioContent: Content,
-    hasBio:
-      person.body === undefined
-        ? true
-        : Boolean(person.body.trim())
+    hasBio: Boolean(person.body?.trim())
   };
 
 }
@@ -146,11 +143,18 @@ const tapInstructorNames = [
   'Natalie Schiff'
 ];
 
+
 const tapStaff = (
   await Promise.all(
     tapInstructorNames.map((name) => createStaffProfile(name))
   )
 ).filter(Boolean);
+
+
+const tapBioComingSoon = [
+  'Maggie Venti',
+  'Jennifer Palilla'
+];
 ---
 
 <Base
@@ -192,6 +196,7 @@ const tapStaff = (
         </div>
 
       )}
+
 
       <h1>
         {genre.name}
@@ -258,7 +263,8 @@ const tapStaff = (
 
 
   <!-- =====================================================
-       BALLET & POINTE VIDEO
+       BALLET & POINTE
+       SINGLE VIDEO — TEXT LEFT / VIDEO RIGHT
        ===================================================== -->
 
   {slug === 'ballet-pointe' && (
@@ -269,7 +275,8 @@ const tapStaff = (
 
         <div class="genre-video-heading">
 
-          <div>
+
+          <div class="competition-video-copy">
 
             <div class="eyebrow light">
               Ballet &amp; Pointe at AIM
@@ -281,47 +288,47 @@ const tapStaff = (
               Technique.
             </h2>
 
+            <p>
+              Ballet training builds the foundation for strong technique,
+              alignment, control and artistry. Pointe is offered to advanced
+              dancers with studio approval to ensure safe and appropriate
+              progression.
+            </p>
+
           </div>
 
 
-          <p>
-            Ballet training builds the foundation for strong technique,
-            alignment, control and artistry. Pointe is offered to advanced
-            dancers with studio approval to ensure safe and appropriate
-            progression.
-          </p>
 
-        </div>
+          <div class="genre-video-grid genre-video-grid-single">
 
+            <article class="genre-video-card">
 
+              <div class="genre-video-media">
 
-        <div class="genre-video-grid genre-video-grid-single">
+                <video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Ballet and Pointe training at AIM"
+                >
 
-          <article class="genre-video-card">
+                  <source
+                    src="/uploads/drive/videos/ballet-pointe.mp4"
+                    type="video/mp4"
+                  />
 
-            <div class="genre-video-media">
+                  Your browser does not support video playback.
 
-              <video
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                aria-label="Ballet and Pointe training at AIM"
-              >
+                </video>
 
-                <source
-                  src="/uploads/drive/videos/ballet-pointe.mp4"
-                  type="video/mp4"
-                />
+              </div>
 
-                Your browser does not support video playback.
+            </article>
 
-              </video>
+          </div>
 
-            </div>
-
-          </article>
 
         </div>
 
@@ -342,6 +349,7 @@ const tapStaff = (
     <section class="genre-video-section">
 
       <div class="wrap">
+
 
         <div class="genre-video-heading">
 
@@ -370,6 +378,7 @@ const tapStaff = (
 
 
         <div class="genre-video-grid">
+
 
           <article class="genre-video-card">
 
@@ -425,6 +434,7 @@ const tapStaff = (
 
           </article>
 
+
         </div>
 
       </div>
@@ -445,6 +455,7 @@ const tapStaff = (
 
       <div class="wrap">
 
+
         <div class="genre-instructor-heading">
 
           <div class="eyebrow">
@@ -460,6 +471,7 @@ const tapStaff = (
 
 
         <article class="genre-instructor-card">
+
 
           <div class="genre-instructor-photo">
 
@@ -491,7 +503,7 @@ const tapStaff = (
 
 
             <h3>
-              {gayleProfile.person.data.name}
+              Gayle Biegel
             </h3>
 
 
@@ -502,23 +514,25 @@ const tapStaff = (
 
             <div class="genre-instructor-bio">
 
-              {gayleProfile.hasBio ? (
+              <p>
+                Gayle Biegel has a Bachelor of Science Degree in Physical
+                Education from Brooklyn College. She has been teaching
+                gymnastics for 38 years. (Recreation and competitive)
+                Gayle was a competitive coach for about 25 years and she
+                trained competitive gymnasts up to Level 10 (some who have
+                gone to nationals and received full scholarships to college).
+              </p>
 
-                <gayleProfile.BioContent />
-
-              ) : (
-
-                <p>
-                  Gayle Biegel is AIM’s resident Acro instructor.
-                  Additional instructor biography information will be
-                  added soon.
-                </p>
-
-              )}
+              <p>
+                Additionally, she is a beam coach and choreographer.
+                Gayle has been the head of a gymnastics program at
+                Camp Wah-Nee for 15 years.
+              </p>
 
             </div>
 
           </div>
+
 
         </article>
 
@@ -531,7 +545,8 @@ const tapStaff = (
 
 
   <!-- =====================================================
-       TAP VIDEO
+       TAP
+       SINGLE VIDEO — TEXT LEFT / VIDEO RIGHT
        ===================================================== -->
 
   {slug === 'tap' && (
@@ -542,7 +557,8 @@ const tapStaff = (
 
         <div class="genre-video-heading">
 
-          <div>
+
+          <div class="competition-video-copy">
 
             <div class="eyebrow light">
               Tap at AIM
@@ -554,46 +570,46 @@ const tapStaff = (
               Precision.
             </h2>
 
+            <p>
+              Tap training at AIM develops musicality, timing,
+              coordination and precise footwork while encouraging
+              dancers to create rhythm through movement.
+            </p>
+
           </div>
 
 
-          <p>
-            Tap training at AIM develops musicality, timing,
-            coordination and precise footwork while encouraging
-            dancers to create rhythm through movement.
-          </p>
 
-        </div>
+          <div class="genre-video-grid genre-video-grid-single">
 
+            <article class="genre-video-card">
 
+              <div class="genre-video-media">
 
-        <div class="genre-video-grid genre-video-grid-single">
+                <video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Tap dance training at AIM"
+                >
 
-          <article class="genre-video-card">
+                  <source
+                    src="/uploads/drive/videos/tap.mp4"
+                    type="video/mp4"
+                  />
 
-            <div class="genre-video-media">
+                  Your browser does not support video playback.
 
-              <video
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                aria-label="Tap dance training at AIM"
-              >
+                </video>
 
-                <source
-                  src="/uploads/drive/videos/tap.mp4"
-                  type="video/mp4"
-                />
+              </div>
 
-                Your browser does not support video playback.
+            </article>
 
-              </video>
+          </div>
 
-            </div>
-
-          </article>
 
         </div>
 
@@ -615,6 +631,7 @@ const tapStaff = (
 
       <div class="wrap">
 
+
         <div class="genre-instructor-heading">
 
           <div class="eyebrow">
@@ -631,9 +648,11 @@ const tapStaff = (
 
         <div class="tap-instructor-grid">
 
+
           {tapStaff.map(({ person, BioContent, hasBio }) => (
 
             <article class="tap-instructor-card">
+
 
               <div class="tap-instructor-photo">
 
@@ -676,27 +695,35 @@ const tapStaff = (
 
                 <div class="genre-instructor-bio">
 
-                  {hasBio ? (
+
+                  {tapBioComingSoon.includes(person.data.name) ? (
+
+                    <p>
+                      Bio coming soon.
+                    </p>
+
+                  ) : hasBio ? (
 
                     <BioContent />
 
                   ) : (
 
                     <p>
-                      {person.data.name} is part of the Art In Motion
-                      Dance Center faculty. Additional biography
-                      information will be added soon.
+                      Bio coming soon.
                     </p>
 
                   )}
+
 
                 </div>
 
               </div>
 
+
             </article>
 
           ))}
+
 
         </div>
 
@@ -709,7 +736,8 @@ const tapStaff = (
 
 
   <!-- =====================================================
-       JUMPS & TURNS VIDEO
+       JUMPS & TURNS
+       SINGLE VIDEO — TEXT LEFT / VIDEO RIGHT
        ===================================================== -->
 
   {slug === 'jumps-turns' && (
@@ -720,7 +748,8 @@ const tapStaff = (
 
         <div class="genre-video-heading">
 
-          <div>
+
+          <div class="competition-video-copy">
 
             <div class="eyebrow light">
               New Genre at AIM
@@ -731,46 +760,46 @@ const tapStaff = (
               technique.
             </h2>
 
+            <p>
+              Jumps &amp; Turns focuses on strength, control,
+              alignment, elevation and consistency to help dancers
+              develop cleaner and more confident technical skills.
+            </p>
+
           </div>
 
 
-          <p>
-            Jumps &amp; Turns focuses on strength, control,
-            alignment, elevation and consistency to help dancers
-            develop cleaner and more confident technical skills.
-          </p>
 
-        </div>
+          <div class="genre-video-grid genre-video-grid-single">
 
+            <article class="genre-video-card">
 
+              <div class="genre-video-media">
 
-        <div class="genre-video-grid genre-video-grid-single">
+                <video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Jumps and Turns training at AIM"
+                >
 
-          <article class="genre-video-card">
+                  <source
+                    src="/uploads/drive/videos/jumps-turns.mp4"
+                    type="video/mp4"
+                  />
 
-            <div class="genre-video-media">
+                  Your browser does not support video playback.
 
-              <video
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                aria-label="Jumps and Turns training at AIM"
-              >
+                </video>
 
-                <source
-                  src="/uploads/drive/videos/jumps-turns.mp4"
-                  type="video/mp4"
-                />
+              </div>
 
-                Your browser does not support video playback.
+            </article>
 
-              </video>
+          </div>
 
-            </div>
-
-          </article>
 
         </div>
 
