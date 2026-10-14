@@ -118,7 +118,10 @@ async function createStaffProfile(name) {
   return {
     person,
     BioContent: Content,
-    hasBio: Boolean(person.body?.trim())
+    hasBio:
+      person.body === undefined
+        ? true
+        : Boolean(person.body.trim())
   };
 
 }
@@ -299,7 +302,9 @@ const tapStaff = (
             <div class="genre-video-media">
 
               <video
-                controls
+                autoplay
+                muted
+                loop
                 playsinline
                 preload="metadata"
                 aria-label="Ballet and Pointe training at AIM"
@@ -313,19 +318,6 @@ const tapStaff = (
                 Your browser does not support video playback.
 
               </video>
-
-            </div>
-
-
-            <div class="genre-video-card-copy">
-
-              <span>
-                Ballet &amp; Pointe
-              </span>
-
-              <h3>
-                Ballet &amp; Pointe
-              </h3>
 
             </div>
 
@@ -384,7 +376,9 @@ const tapStaff = (
             <div class="genre-video-media">
 
               <video
-                controls
+                autoplay
+                muted
+                loop
                 playsinline
                 preload="metadata"
                 aria-label="Acro training video 1"
@@ -401,19 +395,6 @@ const tapStaff = (
 
             </div>
 
-
-            <div class="genre-video-card-copy">
-
-              <span>
-                Acro at AIM
-              </span>
-
-              <h3>
-                Acro 1
-              </h3>
-
-            </div>
-
           </article>
 
 
@@ -423,7 +404,9 @@ const tapStaff = (
             <div class="genre-video-media">
 
               <video
-                controls
+                autoplay
+                muted
+                loop
                 playsinline
                 preload="metadata"
                 aria-label="Acro training video 2"
@@ -437,19 +420,6 @@ const tapStaff = (
                 Your browser does not support video playback.
 
               </video>
-
-            </div>
-
-
-            <div class="genre-video-card-copy">
-
-              <span>
-                Acro at AIM
-              </span>
-
-              <h3>
-                Acro 2
-              </h3>
 
             </div>
 
@@ -604,7 +574,9 @@ const tapStaff = (
             <div class="genre-video-media">
 
               <video
-                controls
+                autoplay
+                muted
+                loop
                 playsinline
                 preload="metadata"
                 aria-label="Tap dance training at AIM"
@@ -618,19 +590,6 @@ const tapStaff = (
                 Your browser does not support video playback.
 
               </video>
-
-            </div>
-
-
-            <div class="genre-video-card-copy">
-
-              <span>
-                Tap at AIM
-              </span>
-
-              <h3>
-                Tap
-              </h3>
 
             </div>
 
@@ -792,7 +751,9 @@ const tapStaff = (
             <div class="genre-video-media">
 
               <video
-                controls
+                autoplay
+                muted
+                loop
                 playsinline
                 preload="metadata"
                 aria-label="Jumps and Turns training at AIM"
@@ -806,19 +767,6 @@ const tapStaff = (
                 Your browser does not support video playback.
 
               </video>
-
-            </div>
-
-
-            <div class="genre-video-card-copy">
-
-              <span>
-                New Genre
-              </span>
-
-              <h3>
-                Jumps &amp; Turns
-              </h3>
 
             </div>
 
