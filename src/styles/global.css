@@ -3076,3 +3076,62 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+
+/* =========================================================
+   GENRE HERO IMAGE CROP / FACE POSITION
+   Lyrical, Acro, Jumps & Turns, Jazz only
+   ========================================================= */
+
+/* LYRICAL */
+.genre-detail-hero-image[src="/uploads/drive/genres/lyrical.png"] {
+  object-fit: cover !important;
+  object-position: center 28% !important;
+}
+
+
+/* ACRO */
+.genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
+  object-fit: cover !important;
+  object-position: center 35% !important;
+}
+
+
+/* JUMPS & TURNS - now using KICKLINE 1 */
+.genre-detail-hero-image[src="/uploads/drive/kickline/kickline-1.jpg"] {
+  object-fit: cover !important;
+  object-position: center 32% !important;
+}
+
+
+/* JAZZ */
+.genre-detail-hero-image[src="/uploads/drive/genres/jazz.jpg"] {
+  object-fit: cover !important;
+  object-position: center 30% !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   Give faces a little more room at the top
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/lyrical.png"] {
+    object-position: center 25% !important;
+  }
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
+    object-position: center 30% !important;
+  }
+
+  .genre-detail-hero-image[src="/uploads/drive/kickline/kickline-1.jpg"] {
+    object-position: center 28% !important;
+  }
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/jazz.jpg"] {
+    object-position: center 26% !important;
+  }
+
+}
