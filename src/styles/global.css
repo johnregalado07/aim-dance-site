@@ -3092,14 +3092,14 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 /* ACRO */
 .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
   object-fit: cover !important;
-  object-position: center 35% !important;
+  object-position: center 89%!important;
 }
 
 
 /* JUMPS & TURNS - now using KICKLINE 1 */
 .genre-detail-hero-image[src="/uploads/drive/kickline/kickline-1.jpg"] {
   object-fit: cover !important;
-  object-position: center 32% !important;
+  object-position: center 56%!important;
 }
 
 
