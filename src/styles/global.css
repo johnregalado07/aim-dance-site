@@ -2948,8 +2948,8 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 
 
 /* =========================================================
-   ACRO HERO IMAGE FIX
-   Keep the full dancer visible instead of heavily cropping it
+   ACRO HERO
+   Desktop + Tablet + Mobile
    ========================================================= */
 
 .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
@@ -2962,17 +2962,18 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   background: var(--burgundy-deep);
 }
 
-/* Stronger left-side gradient so the Acro title stays readable */
+
+/* Keep title readable on the left */
 .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"]
   + .genre-detail-overlay {
   background:
     linear-gradient(
       90deg,
-      rgba(28, 3, 12, .98) 0%,
-      rgba(28, 3, 12, .92) 28%,
-      rgba(28, 3, 12, .58) 52%,
-      rgba(28, 3, 12, .18) 78%,
-      rgba(28, 3, 12, .08) 100%
+      rgba(28, 3, 12, 1) 0%,
+      rgba(28, 3, 12, .96) 25%,
+      rgba(28, 3, 12, .72) 43%,
+      rgba(28, 3, 12, .28) 67%,
+      rgba(28, 3, 12, .06) 100%
     ),
     linear-gradient(
       0deg,
@@ -2982,22 +2983,95 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
 }
 
 
-/* Tablet */
-@media (max-width: 800px) {
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
 
   .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
-    width: 85%;
+    width: 84%;
+    object-position: right center;
+  }
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"]
+    + .genre-detail-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(28, 3, 12, .98) 0%,
+        rgba(28, 3, 12, .88) 32%,
+        rgba(28, 3, 12, .48) 60%,
+        rgba(28, 3, 12, .12) 100%
+      ),
+      linear-gradient(
+        0deg,
+        rgba(25, 2, 10, .75) 0%,
+        transparent 60%
+      );
   }
 
 }
 
 
-/* Mobile */
-@media (max-width: 560px) {
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .genre-detail-hero {
+    min-height: 520px;
+  }
 
   .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
+    inset: 0;
     width: 100%;
-    object-position: center center;
+    height: 100%;
+
+    /*
+     * On phones we allow a small crop so the dancer
+     * doesn't become tiny.
+     */
+    object-fit: cover;
+    object-position: 68% center;
+  }
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"]
+    + .genre-detail-overlay {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(27, 3, 11, .96) 0%,
+        rgba(27, 3, 11, .70) 35%,
+        rgba(27, 3, 11, .20) 70%,
+        rgba(27, 3, 11, .08) 100%
+      );
+  }
+
+  .genre-detail-hero-content {
+    padding-bottom: 42px;
+  }
+
+  .genre-detail-hero-content h1 {
+    font-size: clamp(3.5rem, 18vw, 5rem);
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .genre-detail-hero {
+    min-height: 480px;
+  }
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
+    object-position: 65% center;
   }
 
 }
