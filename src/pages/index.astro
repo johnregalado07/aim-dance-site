@@ -89,7 +89,7 @@ const programs = [
     name: 'Recreational Dance',
     description:
       'Weekly classes designed to build technique, confidence, creativity and a love of dance.',
-    image: '/uploads/client/recreational/rec-1.jpg',
+    image: '/uploads/drive/recreational/rec-main.jpg',
     imageAlt: 'AIM recreational dancers',
     href: '/recreational-dance/'
   },
@@ -991,6 +991,19 @@ const programs = [
 
 
   <!-- =====================================================
+       ELFSIGHT PLATFORM
+       Loaded once for Instagram + Google Reviews
+       ===================================================== -->
+
+  <script
+    is:inline
+    src="https://elfsightcdn.com/platform.js"
+    async
+  ></script>
+
+
+
+  <!-- =====================================================
        INSTAGRAM
        ===================================================== -->
 
@@ -1032,52 +1045,9 @@ const programs = [
 
 
       <div
-        class="instagram-grid"
-        aria-label="Art In Motion Dance Instagram preview"
-      >
-
-
-        {[
-          'general-2.jpg',
-          'general-4.jpg',
-          'general-7.jpg',
-          'general-9.jpg',
-          'general-10.jpg',
-          'general-11.jpg'
-        ].map((img,i) => (
-
-
-          <a
-            class="instagram-tile"
-            href="https://www.instagram.com/artinmotiondance/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View Art In Motion Dance on Instagram, photo ${i+1}`}
-          >
-
-
-            <img
-              src={`/uploads/client/general/${img}`}
-              alt={`Art In Motion Dance studio moment ${i+1}`}
-              loading="lazy"
-            />
-
-
-            <span
-              class="instagram-overlay"
-              aria-hidden="true"
-            >
-              Instagram ↗
-            </span>
-
-
-          </a>
-
-
-        ))}
-
-
-      </div>
+        class="elfsight-app-740938a5-67b1-4bdb-a14d-9dd23a75f4c0"
+        data-elfsight-app-lazy
+      ></div>
 
 
 
@@ -1109,6 +1079,49 @@ const programs = [
 
 
       </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       GOOGLE REVIEWS
+       ===================================================== -->
+
+  <section class="instagram-section google-reviews-section">
+
+
+    <div class="wrap">
+
+
+      <div class="section-head dark instagram-head">
+
+
+        <div>
+
+          <div class="eyebrow">
+            AIM Community
+          </div>
+
+
+          <h2>
+            What AIM families are saying.
+          </h2>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        class="elfsight-app-16128f2d-353b-4db4-9906-00aef7305af1"
+        data-elfsight-app-lazy
+      ></div>
 
 
     </div>
