@@ -2957,8 +2957,8 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   right: 0;
   width: 72%;
   height: 100%;
-  object-fit: contain;
-  object-position: right center;
+    object-fit: cover;
+    object-position: bottom center;
   background: var(--burgundy-deep);
 }
 
