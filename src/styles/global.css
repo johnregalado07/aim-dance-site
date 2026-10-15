@@ -2944,3 +2944,60 @@ section{padding:95px 0}.intro-grid{display:grid;grid-template-columns:1fr 1fr;ga
   }
 
 }
+
+
+
+/* =========================================================
+   ACRO HERO IMAGE FIX
+   Keep the full dancer visible instead of heavily cropping it
+   ========================================================= */
+
+.genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
+  left: auto;
+  right: 0;
+  width: 72%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+  background: var(--burgundy-deep);
+}
+
+/* Stronger left-side gradient so the Acro title stays readable */
+.genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"]
+  + .genre-detail-overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(28, 3, 12, .98) 0%,
+      rgba(28, 3, 12, .92) 28%,
+      rgba(28, 3, 12, .58) 52%,
+      rgba(28, 3, 12, .18) 78%,
+      rgba(28, 3, 12, .08) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(25, 2, 10, .72) 0%,
+      transparent 55%
+    );
+}
+
+
+/* Tablet */
+@media (max-width: 800px) {
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
+    width: 85%;
+  }
+
+}
+
+
+/* Mobile */
+@media (max-width: 560px) {
+
+  .genre-detail-hero-image[src="/uploads/drive/genres/acro.jpg"] {
+    width: 100%;
+    object-position: center center;
+  }
+
+}
