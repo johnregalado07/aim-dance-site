@@ -2,28 +2,34 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
-
 const programs = (await getCollection('pages'))
   .filter((p) => p.data.section === 'programs')
-  .sort((a, b) => a.data.order - b.data.order);
-
+  .sort((a,b) => a.data.order - b.data.order);
 
 const imageMap = {
-  'recreational-dance': '/uploads/client/recreational/rec-1.jpg',
-  'competition-team': '/uploads/drive/general/competition.jpg',
-  'genres': '/uploads/drive/genres/ballet.jpg',
-  'summer-programs': '/uploads/drive/summer/summer-1.jpg',
-  'birthday-parties': '/uploads/drive/birthday/birthday.jpg',
-  'kickline-technique': '/uploads/drive/kickline/kickline-2.jpg'
+
+  'recreational-dance':
+    '/uploads/drive/recreational/rec-main.jpg',
+
+  'competition-team':
+    '/uploads/drive/general/competition.jpg',
+
+  'genres':
+    '/uploads/drive/genres/ballet.jpg',
+
+  'summer-programs':
+    '/uploads/drive/summer/summer-1.jpg',
+
+  'birthday-parties':
+    '/uploads/drive/birthday/birthday.jpg',
+
+  'kickline-technique':
+    '/uploads/drive/kickline/kickline-2.jpg'
+
 };
 ---
 
 <Base title="Programs | AIM Dance">
-
-
-  <!-- =====================================================
-       PROGRAMS HERO
-       ===================================================== -->
 
   <section class="programs-hero">
 
@@ -36,9 +42,7 @@ const imageMap = {
 
     </div>
 
-
     <div class="programs-hero-overlay"></div>
-
 
     <div class="wrap programs-hero-copy">
 
@@ -60,25 +64,18 @@ const imageMap = {
   </section>
 
 
-
-  <!-- =====================================================
-       PROGRAM CARDS
-       ===================================================== -->
-
   <section class="content-section program-index-section">
 
     <div class="wrap">
 
       <div class="program-cards modern-program-cards">
 
-
-        {programs.map((p, i) => (
+        {programs.map((p,i) => (
 
           <a
             class="program-card modern-program-card"
             href={`/${p.id}`}
           >
-
 
             <div class="program-image-wrap">
 
@@ -118,17 +115,14 @@ const imageMap = {
 
             </div>
 
-
           </a>
 
         ))}
-
 
       </div>
 
     </div>
 
   </section>
-
 
 </Base>
