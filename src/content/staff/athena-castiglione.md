@@ -1,7 +1,7 @@
 ---
 name: Athena Castiglione
 role: Dance Teacher
-photo: /uploads/staff/athena-castiglione2.jpg
+photo: /uploads/staff/athena-castiglione2.jpeg
 order: 4
 ---
 A native New Yorker, Athena Castiglione appeared on New York Live, modeling under stylist, Lilliana Vasquez. Along with appearing in Cablevision commercials regionally, has also co-starred on “My Transient Life,” directed by Charlie Matthes. Among many other artists Athena has also co-starred in John Legend’s music video “Everybody Knows,” directed by Anthony Mandler.
