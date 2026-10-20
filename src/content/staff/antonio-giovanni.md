@@ -1,7 +1,7 @@
 ---
 name: Antonio Giovanni
 role: Dance Teacher
-photo: /uploads/staff/antonio-giovanni.jpg
+photo: /uploads/antonio-giovanni.jpeg
 order: 7
 ---
 Antonio Giovanni is an established dance teacher and choreographer in New York City. He started dancing at 10. At 12 years old, Antonio was offered a 3-year ballet scholarship to UMKC (University of Missouri Kansas City) Conservatory of Dance. He continued to train in Ballet and Jazz until having the opportunity at 16 to begin teaching. 
