@@ -1,7 +1,7 @@
 ---
 name: Victoria Rosa
 role: Dance Teacher / Studio Coordinator
-photo: /uploads/staff/victoria-rosa.jpg
+photo: /uploads/staff/victoria-rosa2.jpg
 order: 3
 ---
 
