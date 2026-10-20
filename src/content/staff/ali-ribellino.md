@@ -1,7 +1,7 @@
 ---
 name: Ali Ribellino
 role: Co-Owner / Creative Director
-photo: /uploads/staff/ali-ribellino2.jpg
+photo: /uploads/staff/ali-ribellino2.jpeg
 order: 2
 ---
 
